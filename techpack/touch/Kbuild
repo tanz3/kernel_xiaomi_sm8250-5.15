@@ -454,4 +454,13 @@ ifeq ($(CONFIG_TOUCHSCREEN_XIAOMI_TOUCHFEATURE), y)
 	obj-$(CONFIG_MSM_TOUCH) += xiaomi_touch.o
 endif
 
+ifeq ($(CONFIG_TOUCHSCREEN_COMMON), y)
+	LINUX_INC += -include $(TOUCH_ROOT)/tp/tp_common.h
+
+	tp_common-y := \
+		 ./tp/tp_common.o
+
+	obj-$(CONFIG_MSM_TOUCH) += tp_common.o
+endif
+
 CDEFINES += -DBUILD_TIMESTAMP=\"$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')\"
