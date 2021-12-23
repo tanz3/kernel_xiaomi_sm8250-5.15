@@ -18,6 +18,10 @@ ifeq ($(call is-board-platform-in-list, monaco),true)
 AUDIO_SELECT  := CONFIG_SND_SOC_MONACO=m
 endif
 
+ifeq ($(call is-board-platform, sdm845),true)
+AUDIO_SELECT  := CONFIG_SND_SOC_SDM845=m
+endif
+
 ifeq ($(ENABLE_AUDIO_LEGACY_TECHPACK),true)
 include $(call all-subdir-makefiles)
 LOCAL_PATH    := vendor/qcom/opensource/audio-kernel
@@ -27,7 +31,7 @@ BOARD_OPENSOURCE_DIR ?= vendor/qcom/opensource
 BOARD_COMMON_DIR ?= device/qcom/common
 
 # Build/Package only in case of supported target
-ifeq ($(call is-board-platform-in-list,taro kalama bengal monaco msmnile gen4), true)
+ifeq ($(call is-board-platform-in-list,taro kalama bengal monaco msmnile gen4 sdm845), true)
 
 # This makefile is only for DLKM
 ifneq ($(findstring vendor,$(LOCAL_PATH)),)

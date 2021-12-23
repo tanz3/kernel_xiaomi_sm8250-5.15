@@ -46,13 +46,16 @@ endif
 ifeq ($(TARGET_SUPPORT), sa525m))
 KBUILD_OPTIONS += CONFIG_ARCH_SA525M=y
 endif
+ifeq ($(TARGET_SUPPORT),sdm845)
+KBUILD_OPTIONS += CONFIG_ARCH_SDM845=y
+endif
 
 obj-m := ipc/
 obj-m += dsp/
 obj-m += soc/
 obj-m += asoc/
 obj-m += asoc/codecs/
-ifeq ($(TARGET_SUPPORT), $(filter $(TARGET_SUPPORT), sdmsteppe sdxlemur sdxpinn))
+ifeq ($(TARGET_SUPPORT), $(filter $(TARGET_SUPPORT), sdmsteppe sdxlemur sdxpinn sdm845))
 obj-m += asoc/codecs/wcd934x/
 endif
 ifeq ($(TARGET_SUPPORT), $(filter $(TARGET_SUPPORT), qcs40x))
