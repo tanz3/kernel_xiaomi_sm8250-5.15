@@ -18,8 +18,12 @@ ifeq ($(call is-board-platform, trinket),true)
 AUDIO_SELECT  := CONFIG_SND_SOC_TRINKET=m
 endif
 
+ifeq ($(call is-board-platform, sdm845),true)
+AUDIO_SELECT  := CONFIG_SND_SOC_SDM845=m
+endif
+
 # Build/Package only in case of supported target
-ifeq ($(call is-board-platform-in-list,msmnile kona trinket), true)
+ifeq ($(call is-board-platform-in-list,msmnile kona trinket sdm845), true)
 
 LOCAL_PATH := $(call my-dir)
 
