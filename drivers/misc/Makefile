@@ -3,6 +3,8 @@
 # Makefile for misc devices that really don't fit anywhere else.
 #
 
+ccflags-$(CONFIG_MI_HARDWARE_ID) += -I$(srctree)/drivers/misc/hwid/
+
 obj-$(CONFIG_IBM_ASM)		+= ibmasm/
 obj-$(CONFIG_IBMVMC)		+= ibmvmc.o
 obj-$(CONFIG_AD525X_DPOT)	+= ad525x_dpot.o
@@ -69,3 +71,5 @@ obj-$(CONFIG_QRC)		+= qrc/
 obj-$(CONFIG_HALL_AKM09970)	+= akm09970.o
 obj-$(CONFIG_MOTOR_DRV8846)	+= drv8846.o
 obj-$(CONFIG_SPI_XIAOMI_TP)	+= spi-xiaomi-tp.o
+
+obj-y				+= hwid/
