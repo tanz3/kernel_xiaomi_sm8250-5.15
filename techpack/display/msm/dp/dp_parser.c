@@ -175,6 +175,9 @@ static int dp_parser_misc(struct dp_parser *parser)
 	if (!parser->display_type)
 		parser->display_type = "secondary";
 
+	parser->dp_cec_feature = of_property_read_bool(of_node,
+		"qcom,dp_cec_feature");
+
 	return 0;
 }
 
