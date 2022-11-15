@@ -515,6 +515,11 @@ config PROFILER
 	  It exposes APIs for userspace to get system profiling
 	  information.
 
+config HALL_AKM09970
+	tristate "AKM09970 HALL sensor driver"
+	help
+	  Say Y here if you want to enable AKM09970 HALL sensor driver.
+
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
 source "drivers/misc/cb710/Kconfig"

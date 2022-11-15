@@ -65,3 +65,5 @@ obj-$(CONFIG_QSEECOM_PROXY) 	+= qseecom_proxy.o
 obj-$(CONFIG_QPNP_MISC)		+= qpnp-misc.o
 obj-$(CONFIG_PROFILER)		+= profiler.o
 obj-$(CONFIG_QRC)		+= qrc/
+
+obj-$(CONFIG_HALL_AKM09970)	+= akm09970.o
