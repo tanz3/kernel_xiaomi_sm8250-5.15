@@ -10,3 +10,4 @@ LINUXINCLUDE    += \
 USERINCLUDE     += -I$(DISPLAY_ROOT)/include/uapi/display
 
 obj-y += msm/
+obj-y += bridge-drivers/
