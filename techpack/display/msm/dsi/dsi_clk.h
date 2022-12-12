@@ -245,6 +245,13 @@ struct dsi_clk_link_set {
 void dsi_display_clk_mngr_update_splash_status(void *clk_mgr, bool status);
 
 /**
+ * dsi_display_clk_mngr_update_ctrl_count() - Update DSI controller count
+ * @clk_mngr:     Structure containing DSI clock information
+ * @ctrl_count:   DSI controller count
+ */
+void dsi_display_clk_mngr_update_ctrl_count(void *clk_mgr, u32 ctrl_count);
+
+/**
  * dsi_display_clk_mgr_register() - Register DSI clock manager
  * @info:     Structure containing DSI clock information
  */
