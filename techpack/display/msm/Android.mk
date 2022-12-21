@@ -18,6 +18,12 @@ DLKM_DIR := $(TOP)/$(BOARD_COMMON_DIR)/dlkm
 
 LOCAL_ADDITIONAL_DEPENDENCIES := $(wildcard $(LOCAL_PATH)/**/*) $(wildcard $(LOCAL_PATH)/*)
 
+# List of board platforms for which below driver's API should not be enabled
+NO_MMRM_BOARDS          := kona
+NO_MSM_EXT_DISP_BOARDS  := taro bengal
+NO_SEC_BOARDS           := taro bengal
+NO_HW_FENCE_BOARDS      := taro bengal kona
+
 # Build display.ko as msm_drm.ko
 ###########################################################
 # This is set once per LOCAL_PATH, not per (kernel) module
@@ -30,10 +36,17 @@ ifneq ($(TARGET_BOARD_AUTO),true)
 ifeq ($(call is-board-platform-in-list, monaco trinket),false)
 	KBUILD_OPTIONS += KBUILD_EXTRA_SYMBOLS+=$(PWD)/$(call intermediates-dir-for,DLKM,mmrm-module-symvers)/Module.symvers
 endif
-ifeq ($(call is-board-platform-in-list, taro bengal monaco trinket),false)
-	KBUILD_OPTIONS += KBUILD_EXTRA_SYMBOLS+=$(PWD)/$(call intermediates-dir-for,DLKM,msm-ext-disp-module-symvers)/Module.symvers
-	KBUILD_OPTIONS += KBUILD_EXTRA_SYMBOLS+=$(PWD)/$(call intermediates-dir-for,DLKM,sec-module-symvers)/Module.symvers
-	KBUILD_OPTIONS += KBUILD_EXTRA_SYMBOLS+=$(PWD)/$(call intermediates-dir-for,DLKM,hw-fence-module-symvers)/Module.symvers
+ifneq ($(call is-board-platform-in-list, $(NO_MMRM_BOARDS)),true)
+KBUILD_OPTIONS += KBUILD_EXTRA_SYMBOLS+=$(PWD)/$(call intermediates-dir-for,DLKM,mmrm-module-symvers)/Module.symvers
+endif
+ifneq ($(call is-board-platform-in-list, $(NO_MSM_EXT_DISP_BOARDS)),true)
+KBUILD_OPTIONS += KBUILD_EXTRA_SYMBOLS+=$(PWD)/$(call intermediates-dir-for,DLKM,msm-ext-disp-module-symvers)/Module.symvers
+endif
+ifneq ($(call is-board-platform-in-list, $(NO_SEC_BOARDS)),true)
+KBUILD_OPTIONS += KBUILD_EXTRA_SYMBOLS+=$(PWD)/$(call intermediates-dir-for,DLKM,sec-module-symvers)/Module.symvers
+endif
+ifneq ($(call is-board-platform-in-list, $(NO_HW_FENCE_BOARDS)),true)
+KBUILD_OPTIONS += KBUILD_EXTRA_SYMBOLS+=$(PWD)/$(call intermediates-dir-for,DLKM,hw-fence-module-symvers)/Module.symvers
 endif
 endif
 
@@ -51,13 +64,21 @@ ifeq ($(call is-board-platform-in-list, monaco trinket),false)
 	LOCAL_REQUIRED_MODULES    += mmrm-module-symvers
 	LOCAL_ADDITIONAL_DEPENDENCIES += $(call intermediates-dir-for,DLKM,mmrm-module-symvers)/Module.symvers
 endif
-ifeq ($(call is-board-platform-in-list, taro bengal monaco trinket),false)
-	LOCAL_REQUIRED_MODULES    += msm-ext-disp-module-symvers
-	LOCAL_REQUIRED_MODULES    += sec-module-symvers
-	LOCAL_REQUIRED_MODULES    += hw-fence-module-symvers
-	LOCAL_ADDITIONAL_DEPENDENCIES += $(call intermediates-dir-for,DLKM,msm-ext-disp-module-symvers)/Module.symvers
-	LOCAL_ADDITIONAL_DEPENDENCIES += $(call intermediates-dir-for,DLKM,sec-module-symvers)/Module.symvers
-	LOCAL_ADDITIONAL_DEPENDENCIES += $(call intermediates-dir-for,DLKM,hw-fence-module-symvers)/Module.symvers
+ifneq ($(call is-board-platform-in-list, $(NO_MMRM_BOARDS)),true)
+LOCAL_REQUIRED_MODULES    += mmrm-module-symvers
+LOCAL_ADDITIONAL_DEPENDENCIES += $(call intermediates-dir-for,DLKM,mmrm-module-symvers)/Module.symvers
+endif
+ifneq ($(call is-board-platform-in-list, $(NO_MSM_EXT_DISP_BOARDS)),true)
+LOCAL_REQUIRED_MODULES    += msm-ext-disp-module-symvers
+LOCAL_ADDITIONAL_DEPENDENCIES += $(call intermediates-dir-for,DLKM,msm-ext-disp-module-symvers)/Module.symvers
+endif
+ifneq ($(call is-board-platform-in-list, $(NO_SEC_BOARDS)),true)
+LOCAL_REQUIRED_MODULES    += sec-module-symvers
+LOCAL_ADDITIONAL_DEPENDENCIES += $(call intermediates-dir-for,DLKM,sec-module-symvers)/Module.symvers
+endif
+ifneq ($(call is-board-platform-in-list, $(NO_HW_FENCE_BOARDS)),true)
+LOCAL_REQUIRED_MODULES    += hw-fence-module-symvers
+LOCAL_ADDITIONAL_DEPENDENCIES += $(call intermediates-dir-for,DLKM,hw-fence-module-symvers)/Module.symvers
 endif
 endif
 
