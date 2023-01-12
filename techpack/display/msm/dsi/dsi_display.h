@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
- * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
  * Copyright (c) 2015-2021, The Linux Foundation. All rights reserved.
  */
 
@@ -152,6 +152,7 @@ struct dsi_display_ext_bridge {
  * @needs_clk_src_reset: Is clock source reset needed.
  * @needs_ctrl_vreg_disable: Is ctrl vreg disable needed.
  * @ctrl_count:       Number of DSI interfaces required by panel.
+ * @boot_ctrl_count:  Number of DSI interfaces required by panel.
  * @ctrl:             Controller information for DSI display.
  * @panel:            Handle to DSI panel.
  * @panel_node:       pHandle to DSI panel actually in use.
@@ -219,6 +220,7 @@ struct dsi_display {
 	bool needs_ctrl_vreg_disable;
 
 	u32 ctrl_count;
+	u32 boot_ctrl_count;
 	struct dsi_display_ctrl ctrl[MAX_DSI_CTRLS_PER_DISPLAY];
 
 	/* panel info */
