@@ -3679,6 +3679,8 @@ static int dp_display_probe(struct platform_device *pdev)
 
 	g_dp_display->get_display_type = dp_display_get_display_type;
 
+	g_dp_display->get_display_type = dp_display_get_display_type;
+
 	rc = component_add(&pdev->dev, &dp_display_comp_ops);
 	if (rc) {
 		DP_ERR("component add failed, rc=%d\n", rc);
