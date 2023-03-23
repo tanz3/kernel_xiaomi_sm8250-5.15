@@ -802,6 +802,7 @@ struct msm_display_wd_jitter_config {
  * @qsync_min_fps: qsync min fps rate
  * @wd_jitter:         Info for WD jitter.
  * @vpadding:        panel stacking height
+ * @no_panel_timing_node: set the bool property to true if panel does not have timing nodes.
  */
 struct msm_mode_info {
 	uint32_t frame_rate;
@@ -825,6 +826,7 @@ struct msm_mode_info {
 	u32 qsync_min_fps;
 	struct msm_display_wd_jitter_config wd_jitter;
 	u32 vpadding;
+	bool no_panel_timing_node;
 };
 
 /**
