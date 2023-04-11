@@ -199,6 +199,7 @@ static inline char *dp_phy_aux_config_type_to_string(u32 cfg_type)
  * @fec_feature_enable: FEC feature enable status
  * @dsc_version: Max. DSC version supported by HW
  * @dsc_continuous_pps: PPS sent every frame by HW
+ * @yuv422_support: YUV422 supported by HW
  * @has_widebus: widebus (2PPC) feature eanble status
  * @lphw_hpd: Low power hardware HPD feature enable status
   *@mst_fixed_port: mst port_num reserved for fixed topology
@@ -229,6 +230,7 @@ struct dp_parser {
 	bool dsc_feature_enable;
 	bool fec_feature_enable;
 	bool dsc_continuous_pps;
+	bool yuv422_support;
 	bool has_widebus;
 	bool gpio_aux_switch;
 	bool lphw_hpd;
