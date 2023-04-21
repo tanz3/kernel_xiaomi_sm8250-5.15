@@ -772,8 +772,13 @@ static int dp_aux_configure_aux_switch(struct dp_aux *dp_aux,
 	aux = container_of(dp_aux, struct dp_aux_private, dp_aux);
 
 	if (!aux->aux_switch_node) {
-		DP_AUX_DEBUG(dp_aux, "undefined fsa4480 handle\n");
+		DP_AUX_DEBUG(dp_aux, "undefined aux switch handle\n");
 		rc = -EINVAL;
+		goto end;
+	}
+
+	if (strcmp(aux->aux_switch_node->name, "fsa4480")) {
+		DP_DEBUG("Not an fsa4480 aux switch\n");
 		goto end;
 	}
 
