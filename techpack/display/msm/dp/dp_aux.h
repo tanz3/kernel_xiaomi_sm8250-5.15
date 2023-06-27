@@ -9,6 +9,7 @@
 
 #include "dp_catalog.h"
 #include "drm/drm_dp_helper.h"
+#include "drm_dp_cec.h"
 #include "dp_aux_bridge.h"
 
 #define DP_STATE_NOTIFICATION_SENT          BIT(0)
