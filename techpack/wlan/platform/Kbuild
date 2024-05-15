@@ -1,3 +1,9 @@
+WLAN_PLATFORM_ROOT := $(srctree)/techpack/wlan/platform
+
+ifeq ($(CONFIG_ARCH_KONA), y)
+include $(WLAN_PLATFORM_ROOT)/config/gki_konawlan.conf
+endif
+
 ifeq ($(CONFIG_CNSS_OUT_OF_TREE),y)
 KBUILD_CPPFLAGS += -DCONFIG_CNSS_OUT_OF_TREE
 endif
@@ -8,6 +14,10 @@ endif
 
 ifeq ($(CONFIG_CNSS2_QMI),y)
 KBUILD_CPPFLAGS += -DCONFIG_CNSS2_QMI
+endif
+
+ifeq ($(CONFIG_CNSS_ASYNC),y)
+KBUILD_CPPFLAGS += -DCONFIG_CNSS_ASYNC
 endif
 
 ifeq ($(CONFIG_ONE_MSI_VECTOR),y)

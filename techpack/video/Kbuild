@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
+VIDEO_ROOT := $(srctree)/techpack/video
+
 ifeq ($(CONFIG_ARCH_KONA), y)
 include $(VIDEO_ROOT)/config/konavid.conf
 LINUXINCLUDE    += -include $(VIDEO_ROOT)/config/konavidconf.h \

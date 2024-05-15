@@ -50,7 +50,7 @@ TRACE_EVENT(
 #undef TRACE_INCLUDE_PATH
 #ifdef CONFIG_IPA_VENDOR_DLKM
 #define TRACE_INCLUDE_PATH ../../../../vendor/qcom/opensource/dataipa/drivers/platform/msm/gsi
-#elif CONFIG_KALAMA_IPA_LE
+#elif defined(CONFIG_KALAMA_IPA_LE)
 #define TRACE_INCLUDE_PATH ../gsi
 #else
 #define TRACE_INCLUDE_PATH ../../techpack/dataipa/drivers/platform/msm/gsi

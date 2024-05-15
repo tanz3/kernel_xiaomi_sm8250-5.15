@@ -1,3 +1,5 @@
+RMNET_CORE_INC_DIR = $(srctree)/techpack/datarmnet/core
+
 obj-m += rmnet_shs.o
 #Need core headers
 ccflags-y := -I$(RMNET_CORE_INC_DIR) \

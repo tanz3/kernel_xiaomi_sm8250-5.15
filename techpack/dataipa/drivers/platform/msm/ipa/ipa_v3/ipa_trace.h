@@ -395,7 +395,7 @@ TRACE_EVENT(
 #undef TRACE_INCLUDE_PATH
 #ifdef CONFIG_IPA_VENDOR_DLKM
 #define TRACE_INCLUDE_PATH ../../../../vendor/qcom/opensource/dataipa/drivers/platform/msm/ipa/ipa_v3
-#elif CONFIG_KALAMA_IPA_LE
+#elif defined(CONFIG_KALAMA_IPA_LE)
 #define TRACE_INCLUDE_PATH ../ipa/ipa_v3
 #else
 #define TRACE_INCLUDE_PATH ../../techpack/dataipa/drivers/platform/msm/ipa/ipa_v3
