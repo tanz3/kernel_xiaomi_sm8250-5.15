@@ -411,6 +411,6 @@ DEFINE_EVENT(msm_v4l2_vidc_log, msm_vidc_printf,
 
 /* This part must be outside protection */
 #undef TRACE_INCLUDE_PATH
-#define TRACE_INCLUDE_PATH ../../../../vendor/qcom/opensource/video-driver/msm/vidc
+#define TRACE_INCLUDE_PATH .
 
 #include <trace/define_trace.h>

@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
 KDIR := $(TOP)/kernel_platform/common
+KERNEL_SRC := $(srctree)
+KGSL_PATH := $(KERNEL_SRC)/techpack/graphics
 
 ifeq ($(KGSL_PATH),)
 KGSL_PATH=$(src)
