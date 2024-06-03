@@ -54,7 +54,9 @@ struct dp_display {
 	u32 max_mixer_count;
 	u32 max_dsc_count;
 	void *dp_ipc_log;
+#ifdef CONFIG_DRM_CLIENT_BOOTSPLASH
 	bool is_bootsplash_en;
+#endif
 
 	int (*enable)(struct dp_display *dp_display, void *panel);
 	int (*post_enable)(struct dp_display *dp_display, void *panel);
