@@ -231,11 +231,13 @@ static inline bool dp_display_is_hdcp_enabled(struct dp_display_private *dp)
 	return dp->link->hdcp_status.hdcp_version && dp->hdcp.ops;
 }
 
+#ifdef CONFIG_DRM_CLIENT_BOOTSPLASH
 static bool is_drm_bootsplash_enabled(struct device *dev)
 {
 	return of_property_read_bool(dev->of_node,
 		"qcom,sde-drm-fb-splash-logo-enabled");
 }
+#endif
 
 static irqreturn_t dp_display_irq(int irq, void *dev_id)
 {
@@ -929,7 +931,9 @@ static int dp_display_send_hpd_notification(struct dp_display_private *dp)
 {
 	int ret = 0;
 	bool hpd = !!dp_display_state_is(DP_STATE_CONNECTED);
+#ifdef CONFIG_DRM_CLIENT_BOOTSPLASH
 	static u8 bootsplash_count;
+#endif
 
 	SDE_EVT32_EXTERNAL(SDE_EVTLOG_FUNC_ENTRY, dp->state, hpd);
 
@@ -985,6 +989,7 @@ static int dp_display_send_hpd_notification(struct dp_display_private *dp)
 		goto skip_wait;
 	}
 
+#ifdef CONFIG_DRM_CLIENT_BOOTSPLASH
 	if (!dp->dp_display.is_bootsplash_en
 		&& is_drm_bootsplash_enabled(dp->dp_display.drm_dev->dev)
 		&& !bootsplash_count) {
@@ -992,6 +997,7 @@ static int dp_display_send_hpd_notification(struct dp_display_private *dp)
 		bootsplash_count++;
 		drm_bootsplash_client_register(dp->dp_display.drm_dev);
 	}
+#endif
 
 	reinit_completion(&dp->notification_comp);
 	dp_display_send_hpd_event(dp);
@@ -2573,10 +2579,13 @@ static int dp_display_post_enable(struct dp_display *dp_display, void *panel)
 	SDE_EVT32_EXTERNAL(SDE_EVTLOG_FUNC_ENTRY, dp->state);
 	mutex_lock(&dp->session_lock);
 
+#ifdef CONFIG_DRM_CLIENT_BOOTSPLASH
 	if (dp->dp_display.is_bootsplash_en) {
 		dp->dp_display.is_bootsplash_en = false;
 		goto end;
 	}
+#endif
+
 	/*
 	 * If DP_STATE_READY is not set, we should not do any HW
 	 * programming.
