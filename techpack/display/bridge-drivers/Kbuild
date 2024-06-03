@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
 KDIR := $(TOP)/kernel_platform/msm-kernel
+DISPLAY_ROOT=$(srctree)/techpack/display
 
 ifeq ($(CONFIG_ARCH_KONA), y)
 	include $(DISPLAY_ROOT)/config/konadisp.conf
