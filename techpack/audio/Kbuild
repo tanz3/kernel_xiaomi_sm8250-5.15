@@ -1,8 +1,13 @@
 AUDIO_ROOT := $(srctree)/techpack/audio
 
 ifeq ($(CONFIG_ARCH_KONA), y)
+ifeq ($(CONFIG_QGKI),y)
 include $(AUDIO_ROOT)/config/konaauto.conf
 LINUXINCLUDE += -include $(AUDIO_ROOT)/config/konaautoconf.h
+else
+include $(AUDIO_ROOT)/config/gki_konaauto.conf
+LINUXINCLUDE += -include $(AUDIO_ROOT)/config/konaautoconf.h
+endif
 endif
 
 LINUXINCLUDE += \

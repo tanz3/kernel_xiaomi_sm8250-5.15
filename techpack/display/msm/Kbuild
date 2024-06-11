@@ -25,7 +25,11 @@ ifeq ($(CONFIG_ARCH_PARROT), y)
 endif
 
 ifeq ($(CONFIG_ARCH_KONA), y)
+ifeq ($(CONFIG_QGKI),y)
 	include $(DISPLAY_ROOT)/config/konadisp.conf
+else
+	include $(DISPLAY_ROOT)/config/gki_konadisp.conf
+endif
 	LINUX_INC +=	-include $(DISPLAY_ROOT)/config/konadispconf.h
 endif
 

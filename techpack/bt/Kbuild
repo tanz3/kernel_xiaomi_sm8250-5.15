@@ -1,7 +1,11 @@
 BT_ROOT := $(srctree)/techpack/bt
 
 ifeq ($(CONFIG_ARCH_KONA), y)
+ifeq ($(CONFIG_QGKI),y)
+include $(BT_ROOT)/config/bt.conf
+else
 include $(BT_ROOT)/config/gki_bt.conf
+endif
 endif
 
 ifneq (,$(filter $(CONFIG_MSM_BT_POWER),y m))

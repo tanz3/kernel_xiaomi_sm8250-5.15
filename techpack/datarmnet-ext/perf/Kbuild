@@ -1,6 +1,10 @@
 RMNET_CORE_INC_DIR = $(srctree)/techpack/datarmnet/core
 
+ifeq ($(CONFIG_QGKI),y)
+obj-y += rmnet_perf.o
+else
 obj-m += rmnet_perf.o
+endif
 #Need core headers
 ccflags-y := -I$(RMNET_CORE_INC_DIR) \
              $(call cc-option,-Wno-misleading-indentation)

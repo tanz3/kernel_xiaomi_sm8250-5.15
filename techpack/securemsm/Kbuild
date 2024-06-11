@@ -13,7 +13,11 @@ ifneq (, $(filter y, $(CONFIG_QTI_QUIN_GVM) $(CONFIG_ARCH_KHAJE) $(CONFIG_ARCH_S
     #Concatenation is used here to disable qseecom compilation for LeMans HGY only and allow for others
     ifneq ($(CONFIG_ARCH_QTI_VM)$(CONFIG_ARCH_LEMANS), yy)
 
-        include $(SSG_MODULE_ROOT)/config/sec-kernel_defconfig_qseecom.conf
+        ifeq ($(CONFIG_QGKI),y)
+            include $(SSG_MODULE_ROOT)/config/sec-kernel_defconfig_qseecom.conf
+        else
+            include $(SSG_MODULE_ROOT)/config/gki_sec-kernel_defconfig_qseecom.conf
+        endif
         LINUXINCLUDE += -include $(SSG_MODULE_ROOT)/config/sec-kernel_defconfig_qseecom.h
 
         obj-$(CONFIG_QSEECOM) += qseecom_dlkm.o
@@ -28,7 +32,11 @@ ifneq (, $(filter y, $(CONFIG_QTI_QUIN_GVM) $(CONFIG_ARCH_KHAJE) $(CONFIG_ARCH_S
     endif
 endif
 
+ifeq ($(CONFIG_QGKI),y)
 include $(SSG_MODULE_ROOT)/config/sec-kernel_defconfig_smcinvoke.conf
+else
+include $(SSG_MODULE_ROOT)/config/gki_sec-kernel_defconfig_smcinvoke.conf
+endif
 LINUXINCLUDE += -include $(SSG_MODULE_ROOT)/config/sec-kernel_defconfig_smcinvoke.h
 
 ifeq ($(CONFIG_ARCH_QTI_VM), y)

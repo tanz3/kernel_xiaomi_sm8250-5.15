@@ -2,12 +2,15 @@
 
 MSM_HW_FENCE_ROOT := $(srctree)/techpack/mm/hw_fence
 
+ifeq ($(CONFIG_QGKI),y)
 include $(MSM_HW_FENCE_ROOT)/../config/kalamammdrivers.conf
+else
+include $(MSM_HW_FENCE_ROOT)/../config/gki_kalamammdrivers.conf
+endif
 LINUXINCLUDE += -include $(MSM_HW_FENCE_ROOT)/../config/kalamammdriversconf.h \
 		-I$(MSM_HW_FENCE_ROOT)/include/
 
-ifdef CONFIG_QTI_HW_FENCE
-obj-m += msm_hw_fence.o
+obj-$(CONFIG_QTI_HW_FENCE) += msm_hw_fence.o
 
 msm_hw_fence-y := src/msm_hw_fence.o \
 		src/hw_fence_drv_priv.o \
@@ -16,4 +19,3 @@ msm_hw_fence-y := src/msm_hw_fence.o \
 		src/hw_fence_drv_ipc.o
 
 CDEFINES += -DBUILD_TIMESTAMP=\"$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')\"
-endif

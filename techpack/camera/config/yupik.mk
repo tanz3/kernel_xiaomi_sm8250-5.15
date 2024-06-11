@@ -1,5 +1,11 @@
 # Settings for compiling yupik camera architecture
 
+ifeq ($(CONFIG_QGKI),y)
+CONFIG_TECHPACK_CAMERA=y
+else
+CONFIG_TECHPACK_CAMERA=m
+endif
+
 # Localized KCONFIG settings
 CONFIG_SPECTRA_ISP      := y
 CONFIG_SPECTRA_ICP      := y
