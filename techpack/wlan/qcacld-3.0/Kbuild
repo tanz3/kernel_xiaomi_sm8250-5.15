@@ -32,7 +32,11 @@ DEVNAME ?= wlan
 WLAN_PLATFORM_INC ?= $(WLAN_ROOT)/../platform/inc
 
 ifeq ($(CONFIG_ARCH_KONA), y)
+ifeq ($(CONFIG_QGKI),y)
+include $(srctree)/techpack/wlan/platform/config/konawlan.conf
+else
 include $(srctree)/techpack/wlan/platform/config/gki_konawlan.conf
+endif
 include $(srctree)/techpack/wlan/qcacld-3.0/configs/qca_6390.conf
 endif
 

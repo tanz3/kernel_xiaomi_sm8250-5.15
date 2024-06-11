@@ -18,7 +18,11 @@ include $(LEGACY_PATH)/config/sm8150auto.conf
 export
 endif
 ifeq ($(CONFIG_ARCH_KONA), y)
+ifeq ($(CONFIG_QGKI), y)
 include $(LEGACY_PATH)/config/konaauto.conf
+else
+include $(LEGACY_PATH)/config/gki_konaauto.conf
+endif
 endif
 ifeq ($(CONFIG_ARCH_LAHAINA), y)
 include $(LEGACY_PATH)/config/lahainaauto.conf

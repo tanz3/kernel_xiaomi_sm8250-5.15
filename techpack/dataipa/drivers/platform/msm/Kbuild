@@ -38,9 +38,17 @@ endif
 
 ifeq ($(filter $(CONFIG_ARCH_KHAJE) $(CONFIG_ARCH_MONACO) $(CONFIG_ARCH_TRINKET) $(CONFIG_ARCH_KONA), y), y)
 LINUXINCLUDE    += -include $(DATAIPADRVTOP)/../../../config/dataipa_vendor_ipav4.h
+ifeq ($(CONFIG_QGKI),y)
+include $(DATAIPADRVTOP)/../../../config/dataipa_ipav4.conf
+else
 include $(DATAIPADRVTOP)/../../../config/dataipa_GKI_ipav4.conf
+endif
 ifeq ($(CONFIG_LOCALVERSION), "-gki-consolidate")
+ifeq ($(CONFIG_QGKI),y)
+include $(srctree)/techpack/dataipa/config/dataipa_debug.conf
+else
 include $(DATAIPADRVTOP)/../../../config/dataipa_GKI_consolidate.conf
+endif
 LINUXINCLUDE    += -include $(DATAIPADRVTOP)/../../../config/dataipa_debug.h
 endif
 endif
