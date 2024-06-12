@@ -2665,7 +2665,7 @@ static int tfa98xx_load_container(struct tfa98xx *tfa98xx)
 	mutex_unlock(&tfa98xx_mutex);
 #endif
 
-	return request_firmware_nowait(THIS_MODULE, FW_ACTION_HOTPLUG, fw_name,
+	return request_firmware_nowait(THIS_MODULE, FW_ACTION_UEVENT, fw_name,
 				       tfa98xx->dev, GFP_KERNEL, tfa98xx,
 				       tfa98xx_container_loaded);
 
