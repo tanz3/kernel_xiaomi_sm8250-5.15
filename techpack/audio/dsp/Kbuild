@@ -224,6 +224,9 @@ ifdef CONFIG_DIGITAL_CDC_RSC_MGR
 	SPF_CORE_OBJS += digital-cdc-rsc-mgr.o
 endif
 
+ifneq ($(filter y, $(CONFIG_MACH_XIAOMI_DAGU) $(CONFIG_MACH_XIAOMI_PIPA)),)
+	obj-y += mmhardware/
+endif
 
 LINUX_INC +=	-Iinclude/linux
 

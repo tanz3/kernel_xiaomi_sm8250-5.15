@@ -137,6 +137,22 @@ ifeq ($(KERNEL_BUILD), 0)
 endif
 endif
 
+ifeq ($(CONFIG_MACH_XIAOMI_PSYCHE), y)
+        CDEFINES += -DCONFIG_TARGET_PRODUCT_PSYCHE
+endif
+
+ifeq ($(CONFIG_MACH_XIAOMI_MUNCH), y)
+        CDEFINES += -DCONFIG_TARGET_PRODUCT_MUNCH
+endif
+
+ifeq ($(CONFIG_MACH_XIAOMI_DAGU), y)
+        CDEFINES += -DCONFIG_TARGET_PRODUCT_DAGU
+endif
+
+ifeq ($(CONFIG_MACH_XIAOMI_PIPA), y)
+        CDEFINES += -DCONFIG_TARGET_PRODUCT_PIPA
+endif
+
 # As per target team, build is done as follows:
 # Defconfig : build with default flags
 # Slub      : defconfig  + CONFIG_SLUB_DEBUG := y +

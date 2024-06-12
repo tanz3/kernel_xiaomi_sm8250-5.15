@@ -22,6 +22,7 @@
 #include <asoc/msm-cdc-supply.h>
 #include <bindings/audio-codec-port-types.h>
 #include <linux/qti-regmap-debugfs.h>
+#include <linux/mmhardware_sysfs.h>
 
 #include "wcd938x-registers.h"
 #include "wcd938x.h"
@@ -3127,8 +3128,8 @@ static const struct snd_kcontrol_new wcd938x_snd_controls[] = {
 	SOC_SINGLE_EXT("ADC2_BCS Disable", SND_SOC_NOPM, 0, 1, 0,
 		wcd938x_bcs_get, wcd938x_bcs_put),
 
-	SOC_SINGLE_TLV("HPHL Volume", WCD938X_HPH_L_EN, 0, 20, 1, line_gain),
-	SOC_SINGLE_TLV("HPHR Volume", WCD938X_HPH_R_EN, 0, 20, 1, line_gain),
+	SOC_SINGLE_TLV("HPHL Volume", WCD938X_HPH_L_EN, 0, 24, 1, line_gain),
+	SOC_SINGLE_TLV("HPHR Volume", WCD938X_HPH_R_EN, 0, 24, 1, line_gain),
 	SOC_SINGLE_TLV("ADC1 Volume", WCD938X_ANA_TX_CH1, 0, 20, 0,
 			analog_gain),
 	SOC_SINGLE_TLV("ADC2 Volume", WCD938X_ANA_TX_CH2, 0, 20, 0,
@@ -4096,6 +4097,11 @@ static int wcd938x_soc_codec_probe(struct snd_soc_component *component)
 		}
 	}
 	return ret;
+
+/* register codec hardware */
+#ifdef CONFIG_MMHARDWARE_DETECTION
+	register_kobj_under_mmsysfs(MM_HW_CODEC, MM_HARDWARE_SYSFS_CODEC_FOLDER);
+#endif
 
 err_hwdep:
 	wcd938x->fw_data = NULL;

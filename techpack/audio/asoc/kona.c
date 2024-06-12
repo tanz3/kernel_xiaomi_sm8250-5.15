@@ -49,7 +49,7 @@
 #define WCD9XXX_MBHC_DEF_RLOADS     5
 #define WCD9XXX_MBHC_DEF_BUTTONS    8
 #define DEV_NAME_STR_LEN            32
-#define WCD_MBHC_HS_V_MAX           1600
+#define WCD_MBHC_HS_V_MAX           1700
 
 #define WSA8810_NAME_1 "wsa881x.1020170211"
 #define WSA8810_NAME_2 "wsa881x.1020170212"
@@ -133,6 +133,20 @@ static struct wcd_mbhc_config wcd_mbhc_cfg = {
 	.moisture_duty_cycle_en = true,
 };
 
+static int usbhs_direction_get(struct snd_kcontrol *kcontrol,
+				struct snd_ctl_elem_value *ucontrol)
+{
+	if (wcd_mbhc_cfg.flip_switch)
+		ucontrol->value.integer.value[0] = 1;
+	else
+		ucontrol->value.integer.value[0] = 0;
+	return 0;
+}
+
+static const struct snd_kcontrol_new msm_common_snd_controls[] = {
+		SOC_SINGLE_EXT("USB Headset Direction", 0, 0, UINT_MAX, 0,usbhs_direction_get, NULL),
+};
+
 static bool msm_usbc_swap_gnd_mic(struct snd_soc_component *component, bool active)
 {
 	struct snd_soc_card *card = component->card;
@@ -141,6 +155,8 @@ static bool msm_usbc_swap_gnd_mic(struct snd_soc_component *component, bool acti
 
 	if (!pdata->fsa_handle)
 		return false;
+
+	wcd_mbhc_cfg.flip_switch = true;
 
 	return fsa4480_switch_event(pdata->fsa_handle, FSA_MIC_GND_SWAP);
 }
@@ -352,8 +368,8 @@ static void *def_wcd_mbhc_cal(void)
 		(sizeof(btn_cfg->_v_btn_low[0]) * btn_cfg->num_btn);
 
 	btn_high[0] = 75;
-	btn_high[1] = 150;
-	btn_high[2] = 237;
+	btn_high[1] = 260;
+	btn_high[2] = 500;
 	btn_high[3] = 500;
 	btn_high[4] = 500;
 	btn_high[5] = 500;
