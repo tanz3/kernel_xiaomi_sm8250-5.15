@@ -308,6 +308,12 @@ ifeq ($(KERNEL_BUILD), 1)
 	obj-y	+= wsa884x/
 	obj-y	+= wsa883x/
 	obj-y	+= rouleur/
+ifeq (y, $(filter y, \
+	$(CONFIG_MACH_XIAOMI_DAGU) \
+	$(CONFIG_MACH_XIAOMI_ELISH) \
+	$(CONFIG_MACH_XIAOMI_ENUMA)))
+	obj-y	+= cs35l41_k81/
+endif
 endif
 # Module information used by KBuild framework
 obj-$(CONFIG_WCD9XXX_CODEC_CORE) += wcd_core_dlkm.o
