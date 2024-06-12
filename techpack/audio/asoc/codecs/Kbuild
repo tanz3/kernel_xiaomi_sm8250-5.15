@@ -313,6 +313,8 @@ ifeq (y, $(filter y, \
 	$(CONFIG_MACH_XIAOMI_ELISH) \
 	$(CONFIG_MACH_XIAOMI_ENUMA)))
 	obj-y	+= cs35l41_k81/
+else
+	obj-y	+= cs35l41/
 endif
 endif
 # Module information used by KBuild framework
