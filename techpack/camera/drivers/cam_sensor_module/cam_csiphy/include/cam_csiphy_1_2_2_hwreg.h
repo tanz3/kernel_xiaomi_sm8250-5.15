@@ -2,6 +2,7 @@
 /*
  * Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
  * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (C) 2021 XiaoMi, Inc.
  */
 
 #ifndef _CAM_CSIPHY_1_2_2_HWREG_H_
@@ -54,6 +55,7 @@ csiphy_2ph_v1_2_2_combo_mode_reg[MAX_LANES][MAX_SETTINGS_PER_LANE] = {
 		{0x0060, 0x0D, 0x00, CSIPHY_SKEW_CAL},
 		{0x0064, 0x7F, 0x00, CSIPHY_DNP_PARAMS},
 		{0x0800, 0x00, 0x00, CSIPHY_DEFAULT_PARAMS},
+		{0x0000, 0x00, 0x00, CSIPHY_DNP_PARAMS},
 	},
 	{
 		{0x0730, 0x00, 0x00, CSIPHY_DEFAULT_PARAMS},
@@ -72,6 +74,7 @@ csiphy_2ph_v1_2_2_combo_mode_reg[MAX_LANES][MAX_SETTINGS_PER_LANE] = {
 		{0x070C, 0xFF, 0x00, CSIPHY_DEFAULT_PARAMS},
 		{0x0738, 0x1F, 0x00, CSIPHY_DEFAULT_PARAMS},
 		{0x0800, 0x00, 0x00, CSIPHY_DEFAULT_PARAMS},
+		{0x0000, 0x00, 0x00, CSIPHY_DNP_PARAMS},
 		{0x0000, 0x00, 0x00, CSIPHY_DNP_PARAMS},
 		{0x0000, 0x00, 0x00, CSIPHY_DNP_PARAMS},
 	},
@@ -94,6 +97,7 @@ csiphy_2ph_v1_2_2_combo_mode_reg[MAX_LANES][MAX_SETTINGS_PER_LANE] = {
 		{0x0260, 0x0D, 0x00, CSIPHY_SKEW_CAL},
 		{0x0264, 0x7F, 0x00, CSIPHY_DNP_PARAMS},
 		{0x0800, 0x00, 0x00, CSIPHY_DEFAULT_PARAMS},
+		{0x0000, 0x00, 0x00, CSIPHY_DNP_PARAMS},
 	},
 	{
 		{0x0430, 0x00, 0x00, CSIPHY_DEFAULT_PARAMS},
@@ -114,6 +118,7 @@ csiphy_2ph_v1_2_2_combo_mode_reg[MAX_LANES][MAX_SETTINGS_PER_LANE] = {
 		{0x0460, 0x0D, 0x00, CSIPHY_SKEW_CAL},
 		{0x0464, 0x7F, 0x00, CSIPHY_DNP_PARAMS},
 		{0x0800, 0x00, 0x00, CSIPHY_DEFAULT_PARAMS},
+		{0x0000, 0x00, 0x00, CSIPHY_DNP_PARAMS},
 	},
 	{
 		{0x0630, 0x00, 0x00, CSIPHY_DEFAULT_PARAMS},
@@ -132,6 +137,7 @@ csiphy_2ph_v1_2_2_combo_mode_reg[MAX_LANES][MAX_SETTINGS_PER_LANE] = {
 		{0x060C, 0xFF, 0x00, CSIPHY_DEFAULT_PARAMS},
 		{0x0638, 0x1F, 0x00, CSIPHY_DEFAULT_PARAMS},
 		{0x0800, 0x00, 0x00, CSIPHY_DEFAULT_PARAMS},
+		{0x0000, 0x00, 0x00, CSIPHY_DNP_PARAMS},
 		{0x0000, 0x00, 0x00, CSIPHY_DNP_PARAMS},
 		{0x0000, 0x00, 0x00, CSIPHY_DNP_PARAMS},
 	},
