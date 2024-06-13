@@ -1,3 +1,16 @@
+/* SPDX-License-Identifier: GPL-2.0
+ * aw882xx_pid_2055_reg.h
+ *
+ * Copyright (c) 2020 AWINIC Technology CO., LTD
+ *
+ * Author: Nick Li <liweilei@awinic.com.cn>
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ */
+
 #ifndef __AW882XX_PID_2055_REG_H__
 #define __AW882XX_PID_2055_REG_H__
 
@@ -234,12 +247,12 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* IDCODE bit 15:0 (ID 0x00) */
 #define AW_PID_2055_IDCODE_START_BIT (0)
 #define AW_PID_2055_IDCODE_BITS_LEN (16)
-#define AW_PID_2055_IDCODE_MASK                                                \
-	(~(((1 << AW_PID_2055_IDCODE_BITS_LEN) - 1)                            \
+#define AW_PID_2055_IDCODE_MASK                     \
+	(~(((1 << AW_PID_2055_IDCODE_BITS_LEN) - 1) \
 	   << AW_PID_2055_IDCODE_START_BIT))
 
 #define AW_PID_2055_IDCODE_DEFAULT_VALUE (0x2055)
-#define AW_PID_2055_IDCODE_DEFAULT                                             \
+#define AW_PID_2055_IDCODE_DEFAULT \
 	(AW_PID_2055_IDCODE_DEFAULT_VALUE << AW_PID_2055_IDCODE_START_BIT)
 
 /* default value of ID (0x00) */
@@ -249,248 +262,248 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* OVP2 bit 15 (SYSST 0x01) */
 #define AW_PID_2055_OVP2_START_BIT (15)
 #define AW_PID_2055_OVP2_BITS_LEN (1)
-#define AW_PID_2055_OVP2_MASK                                                  \
-	(~(((1 << AW_PID_2055_OVP2_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OVP2_MASK                     \
+	(~(((1 << AW_PID_2055_OVP2_BITS_LEN) - 1) \
 	   << AW_PID_2055_OVP2_START_BIT))
 
 #define AW_PID_2055_OVP2_NORMAL (0)
-#define AW_PID_2055_OVP2_NORMAL_VALUE                                          \
+#define AW_PID_2055_OVP2_NORMAL_VALUE \
 	(AW_PID_2055_OVP2_NORMAL << AW_PID_2055_OVP2_START_BIT)
 
 #define AW_PID_2055_OVP2_OVP (1)
-#define AW_PID_2055_OVP2_OVP_VALUE                                             \
+#define AW_PID_2055_OVP2_OVP_VALUE \
 	(AW_PID_2055_OVP2_OVP << AW_PID_2055_OVP2_START_BIT)
 
 #define AW_PID_2055_OVP2_DEFAULT_VALUE (0)
-#define AW_PID_2055_OVP2_DEFAULT                                               \
+#define AW_PID_2055_OVP2_DEFAULT \
 	(AW_PID_2055_OVP2_DEFAULT_VALUE << AW_PID_2055_OVP2_START_BIT)
 
 /* UVLS bit 14 (SYSST 0x01) */
 #define AW_PID_2055_UVLS_START_BIT (14)
 #define AW_PID_2055_UVLS_BITS_LEN (1)
-#define AW_PID_2055_UVLS_MASK                                                  \
-	(~(((1 << AW_PID_2055_UVLS_BITS_LEN) - 1)                              \
+#define AW_PID_2055_UVLS_MASK                     \
+	(~(((1 << AW_PID_2055_UVLS_BITS_LEN) - 1) \
 	   << AW_PID_2055_UVLS_START_BIT))
 
 #define AW_PID_2055_UVLS_NORMAL (0)
-#define AW_PID_2055_UVLS_NORMAL_VALUE                                          \
+#define AW_PID_2055_UVLS_NORMAL_VALUE \
 	(AW_PID_2055_UVLS_NORMAL << AW_PID_2055_UVLS_START_BIT)
 
 #define AW_PID_2055_UVLS_UVLO (1)
-#define AW_PID_2055_UVLS_UVLO_VALUE                                            \
+#define AW_PID_2055_UVLS_UVLO_VALUE \
 	(AW_PID_2055_UVLS_UVLO << AW_PID_2055_UVLS_START_BIT)
 
 #define AW_PID_2055_UVLS_DEFAULT_VALUE (0)
-#define AW_PID_2055_UVLS_DEFAULT                                               \
+#define AW_PID_2055_UVLS_DEFAULT \
 	(AW_PID_2055_UVLS_DEFAULT_VALUE << AW_PID_2055_UVLS_START_BIT)
 
 /* ADPS bit 13 (SYSST 0x01) */
 #define AW_PID_2055_ADPS_START_BIT (13)
 #define AW_PID_2055_ADPS_BITS_LEN (1)
-#define AW_PID_2055_ADPS_MASK                                                  \
-	(~(((1 << AW_PID_2055_ADPS_BITS_LEN) - 1)                              \
+#define AW_PID_2055_ADPS_MASK                     \
+	(~(((1 << AW_PID_2055_ADPS_BITS_LEN) - 1) \
 	   << AW_PID_2055_ADPS_START_BIT))
 
 #define AW_PID_2055_ADPS_TRANSPARENT (0)
-#define AW_PID_2055_ADPS_TRANSPARENT_VALUE                                     \
+#define AW_PID_2055_ADPS_TRANSPARENT_VALUE \
 	(AW_PID_2055_ADPS_TRANSPARENT << AW_PID_2055_ADPS_START_BIT)
 
 #define AW_PID_2055_ADPS_BOOST (1)
-#define AW_PID_2055_ADPS_BOOST_VALUE                                           \
+#define AW_PID_2055_ADPS_BOOST_VALUE \
 	(AW_PID_2055_ADPS_BOOST << AW_PID_2055_ADPS_START_BIT)
 
 #define AW_PID_2055_ADPS_DEFAULT_VALUE (0)
-#define AW_PID_2055_ADPS_DEFAULT                                               \
+#define AW_PID_2055_ADPS_DEFAULT \
 	(AW_PID_2055_ADPS_DEFAULT_VALUE << AW_PID_2055_ADPS_START_BIT)
 
 /* BSTOCS bit 11 (SYSST 0x01) */
 #define AW_PID_2055_BSTOCS_START_BIT (11)
 #define AW_PID_2055_BSTOCS_BITS_LEN (1)
-#define AW_PID_2055_BSTOCS_MASK                                                \
-	(~(((1 << AW_PID_2055_BSTOCS_BITS_LEN) - 1)                            \
+#define AW_PID_2055_BSTOCS_MASK                     \
+	(~(((1 << AW_PID_2055_BSTOCS_BITS_LEN) - 1) \
 	   << AW_PID_2055_BSTOCS_START_BIT))
 
 #define AW_PID_2055_BSTOCS_NORMAL (0)
-#define AW_PID_2055_BSTOCS_NORMAL_VALUE                                        \
+#define AW_PID_2055_BSTOCS_NORMAL_VALUE \
 	(AW_PID_2055_BSTOCS_NORMAL << AW_PID_2055_BSTOCS_START_BIT)
 
 #define AW_PID_2055_BSTOCS_OVER_CURRENT (1)
-#define AW_PID_2055_BSTOCS_OVER_CURRENT_VALUE                                  \
+#define AW_PID_2055_BSTOCS_OVER_CURRENT_VALUE \
 	(AW_PID_2055_BSTOCS_OVER_CURRENT << AW_PID_2055_BSTOCS_START_BIT)
 
 #define AW_PID_2055_BSTOCS_DEFAULT_VALUE (0)
-#define AW_PID_2055_BSTOCS_DEFAULT                                             \
+#define AW_PID_2055_BSTOCS_DEFAULT \
 	(AW_PID_2055_BSTOCS_DEFAULT_VALUE << AW_PID_2055_BSTOCS_START_BIT)
 
 /* OVPS bit 10 (SYSST 0x01) */
 #define AW_PID_2055_OVPS_START_BIT (10)
 #define AW_PID_2055_OVPS_BITS_LEN (1)
-#define AW_PID_2055_OVPS_MASK                                                  \
-	(~(((1 << AW_PID_2055_OVPS_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OVPS_MASK                     \
+	(~(((1 << AW_PID_2055_OVPS_BITS_LEN) - 1) \
 	   << AW_PID_2055_OVPS_START_BIT))
 
 #define AW_PID_2055_OVPS_NORMAL (0)
-#define AW_PID_2055_OVPS_NORMAL_VALUE                                          \
+#define AW_PID_2055_OVPS_NORMAL_VALUE \
 	(AW_PID_2055_OVPS_NORMAL << AW_PID_2055_OVPS_START_BIT)
 
 #define AW_PID_2055_OVPS_OVP (1)
-#define AW_PID_2055_OVPS_OVP_VALUE                                             \
+#define AW_PID_2055_OVPS_OVP_VALUE \
 	(AW_PID_2055_OVPS_OVP << AW_PID_2055_OVPS_START_BIT)
 
 #define AW_PID_2055_OVPS_DEFAULT_VALUE (0)
-#define AW_PID_2055_OVPS_DEFAULT                                               \
+#define AW_PID_2055_OVPS_DEFAULT \
 	(AW_PID_2055_OVPS_DEFAULT_VALUE << AW_PID_2055_OVPS_START_BIT)
 
 /* BSTS bit 9 (SYSST 0x01) */
 #define AW_PID_2055_BSTS_START_BIT (9)
 #define AW_PID_2055_BSTS_BITS_LEN (1)
-#define AW_PID_2055_BSTS_MASK                                                  \
-	(~(((1 << AW_PID_2055_BSTS_BITS_LEN) - 1)                              \
+#define AW_PID_2055_BSTS_MASK                     \
+	(~(((1 << AW_PID_2055_BSTS_BITS_LEN) - 1) \
 	   << AW_PID_2055_BSTS_START_BIT))
 
 #define AW_PID_2055_BSTS_NOT_FINISHED (0)
-#define AW_PID_2055_BSTS_NOT_FINISHED_VALUE                                    \
+#define AW_PID_2055_BSTS_NOT_FINISHED_VALUE \
 	(AW_PID_2055_BSTS_NOT_FINISHED << AW_PID_2055_BSTS_START_BIT)
 
 #define AW_PID_2055_BSTS_FINISHED (1)
-#define AW_PID_2055_BSTS_FINISHED_VALUE                                        \
+#define AW_PID_2055_BSTS_FINISHED_VALUE \
 	(AW_PID_2055_BSTS_FINISHED << AW_PID_2055_BSTS_START_BIT)
 
 #define AW_PID_2055_BSTS_DEFAULT_VALUE (0)
-#define AW_PID_2055_BSTS_DEFAULT                                               \
+#define AW_PID_2055_BSTS_DEFAULT \
 	(AW_PID_2055_BSTS_DEFAULT_VALUE << AW_PID_2055_BSTS_START_BIT)
 
 /* SWS bit 8 (SYSST 0x01) */
 #define AW_PID_2055_SWS_START_BIT (8)
 #define AW_PID_2055_SWS_BITS_LEN (1)
-#define AW_PID_2055_SWS_MASK                                                   \
+#define AW_PID_2055_SWS_MASK \
 	(~(((1 << AW_PID_2055_SWS_BITS_LEN) - 1) << AW_PID_2055_SWS_START_BIT))
 
 #define AW_PID_2055_SWS_NOT_SWITCHING (0)
-#define AW_PID_2055_SWS_NOT_SWITCHING_VALUE                                    \
+#define AW_PID_2055_SWS_NOT_SWITCHING_VALUE \
 	(AW_PID_2055_SWS_NOT_SWITCHING << AW_PID_2055_SWS_START_BIT)
 
 #define AW_PID_2055_SWS_SWITCHING (1)
-#define AW_PID_2055_SWS_SWITCHING_VALUE                                        \
+#define AW_PID_2055_SWS_SWITCHING_VALUE \
 	(AW_PID_2055_SWS_SWITCHING << AW_PID_2055_SWS_START_BIT)
 
 #define AW_PID_2055_SWS_DEFAULT_VALUE (0)
-#define AW_PID_2055_SWS_DEFAULT                                                \
+#define AW_PID_2055_SWS_DEFAULT \
 	(AW_PID_2055_SWS_DEFAULT_VALUE << AW_PID_2055_SWS_START_BIT)
 
 /* NOCLKS bit 5 (SYSST 0x01) */
 #define AW_PID_2055_NOCLKS_START_BIT (5)
 #define AW_PID_2055_NOCLKS_BITS_LEN (1)
-#define AW_PID_2055_NOCLKS_MASK                                                \
-	(~(((1 << AW_PID_2055_NOCLKS_BITS_LEN) - 1)                            \
+#define AW_PID_2055_NOCLKS_MASK                     \
+	(~(((1 << AW_PID_2055_NOCLKS_BITS_LEN) - 1) \
 	   << AW_PID_2055_NOCLKS_START_BIT))
 
 #define AW_PID_2055_NOCLKS_CLOCK_OK (0)
-#define AW_PID_2055_NOCLKS_CLOCK_OK_VALUE                                      \
+#define AW_PID_2055_NOCLKS_CLOCK_OK_VALUE \
 	(AW_PID_2055_NOCLKS_CLOCK_OK << AW_PID_2055_NOCLKS_START_BIT)
 
 #define AW_PID_2055_NOCLKS_NO_CLOCK (1)
-#define AW_PID_2055_NOCLKS_NO_CLOCK_VALUE                                      \
+#define AW_PID_2055_NOCLKS_NO_CLOCK_VALUE \
 	(AW_PID_2055_NOCLKS_NO_CLOCK << AW_PID_2055_NOCLKS_START_BIT)
 
 #define AW_PID_2055_NOCLKS_DEFAULT_VALUE (0)
-#define AW_PID_2055_NOCLKS_DEFAULT                                             \
+#define AW_PID_2055_NOCLKS_DEFAULT \
 	(AW_PID_2055_NOCLKS_DEFAULT_VALUE << AW_PID_2055_NOCLKS_START_BIT)
 
 /* CLKS bit 4 (SYSST 0x01) */
 #define AW_PID_2055_CLKS_START_BIT (4)
 #define AW_PID_2055_CLKS_BITS_LEN (1)
-#define AW_PID_2055_CLKS_MASK                                                  \
-	(~(((1 << AW_PID_2055_CLKS_BITS_LEN) - 1)                              \
+#define AW_PID_2055_CLKS_MASK                     \
+	(~(((1 << AW_PID_2055_CLKS_BITS_LEN) - 1) \
 	   << AW_PID_2055_CLKS_START_BIT))
 
 #define AW_PID_2055_CLKS_NOT_STABLE (0)
-#define AW_PID_2055_CLKS_NOT_STABLE_VALUE                                      \
+#define AW_PID_2055_CLKS_NOT_STABLE_VALUE \
 	(AW_PID_2055_CLKS_NOT_STABLE << AW_PID_2055_CLKS_START_BIT)
 
 #define AW_PID_2055_CLKS_STABLE (1)
-#define AW_PID_2055_CLKS_STABLE_VALUE                                          \
+#define AW_PID_2055_CLKS_STABLE_VALUE \
 	(AW_PID_2055_CLKS_STABLE << AW_PID_2055_CLKS_START_BIT)
 
 #define AW_PID_2055_CLKS_DEFAULT_VALUE (0)
-#define AW_PID_2055_CLKS_DEFAULT                                               \
+#define AW_PID_2055_CLKS_DEFAULT \
 	(AW_PID_2055_CLKS_DEFAULT_VALUE << AW_PID_2055_CLKS_START_BIT)
 
 /* OCDS bit 3 (SYSST 0x01) */
 #define AW_PID_2055_OCDS_START_BIT (3)
 #define AW_PID_2055_OCDS_BITS_LEN (1)
-#define AW_PID_2055_OCDS_MASK                                                  \
-	(~(((1 << AW_PID_2055_OCDS_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OCDS_MASK                     \
+	(~(((1 << AW_PID_2055_OCDS_BITS_LEN) - 1) \
 	   << AW_PID_2055_OCDS_START_BIT))
 
 #define AW_PID_2055_OCDS_NORAML (0)
-#define AW_PID_2055_OCDS_NORAML_VALUE                                          \
+#define AW_PID_2055_OCDS_NORAML_VALUE \
 	(AW_PID_2055_OCDS_NORAML << AW_PID_2055_OCDS_START_BIT)
 
 #define AW_PID_2055_OCDS_OC (1)
-#define AW_PID_2055_OCDS_OC_VALUE                                              \
+#define AW_PID_2055_OCDS_OC_VALUE \
 	(AW_PID_2055_OCDS_OC << AW_PID_2055_OCDS_START_BIT)
 
 #define AW_PID_2055_OCDS_DEFAULT_VALUE (0)
-#define AW_PID_2055_OCDS_DEFAULT                                               \
+#define AW_PID_2055_OCDS_DEFAULT \
 	(AW_PID_2055_OCDS_DEFAULT_VALUE << AW_PID_2055_OCDS_START_BIT)
 
 /* BROWN_OUTS bit 2 (SYSST 0x01) */
 #define AW_PID_2055_BROWN_OUTS_START_BIT (2)
 #define AW_PID_2055_BROWN_OUTS_BITS_LEN (1)
-#define AW_PID_2055_BROWN_OUTS_MASK                                            \
-	(~(((1 << AW_PID_2055_BROWN_OUTS_BITS_LEN) - 1)                        \
+#define AW_PID_2055_BROWN_OUTS_MASK                     \
+	(~(((1 << AW_PID_2055_BROWN_OUTS_BITS_LEN) - 1) \
 	   << AW_PID_2055_BROWN_OUTS_START_BIT))
 
 #define AW_PID_2055_BROWN_OUTS_NORMAL (0)
-#define AW_PID_2055_BROWN_OUTS_NORMAL_VALUE                                    \
+#define AW_PID_2055_BROWN_OUTS_NORMAL_VALUE \
 	(AW_PID_2055_BROWN_OUTS_NORMAL << AW_PID_2055_BROWN_OUTS_START_BIT)
 
 #define AW_PID_2055_BROWN_OUTS_ACTIVED (1)
-#define AW_PID_2055_BROWN_OUTS_ACTIVED_VALUE                                   \
+#define AW_PID_2055_BROWN_OUTS_ACTIVED_VALUE \
 	(AW_PID_2055_BROWN_OUTS_ACTIVED << AW_PID_2055_BROWN_OUTS_START_BIT)
 
 #define AW_PID_2055_BROWN_OUTS_DEFAULT_VALUE (0)
-#define AW_PID_2055_BROWN_OUTS_DEFAULT                                         \
-	(AW_PID_2055_BROWN_OUTS_DEFAULT_VALUE                                  \
+#define AW_PID_2055_BROWN_OUTS_DEFAULT        \
+	(AW_PID_2055_BROWN_OUTS_DEFAULT_VALUE \
 	 << AW_PID_2055_BROWN_OUTS_START_BIT)
 
 /* OTHS bit 1 (SYSST 0x01) */
 #define AW_PID_2055_OTHS_START_BIT (1)
 #define AW_PID_2055_OTHS_BITS_LEN (1)
-#define AW_PID_2055_OTHS_MASK                                                  \
-	(~(((1 << AW_PID_2055_OTHS_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OTHS_MASK                     \
+	(~(((1 << AW_PID_2055_OTHS_BITS_LEN) - 1) \
 	   << AW_PID_2055_OTHS_START_BIT))
 
 #define AW_PID_2055_OTHS_NORMAL (0)
-#define AW_PID_2055_OTHS_NORMAL_VALUE                                          \
+#define AW_PID_2055_OTHS_NORMAL_VALUE \
 	(AW_PID_2055_OTHS_NORMAL << AW_PID_2055_OTHS_START_BIT)
 
 #define AW_PID_2055_OTHS_OT (1)
-#define AW_PID_2055_OTHS_OT_VALUE                                              \
+#define AW_PID_2055_OTHS_OT_VALUE \
 	(AW_PID_2055_OTHS_OT << AW_PID_2055_OTHS_START_BIT)
 
 #define AW_PID_2055_OTHS_DEFAULT_VALUE (0)
-#define AW_PID_2055_OTHS_DEFAULT                                               \
+#define AW_PID_2055_OTHS_DEFAULT \
 	(AW_PID_2055_OTHS_DEFAULT_VALUE << AW_PID_2055_OTHS_START_BIT)
 
 /* PLLS bit 0 (SYSST 0x01) */
 #define AW_PID_2055_PLLS_START_BIT (0)
 #define AW_PID_2055_PLLS_BITS_LEN (1)
-#define AW_PID_2055_PLLS_MASK                                                  \
-	(~(((1 << AW_PID_2055_PLLS_BITS_LEN) - 1)                              \
+#define AW_PID_2055_PLLS_MASK                     \
+	(~(((1 << AW_PID_2055_PLLS_BITS_LEN) - 1) \
 	   << AW_PID_2055_PLLS_START_BIT))
 
 #define AW_PID_2055_PLLS_UNLOCKED (0)
-#define AW_PID_2055_PLLS_UNLOCKED_VALUE                                        \
+#define AW_PID_2055_PLLS_UNLOCKED_VALUE \
 	(AW_PID_2055_PLLS_UNLOCKED << AW_PID_2055_PLLS_START_BIT)
 
 #define AW_PID_2055_PLLS_LOCKED (1)
-#define AW_PID_2055_PLLS_LOCKED_VALUE                                          \
+#define AW_PID_2055_PLLS_LOCKED_VALUE \
 	(AW_PID_2055_PLLS_LOCKED << AW_PID_2055_PLLS_START_BIT)
 
 #define AW_PID_2055_PLLS_DEFAULT_VALUE (0)
-#define AW_PID_2055_PLLS_DEFAULT                                               \
+#define AW_PID_2055_PLLS_DEFAULT \
 	(AW_PID_2055_PLLS_DEFAULT_VALUE << AW_PID_2055_PLLS_START_BIT)
 
 /* default value of SYSST (0x01) */
@@ -503,155 +516,155 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 	   AW_PID_2055_OCDS_OC_VALUE | AW_PID_2055_OTHS_OT_VALUE |             \
 	   AW_PID_2055_PLLS_LOCKED_VALUE))
 
-#define AW_PID_2055_SYSST_CHECK                                                \
-	(AW_PID_2055_BSTS_FINISHED_VALUE | AW_PID_2055_CLKS_STABLE_VALUE |     \
+#define AW_PID_2055_SYSST_CHECK                                            \
+	(AW_PID_2055_BSTS_FINISHED_VALUE | AW_PID_2055_CLKS_STABLE_VALUE | \
 	 AW_PID_2055_PLLS_LOCKED_VALUE)
 
-#define AW_PID_2055_IIS_CHECK                                                  \
+#define AW_PID_2055_IIS_CHECK \
 	(AW_PID_2055_CLKS_STABLE_VALUE | AW_PID_2055_PLLS_LOCKED_VALUE)
 
 /* SYSINT (0x02) detail */
 /* OVP2I bit 15 (SYSINT 0x02) */
 #define AW_PID_2055_OVP2I_START_BIT (15)
 #define AW_PID_2055_OVP2I_BITS_LEN (1)
-#define AW_PID_2055_OVP2I_MASK                                                 \
-	(~(((1 << AW_PID_2055_OVP2I_BITS_LEN) - 1)                             \
+#define AW_PID_2055_OVP2I_MASK                     \
+	(~(((1 << AW_PID_2055_OVP2I_BITS_LEN) - 1) \
 	   << AW_PID_2055_OVP2I_START_BIT))
 
 #define AW_PID_2055_OVP2I_DEFAULT_VALUE (0)
-#define AW_PID_2055_OVP2I_DEFAULT                                              \
+#define AW_PID_2055_OVP2I_DEFAULT \
 	(AW_PID_2055_OVP2I_DEFAULT_VALUE << AW_PID_2055_OVP2I_START_BIT)
 
 /* UVLI bit 14 (SYSINT 0x02) */
 #define AW_PID_2055_UVLI_START_BIT (14)
 #define AW_PID_2055_UVLI_BITS_LEN (1)
-#define AW_PID_2055_UVLI_MASK                                                  \
-	(~(((1 << AW_PID_2055_UVLI_BITS_LEN) - 1)                              \
+#define AW_PID_2055_UVLI_MASK                     \
+	(~(((1 << AW_PID_2055_UVLI_BITS_LEN) - 1) \
 	   << AW_PID_2055_UVLI_START_BIT))
 
 #define AW_PID_2055_UVLI_DEFAULT_VALUE (0)
-#define AW_PID_2055_UVLI_DEFAULT                                               \
+#define AW_PID_2055_UVLI_DEFAULT \
 	(AW_PID_2055_UVLI_DEFAULT_VALUE << AW_PID_2055_UVLI_START_BIT)
 
 /* ADPI bit 13 (SYSINT 0x02) */
 #define AW_PID_2055_ADPI_START_BIT (13)
 #define AW_PID_2055_ADPI_BITS_LEN (1)
-#define AW_PID_2055_ADPI_MASK                                                  \
-	(~(((1 << AW_PID_2055_ADPI_BITS_LEN) - 1)                              \
+#define AW_PID_2055_ADPI_MASK                     \
+	(~(((1 << AW_PID_2055_ADPI_BITS_LEN) - 1) \
 	   << AW_PID_2055_ADPI_START_BIT))
 
 #define AW_PID_2055_ADPI_DEFAULT_VALUE (0)
-#define AW_PID_2055_ADPI_DEFAULT                                               \
+#define AW_PID_2055_ADPI_DEFAULT \
 	(AW_PID_2055_ADPI_DEFAULT_VALUE << AW_PID_2055_ADPI_START_BIT)
 
 /* BSTOCI bit 11 (SYSINT 0x02) */
 #define AW_PID_2055_BSTOCI_START_BIT (11)
 #define AW_PID_2055_BSTOCI_BITS_LEN (1)
-#define AW_PID_2055_BSTOCI_MASK                                                \
-	(~(((1 << AW_PID_2055_BSTOCI_BITS_LEN) - 1)                            \
+#define AW_PID_2055_BSTOCI_MASK                     \
+	(~(((1 << AW_PID_2055_BSTOCI_BITS_LEN) - 1) \
 	   << AW_PID_2055_BSTOCI_START_BIT))
 
 #define AW_PID_2055_BSTOCI_DEFAULT_VALUE (0)
-#define AW_PID_2055_BSTOCI_DEFAULT                                             \
+#define AW_PID_2055_BSTOCI_DEFAULT \
 	(AW_PID_2055_BSTOCI_DEFAULT_VALUE << AW_PID_2055_BSTOCI_START_BIT)
 
 /* OVPI bit 10 (SYSINT 0x02) */
 #define AW_PID_2055_OVPI_START_BIT (10)
 #define AW_PID_2055_OVPI_BITS_LEN (1)
-#define AW_PID_2055_OVPI_MASK                                                  \
-	(~(((1 << AW_PID_2055_OVPI_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OVPI_MASK                     \
+	(~(((1 << AW_PID_2055_OVPI_BITS_LEN) - 1) \
 	   << AW_PID_2055_OVPI_START_BIT))
 
 #define AW_PID_2055_OVPI_DEFAULT_VALUE (0)
-#define AW_PID_2055_OVPI_DEFAULT                                               \
+#define AW_PID_2055_OVPI_DEFAULT \
 	(AW_PID_2055_OVPI_DEFAULT_VALUE << AW_PID_2055_OVPI_START_BIT)
 
 /* BSTI bit 9 (SYSINT 0x02) */
 #define AW_PID_2055_BSTI_START_BIT (9)
 #define AW_PID_2055_BSTI_BITS_LEN (1)
-#define AW_PID_2055_BSTI_MASK                                                  \
-	(~(((1 << AW_PID_2055_BSTI_BITS_LEN) - 1)                              \
+#define AW_PID_2055_BSTI_MASK                     \
+	(~(((1 << AW_PID_2055_BSTI_BITS_LEN) - 1) \
 	   << AW_PID_2055_BSTI_START_BIT))
 
 #define AW_PID_2055_BSTI_DEFAULT_VALUE (0)
-#define AW_PID_2055_BSTI_DEFAULT                                               \
+#define AW_PID_2055_BSTI_DEFAULT \
 	(AW_PID_2055_BSTI_DEFAULT_VALUE << AW_PID_2055_BSTI_START_BIT)
 
 /* SWI bit 8 (SYSINT 0x02) */
 #define AW_PID_2055_SWI_START_BIT (8)
 #define AW_PID_2055_SWI_BITS_LEN (1)
-#define AW_PID_2055_SWI_MASK                                                   \
+#define AW_PID_2055_SWI_MASK \
 	(~(((1 << AW_PID_2055_SWI_BITS_LEN) - 1) << AW_PID_2055_SWI_START_BIT))
 
 #define AW_PID_2055_SWI_DEFAULT_VALUE (0)
-#define AW_PID_2055_SWI_DEFAULT                                                \
+#define AW_PID_2055_SWI_DEFAULT \
 	(AW_PID_2055_SWI_DEFAULT_VALUE << AW_PID_2055_SWI_START_BIT)
 
 /* NOCLKI bit 5 (SYSINT 0x02) */
 #define AW_PID_2055_NOCLKI_START_BIT (5)
 #define AW_PID_2055_NOCLKI_BITS_LEN (1)
-#define AW_PID_2055_NOCLKI_MASK                                                \
-	(~(((1 << AW_PID_2055_NOCLKI_BITS_LEN) - 1)                            \
+#define AW_PID_2055_NOCLKI_MASK                     \
+	(~(((1 << AW_PID_2055_NOCLKI_BITS_LEN) - 1) \
 	   << AW_PID_2055_NOCLKI_START_BIT))
 
 #define AW_PID_2055_NOCLKI_DEFAULT_VALUE (0)
-#define AW_PID_2055_NOCLKI_DEFAULT                                             \
+#define AW_PID_2055_NOCLKI_DEFAULT \
 	(AW_PID_2055_NOCLKI_DEFAULT_VALUE << AW_PID_2055_NOCLKI_START_BIT)
 
 /* CLKI bit 4 (SYSINT 0x02) */
 #define AW_PID_2055_CLKI_START_BIT (4)
 #define AW_PID_2055_CLKI_BITS_LEN (1)
-#define AW_PID_2055_CLKI_MASK                                                  \
-	(~(((1 << AW_PID_2055_CLKI_BITS_LEN) - 1)                              \
+#define AW_PID_2055_CLKI_MASK                     \
+	(~(((1 << AW_PID_2055_CLKI_BITS_LEN) - 1) \
 	   << AW_PID_2055_CLKI_START_BIT))
 
 #define AW_PID_2055_CLKI_DEFAULT_VALUE (0)
-#define AW_PID_2055_CLKI_DEFAULT                                               \
+#define AW_PID_2055_CLKI_DEFAULT \
 	(AW_PID_2055_CLKI_DEFAULT_VALUE << AW_PID_2055_CLKI_START_BIT)
 
 /* OCDI bit 3 (SYSINT 0x02) */
 #define AW_PID_2055_OCDI_START_BIT (3)
 #define AW_PID_2055_OCDI_BITS_LEN (1)
-#define AW_PID_2055_OCDI_MASK                                                  \
-	(~(((1 << AW_PID_2055_OCDI_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OCDI_MASK                     \
+	(~(((1 << AW_PID_2055_OCDI_BITS_LEN) - 1) \
 	   << AW_PID_2055_OCDI_START_BIT))
 
 #define AW_PID_2055_OCDI_DEFAULT_VALUE (0)
-#define AW_PID_2055_OCDI_DEFAULT                                               \
+#define AW_PID_2055_OCDI_DEFAULT \
 	(AW_PID_2055_OCDI_DEFAULT_VALUE << AW_PID_2055_OCDI_START_BIT)
 
 /* BROWN_OUTI bit 2 (SYSINT 0x02) */
 #define AW_PID_2055_BROWN_OUTI_START_BIT (2)
 #define AW_PID_2055_BROWN_OUTI_BITS_LEN (1)
-#define AW_PID_2055_BROWN_OUTI_MASK                                            \
-	(~(((1 << AW_PID_2055_BROWN_OUTI_BITS_LEN) - 1)                        \
+#define AW_PID_2055_BROWN_OUTI_MASK                     \
+	(~(((1 << AW_PID_2055_BROWN_OUTI_BITS_LEN) - 1) \
 	   << AW_PID_2055_BROWN_OUTI_START_BIT))
 
 #define AW_PID_2055_BROWN_OUTI_DEFAULT_VALUE (0)
-#define AW_PID_2055_BROWN_OUTI_DEFAULT                                         \
-	(AW_PID_2055_BROWN_OUTI_DEFAULT_VALUE                                  \
+#define AW_PID_2055_BROWN_OUTI_DEFAULT        \
+	(AW_PID_2055_BROWN_OUTI_DEFAULT_VALUE \
 	 << AW_PID_2055_BROWN_OUTI_START_BIT)
 
 /* OTHI bit 1 (SYSINT 0x02) */
 #define AW_PID_2055_OTHI_START_BIT (1)
 #define AW_PID_2055_OTHI_BITS_LEN (1)
-#define AW_PID_2055_OTHI_MASK                                                  \
-	(~(((1 << AW_PID_2055_OTHI_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OTHI_MASK                     \
+	(~(((1 << AW_PID_2055_OTHI_BITS_LEN) - 1) \
 	   << AW_PID_2055_OTHI_START_BIT))
 
 #define AW_PID_2055_OTHI_DEFAULT_VALUE (0)
-#define AW_PID_2055_OTHI_DEFAULT                                               \
+#define AW_PID_2055_OTHI_DEFAULT \
 	(AW_PID_2055_OTHI_DEFAULT_VALUE << AW_PID_2055_OTHI_START_BIT)
 
 /* PLLI bit 0 (SYSINT 0x02) */
 #define AW_PID_2055_PLLI_START_BIT (0)
 #define AW_PID_2055_PLLI_BITS_LEN (1)
-#define AW_PID_2055_PLLI_MASK                                                  \
-	(~(((1 << AW_PID_2055_PLLI_BITS_LEN) - 1)                              \
+#define AW_PID_2055_PLLI_MASK                     \
+	(~(((1 << AW_PID_2055_PLLI_BITS_LEN) - 1) \
 	   << AW_PID_2055_PLLI_START_BIT))
 
 #define AW_PID_2055_PLLI_DEFAULT_VALUE (0)
-#define AW_PID_2055_PLLI_DEFAULT                                               \
+#define AW_PID_2055_PLLI_DEFAULT \
 	(AW_PID_2055_PLLI_DEFAULT_VALUE << AW_PID_2055_PLLI_START_BIT)
 
 /* default value of SYSINT (0x02) */
@@ -661,144 +674,144 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* OVP2M bit 15 (SYSINTM 0x03) */
 #define AW_PID_2055_OVP2M_START_BIT (15)
 #define AW_PID_2055_OVP2M_BITS_LEN (1)
-#define AW_PID_2055_OVP2M_MASK                                                 \
-	(~(((1 << AW_PID_2055_OVP2M_BITS_LEN) - 1)                             \
+#define AW_PID_2055_OVP2M_MASK                     \
+	(~(((1 << AW_PID_2055_OVP2M_BITS_LEN) - 1) \
 	   << AW_PID_2055_OVP2M_START_BIT))
 
 #define AW_PID_2055_OVP2M_DEFAULT_VALUE (1)
-#define AW_PID_2055_OVP2M_DEFAULT                                              \
+#define AW_PID_2055_OVP2M_DEFAULT \
 	(AW_PID_2055_OVP2M_DEFAULT_VALUE << AW_PID_2055_OVP2M_START_BIT)
 
 /* UVLM bit 14 (SYSINTM 0x03) */
 #define AW_PID_2055_UVLM_START_BIT (14)
 #define AW_PID_2055_UVLM_BITS_LEN (1)
-#define AW_PID_2055_UVLM_MASK                                                  \
-	(~(((1 << AW_PID_2055_UVLM_BITS_LEN) - 1)                              \
+#define AW_PID_2055_UVLM_MASK                     \
+	(~(((1 << AW_PID_2055_UVLM_BITS_LEN) - 1) \
 	   << AW_PID_2055_UVLM_START_BIT))
 
 #define AW_PID_2055_UVLM_DEFAULT_VALUE (1)
-#define AW_PID_2055_UVLM_DEFAULT                                               \
+#define AW_PID_2055_UVLM_DEFAULT \
 	(AW_PID_2055_UVLM_DEFAULT_VALUE << AW_PID_2055_UVLM_START_BIT)
 
 /* ADPM bit 13 (SYSINTM 0x03) */
 #define AW_PID_2055_ADPM_START_BIT (13)
 #define AW_PID_2055_ADPM_BITS_LEN (1)
-#define AW_PID_2055_ADPM_MASK                                                  \
-	(~(((1 << AW_PID_2055_ADPM_BITS_LEN) - 1)                              \
+#define AW_PID_2055_ADPM_MASK                     \
+	(~(((1 << AW_PID_2055_ADPM_BITS_LEN) - 1) \
 	   << AW_PID_2055_ADPM_START_BIT))
 
 #define AW_PID_2055_ADPM_DEFAULT_VALUE (1)
-#define AW_PID_2055_ADPM_DEFAULT                                               \
+#define AW_PID_2055_ADPM_DEFAULT \
 	(AW_PID_2055_ADPM_DEFAULT_VALUE << AW_PID_2055_ADPM_START_BIT)
 
 /* BSTOCM bit 11 (SYSINTM 0x03) */
 #define AW_PID_2055_BSTOCM_START_BIT (11)
 #define AW_PID_2055_BSTOCM_BITS_LEN (1)
-#define AW_PID_2055_BSTOCM_MASK                                                \
-	(~(((1 << AW_PID_2055_BSTOCM_BITS_LEN) - 1)                            \
+#define AW_PID_2055_BSTOCM_MASK                     \
+	(~(((1 << AW_PID_2055_BSTOCM_BITS_LEN) - 1) \
 	   << AW_PID_2055_BSTOCM_START_BIT))
 
 #define AW_PID_2055_BSTOCM_DEFAULT_VALUE (1)
-#define AW_PID_2055_BSTOCM_DEFAULT                                             \
+#define AW_PID_2055_BSTOCM_DEFAULT \
 	(AW_PID_2055_BSTOCM_DEFAULT_VALUE << AW_PID_2055_BSTOCM_START_BIT)
 
 /* OVPM bit 10 (SYSINTM 0x03) */
 #define AW_PID_2055_OVPM_START_BIT (10)
 #define AW_PID_2055_OVPM_BITS_LEN (1)
-#define AW_PID_2055_OVPM_MASK                                                  \
-	(~(((1 << AW_PID_2055_OVPM_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OVPM_MASK                     \
+	(~(((1 << AW_PID_2055_OVPM_BITS_LEN) - 1) \
 	   << AW_PID_2055_OVPM_START_BIT))
 
 #define AW_PID_2055_OVPM_DEFAULT_VALUE (1)
-#define AW_PID_2055_OVPM_DEFAULT                                               \
+#define AW_PID_2055_OVPM_DEFAULT \
 	(AW_PID_2055_OVPM_DEFAULT_VALUE << AW_PID_2055_OVPM_START_BIT)
 
 /* BSTM bit 9 (SYSINTM 0x03) */
 #define AW_PID_2055_BSTM_START_BIT (9)
 #define AW_PID_2055_BSTM_BITS_LEN (1)
-#define AW_PID_2055_BSTM_MASK                                                  \
-	(~(((1 << AW_PID_2055_BSTM_BITS_LEN) - 1)                              \
+#define AW_PID_2055_BSTM_MASK                     \
+	(~(((1 << AW_PID_2055_BSTM_BITS_LEN) - 1) \
 	   << AW_PID_2055_BSTM_START_BIT))
 
 #define AW_PID_2055_BSTM_DEFAULT_VALUE (1)
-#define AW_PID_2055_BSTM_DEFAULT                                               \
+#define AW_PID_2055_BSTM_DEFAULT \
 	(AW_PID_2055_BSTM_DEFAULT_VALUE << AW_PID_2055_BSTM_START_BIT)
 
 /* SWM bit 8 (SYSINTM 0x03) */
 #define AW_PID_2055_SWM_START_BIT (8)
 #define AW_PID_2055_SWM_BITS_LEN (1)
-#define AW_PID_2055_SWM_MASK                                                   \
+#define AW_PID_2055_SWM_MASK \
 	(~(((1 << AW_PID_2055_SWM_BITS_LEN) - 1) << AW_PID_2055_SWM_START_BIT))
 
 #define AW_PID_2055_SWM_DEFAULT_VALUE (1)
-#define AW_PID_2055_SWM_DEFAULT                                                \
+#define AW_PID_2055_SWM_DEFAULT \
 	(AW_PID_2055_SWM_DEFAULT_VALUE << AW_PID_2055_SWM_START_BIT)
 
 /* NOCLKM bit 5 (SYSINTM 0x03) */
 #define AW_PID_2055_NOCLKM_START_BIT (5)
 #define AW_PID_2055_NOCLKM_BITS_LEN (1)
-#define AW_PID_2055_NOCLKM_MASK                                                \
-	(~(((1 << AW_PID_2055_NOCLKM_BITS_LEN) - 1)                            \
+#define AW_PID_2055_NOCLKM_MASK                     \
+	(~(((1 << AW_PID_2055_NOCLKM_BITS_LEN) - 1) \
 	   << AW_PID_2055_NOCLKM_START_BIT))
 
 #define AW_PID_2055_NOCLKM_DEFAULT_VALUE (1)
-#define AW_PID_2055_NOCLKM_DEFAULT                                             \
+#define AW_PID_2055_NOCLKM_DEFAULT \
 	(AW_PID_2055_NOCLKM_DEFAULT_VALUE << AW_PID_2055_NOCLKM_START_BIT)
 
 /* CLKM bit 4 (SYSINTM 0x03) */
 #define AW_PID_2055_CLKM_START_BIT (4)
 #define AW_PID_2055_CLKM_BITS_LEN (1)
-#define AW_PID_2055_CLKM_MASK                                                  \
-	(~(((1 << AW_PID_2055_CLKM_BITS_LEN) - 1)                              \
+#define AW_PID_2055_CLKM_MASK                     \
+	(~(((1 << AW_PID_2055_CLKM_BITS_LEN) - 1) \
 	   << AW_PID_2055_CLKM_START_BIT))
 
 #define AW_PID_2055_CLKM_DEFAULT_VALUE (1)
-#define AW_PID_2055_CLKM_DEFAULT                                               \
+#define AW_PID_2055_CLKM_DEFAULT \
 	(AW_PID_2055_CLKM_DEFAULT_VALUE << AW_PID_2055_CLKM_START_BIT)
 
 /* OCDM bit 3 (SYSINTM 0x03) */
 #define AW_PID_2055_OCDM_START_BIT (3)
 #define AW_PID_2055_OCDM_BITS_LEN (1)
-#define AW_PID_2055_OCDM_MASK                                                  \
-	(~(((1 << AW_PID_2055_OCDM_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OCDM_MASK                     \
+	(~(((1 << AW_PID_2055_OCDM_BITS_LEN) - 1) \
 	   << AW_PID_2055_OCDM_START_BIT))
 
 #define AW_PID_2055_OCDM_DEFAULT_VALUE (1)
-#define AW_PID_2055_OCDM_DEFAULT                                               \
+#define AW_PID_2055_OCDM_DEFAULT \
 	(AW_PID_2055_OCDM_DEFAULT_VALUE << AW_PID_2055_OCDM_START_BIT)
 
 /* BROWN_OUTM bit 2 (SYSINTM 0x03) */
 #define AW_PID_2055_BROWN_OUTM_START_BIT (2)
 #define AW_PID_2055_BROWN_OUTM_BITS_LEN (1)
-#define AW_PID_2055_BROWN_OUTM_MASK                                            \
-	(~(((1 << AW_PID_2055_BROWN_OUTM_BITS_LEN) - 1)                        \
+#define AW_PID_2055_BROWN_OUTM_MASK                     \
+	(~(((1 << AW_PID_2055_BROWN_OUTM_BITS_LEN) - 1) \
 	   << AW_PID_2055_BROWN_OUTM_START_BIT))
 
 #define AW_PID_2055_BROWN_OUTM_DEFAULT_VALUE (1)
-#define AW_PID_2055_BROWN_OUTM_DEFAULT                                         \
-	(AW_PID_2055_BROWN_OUTM_DEFAULT_VALUE                                  \
+#define AW_PID_2055_BROWN_OUTM_DEFAULT        \
+	(AW_PID_2055_BROWN_OUTM_DEFAULT_VALUE \
 	 << AW_PID_2055_BROWN_OUTM_START_BIT)
 
 /* OTHM bit 1 (SYSINTM 0x03) */
 #define AW_PID_2055_OTHM_START_BIT (1)
 #define AW_PID_2055_OTHM_BITS_LEN (1)
-#define AW_PID_2055_OTHM_MASK                                                  \
-	(~(((1 << AW_PID_2055_OTHM_BITS_LEN) - 1)                              \
+#define AW_PID_2055_OTHM_MASK                     \
+	(~(((1 << AW_PID_2055_OTHM_BITS_LEN) - 1) \
 	   << AW_PID_2055_OTHM_START_BIT))
 
 #define AW_PID_2055_OTHM_DEFAULT_VALUE (1)
-#define AW_PID_2055_OTHM_DEFAULT                                               \
+#define AW_PID_2055_OTHM_DEFAULT \
 	(AW_PID_2055_OTHM_DEFAULT_VALUE << AW_PID_2055_OTHM_START_BIT)
 
 /* PLLM bit 0 (SYSINTM 0x03) */
 #define AW_PID_2055_PLLM_START_BIT (0)
 #define AW_PID_2055_PLLM_BITS_LEN (1)
-#define AW_PID_2055_PLLM_MASK                                                  \
-	(~(((1 << AW_PID_2055_PLLM_BITS_LEN) - 1)                              \
+#define AW_PID_2055_PLLM_MASK                     \
+	(~(((1 << AW_PID_2055_PLLM_BITS_LEN) - 1) \
 	   << AW_PID_2055_PLLM_START_BIT))
 
 #define AW_PID_2055_PLLM_DEFAULT_VALUE (1)
-#define AW_PID_2055_PLLM_DEFAULT                                               \
+#define AW_PID_2055_PLLM_DEFAULT \
 	(AW_PID_2055_PLLM_DEFAULT_VALUE << AW_PID_2055_PLLM_START_BIT)
 
 /* default value of SYSINTM (0x03) */
@@ -808,229 +821,229 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* ULS_MODE bit 14 (SYSCTRL 0x04) */
 #define AW_PID_2055_ULS_MODE_START_BIT (14)
 #define AW_PID_2055_ULS_MODE_BITS_LEN (1)
-#define AW_PID_2055_ULS_MODE_MASK                                              \
-	(~(((1 << AW_PID_2055_ULS_MODE_BITS_LEN) - 1)                          \
+#define AW_PID_2055_ULS_MODE_MASK                     \
+	(~(((1 << AW_PID_2055_ULS_MODE_BITS_LEN) - 1) \
 	   << AW_PID_2055_ULS_MODE_START_BIT))
 
 #define AW_PID_2055_ULS_MODE_LEGACY (0)
-#define AW_PID_2055_ULS_MODE_LEGACY_VALUE                                      \
+#define AW_PID_2055_ULS_MODE_LEGACY_VALUE \
 	(AW_PID_2055_ULS_MODE_LEGACY << AW_PID_2055_ULS_MODE_START_BIT)
 
 #define AW_PID_2055_ULS_MODE_TDM (1)
-#define AW_PID_2055_ULS_MODE_TDM_VALUE                                         \
+#define AW_PID_2055_ULS_MODE_TDM_VALUE \
 	(AW_PID_2055_ULS_MODE_TDM << AW_PID_2055_ULS_MODE_START_BIT)
 
 #define AW_PID_2055_ULS_MODE_DEFAULT_VALUE (0)
-#define AW_PID_2055_ULS_MODE_DEFAULT                                           \
+#define AW_PID_2055_ULS_MODE_DEFAULT \
 	(AW_PID_2055_ULS_MODE_DEFAULT_VALUE << AW_PID_2055_ULS_MODE_START_BIT)
 
 /* SPK_GAIN bit 13 (SYSCTRL 0x04) */
 #define AW_PID_2055_SPK_GAIN_START_BIT (13)
 #define AW_PID_2055_SPK_GAIN_BITS_LEN (1)
-#define AW_PID_2055_SPK_GAIN_MASK                                              \
-	(~(((1 << AW_PID_2055_SPK_GAIN_BITS_LEN) - 1)                          \
+#define AW_PID_2055_SPK_GAIN_MASK                     \
+	(~(((1 << AW_PID_2055_SPK_GAIN_BITS_LEN) - 1) \
 	   << AW_PID_2055_SPK_GAIN_START_BIT))
 
 #define AW_PID_2055_SPK_GAIN_6_AV (0)
-#define AW_PID_2055_SPK_GAIN_6_AV_VALUE                                        \
+#define AW_PID_2055_SPK_GAIN_6_AV_VALUE \
 	(AW_PID_2055_SPK_GAIN_6_AV << AW_PID_2055_SPK_GAIN_START_BIT)
 
 #define AW_PID_2055_SPK_GAIN_12AV (1)
-#define AW_PID_2055_SPK_GAIN_12AV_VALUE                                        \
+#define AW_PID_2055_SPK_GAIN_12AV_VALUE \
 	(AW_PID_2055_SPK_GAIN_12AV << AW_PID_2055_SPK_GAIN_START_BIT)
 
 #define AW_PID_2055_SPK_GAIN_DEFAULT_VALUE (1)
-#define AW_PID_2055_SPK_GAIN_DEFAULT                                           \
+#define AW_PID_2055_SPK_GAIN_DEFAULT \
 	(AW_PID_2055_SPK_GAIN_DEFAULT_VALUE << AW_PID_2055_SPK_GAIN_START_BIT)
 
 /* RCV_GAIN bit 12 (SYSCTRL 0x04) */
 #define AW_PID_2055_RCV_GAIN_START_BIT (12)
 #define AW_PID_2055_RCV_GAIN_BITS_LEN (1)
-#define AW_PID_2055_RCV_GAIN_MASK                                              \
-	(~(((1 << AW_PID_2055_RCV_GAIN_BITS_LEN) - 1)                          \
+#define AW_PID_2055_RCV_GAIN_MASK                     \
+	(~(((1 << AW_PID_2055_RCV_GAIN_BITS_LEN) - 1) \
 	   << AW_PID_2055_RCV_GAIN_START_BIT))
 
 #define AW_PID_2055_RCV_GAIN_4P5 (0)
-#define AW_PID_2055_RCV_GAIN_4P5_VALUE                                         \
+#define AW_PID_2055_RCV_GAIN_4P5_VALUE \
 	(AW_PID_2055_RCV_GAIN_4P5 << AW_PID_2055_RCV_GAIN_START_BIT)
 
 #define AW_PID_2055_RCV_GAIN_6P7 (1)
-#define AW_PID_2055_RCV_GAIN_6P7_VALUE                                         \
+#define AW_PID_2055_RCV_GAIN_6P7_VALUE \
 	(AW_PID_2055_RCV_GAIN_6P7 << AW_PID_2055_RCV_GAIN_START_BIT)
 
 #define AW_PID_2055_RCV_GAIN_DEFAULT_VALUE (0)
-#define AW_PID_2055_RCV_GAIN_DEFAULT                                           \
+#define AW_PID_2055_RCV_GAIN_DEFAULT \
 	(AW_PID_2055_RCV_GAIN_DEFAULT_VALUE << AW_PID_2055_RCV_GAIN_START_BIT)
 
 /* RMSE bit 11 (SYSCTRL 0x04) */
 #define AW_PID_2055_RMSE_START_BIT (11)
 #define AW_PID_2055_RMSE_BITS_LEN (1)
-#define AW_PID_2055_RMSE_MASK                                                  \
-	(~(((1 << AW_PID_2055_RMSE_BITS_LEN) - 1)                              \
+#define AW_PID_2055_RMSE_MASK                     \
+	(~(((1 << AW_PID_2055_RMSE_BITS_LEN) - 1) \
 	   << AW_PID_2055_RMSE_START_BIT))
 
 #define AW_PID_2055_RMSE_PEAK_AGC (0)
-#define AW_PID_2055_RMSE_PEAK_AGC_VALUE                                        \
+#define AW_PID_2055_RMSE_PEAK_AGC_VALUE \
 	(AW_PID_2055_RMSE_PEAK_AGC << AW_PID_2055_RMSE_START_BIT)
 
 #define AW_PID_2055_RMSE_RMS_AGC (1)
-#define AW_PID_2055_RMSE_RMS_AGC_VALUE                                         \
+#define AW_PID_2055_RMSE_RMS_AGC_VALUE \
 	(AW_PID_2055_RMSE_RMS_AGC << AW_PID_2055_RMSE_START_BIT)
 
 #define AW_PID_2055_RMSE_DEFAULT_VALUE (0)
-#define AW_PID_2055_RMSE_DEFAULT                                               \
+#define AW_PID_2055_RMSE_DEFAULT \
 	(AW_PID_2055_RMSE_DEFAULT_VALUE << AW_PID_2055_RMSE_START_BIT)
 
 /* HAGCE bit 10 (SYSCTRL 0x04) */
 #define AW_PID_2055_HAGCE_START_BIT (10)
 #define AW_PID_2055_HAGCE_BITS_LEN (1)
-#define AW_PID_2055_HAGCE_MASK                                                 \
-	(~(((1 << AW_PID_2055_HAGCE_BITS_LEN) - 1)                             \
+#define AW_PID_2055_HAGCE_MASK                     \
+	(~(((1 << AW_PID_2055_HAGCE_BITS_LEN) - 1) \
 	   << AW_PID_2055_HAGCE_START_BIT))
 
 #define AW_PID_2055_HAGCE_DISABLE (0)
-#define AW_PID_2055_HAGCE_DISABLE_VALUE                                        \
+#define AW_PID_2055_HAGCE_DISABLE_VALUE \
 	(AW_PID_2055_HAGCE_DISABLE << AW_PID_2055_HAGCE_START_BIT)
 
 #define AW_PID_2055_HAGCE_ENABLE (1)
-#define AW_PID_2055_HAGCE_ENABLE_VALUE                                         \
+#define AW_PID_2055_HAGCE_ENABLE_VALUE \
 	(AW_PID_2055_HAGCE_ENABLE << AW_PID_2055_HAGCE_START_BIT)
 
 #define AW_PID_2055_HAGCE_DEFAULT_VALUE (0)
-#define AW_PID_2055_HAGCE_DEFAULT                                              \
+#define AW_PID_2055_HAGCE_DEFAULT \
 	(AW_PID_2055_HAGCE_DEFAULT_VALUE << AW_PID_2055_HAGCE_START_BIT)
 
 /* HDCCE bit 9 (SYSCTRL 0x04) */
 #define AW_PID_2055_HDCCE_START_BIT (9)
 #define AW_PID_2055_HDCCE_BITS_LEN (1)
-#define AW_PID_2055_HDCCE_MASK                                                 \
-	(~(((1 << AW_PID_2055_HDCCE_BITS_LEN) - 1)                             \
+#define AW_PID_2055_HDCCE_MASK                     \
+	(~(((1 << AW_PID_2055_HDCCE_BITS_LEN) - 1) \
 	   << AW_PID_2055_HDCCE_START_BIT))
 
 #define AW_PID_2055_HDCCE_DISABLE (0)
-#define AW_PID_2055_HDCCE_DISABLE_VALUE                                        \
+#define AW_PID_2055_HDCCE_DISABLE_VALUE \
 	(AW_PID_2055_HDCCE_DISABLE << AW_PID_2055_HDCCE_START_BIT)
 
 #define AW_PID_2055_HDCCE_ENABLE (1)
-#define AW_PID_2055_HDCCE_ENABLE_VALUE                                         \
+#define AW_PID_2055_HDCCE_ENABLE_VALUE \
 	(AW_PID_2055_HDCCE_ENABLE << AW_PID_2055_HDCCE_START_BIT)
 
 #define AW_PID_2055_HDCCE_DEFAULT_VALUE (1)
-#define AW_PID_2055_HDCCE_DEFAULT                                              \
+#define AW_PID_2055_HDCCE_DEFAULT \
 	(AW_PID_2055_HDCCE_DEFAULT_VALUE << AW_PID_2055_HDCCE_START_BIT)
 
 /* HMUTE bit 8 (SYSCTRL 0x04) */
 #define AW_PID_2055_HMUTE_START_BIT (8)
 #define AW_PID_2055_HMUTE_BITS_LEN (1)
-#define AW_PID_2055_HMUTE_MASK                                                 \
-	(~(((1 << AW_PID_2055_HMUTE_BITS_LEN) - 1)                             \
+#define AW_PID_2055_HMUTE_MASK                     \
+	(~(((1 << AW_PID_2055_HMUTE_BITS_LEN) - 1) \
 	   << AW_PID_2055_HMUTE_START_BIT))
 
 #define AW_PID_2055_HMUTE_DISABLE (0)
-#define AW_PID_2055_HMUTE_DISABLE_VALUE                                        \
+#define AW_PID_2055_HMUTE_DISABLE_VALUE \
 	(AW_PID_2055_HMUTE_DISABLE << AW_PID_2055_HMUTE_START_BIT)
 
 #define AW_PID_2055_HMUTE_ENABLE (1)
-#define AW_PID_2055_HMUTE_ENABLE_VALUE                                         \
+#define AW_PID_2055_HMUTE_ENABLE_VALUE \
 	(AW_PID_2055_HMUTE_ENABLE << AW_PID_2055_HMUTE_START_BIT)
 
 #define AW_PID_2055_HMUTE_DEFAULT_VALUE (1)
-#define AW_PID_2055_HMUTE_DEFAULT                                              \
+#define AW_PID_2055_HMUTE_DEFAULT \
 	(AW_PID_2055_HMUTE_DEFAULT_VALUE << AW_PID_2055_HMUTE_START_BIT)
 
 /* RCV_MODE bit 7 (SYSCTRL 0x04) */
 #define AW_PID_2055_RCV_MODE_START_BIT (7)
 #define AW_PID_2055_RCV_MODE_BITS_LEN (1)
-#define AW_PID_2055_RCV_MODE_MASK                                              \
-	(~(((1 << AW_PID_2055_RCV_MODE_BITS_LEN) - 1)                          \
+#define AW_PID_2055_RCV_MODE_MASK                     \
+	(~(((1 << AW_PID_2055_RCV_MODE_BITS_LEN) - 1) \
 	   << AW_PID_2055_RCV_MODE_START_BIT))
 
 #define AW_PID_2055_RCV_MODE_SPEAKER (0)
-#define AW_PID_2055_RCV_MODE_SPEAKER_VALUE                                     \
+#define AW_PID_2055_RCV_MODE_SPEAKER_VALUE \
 	(AW_PID_2055_RCV_MODE_SPEAKER << AW_PID_2055_RCV_MODE_START_BIT)
 
 #define AW_PID_2055_RCV_MODE_RECEIVER (1)
-#define AW_PID_2055_RCV_MODE_RECEIVER_VALUE                                    \
+#define AW_PID_2055_RCV_MODE_RECEIVER_VALUE \
 	(AW_PID_2055_RCV_MODE_RECEIVER << AW_PID_2055_RCV_MODE_START_BIT)
 
 #define AW_PID_2055_RCV_MODE_DEFAULT_VALUE (0)
-#define AW_PID_2055_RCV_MODE_DEFAULT                                           \
+#define AW_PID_2055_RCV_MODE_DEFAULT \
 	(AW_PID_2055_RCV_MODE_DEFAULT_VALUE << AW_PID_2055_RCV_MODE_START_BIT)
 
 /* ULS_MUTE bit 6 (SYSCTRL 0x04) */
 #define AW_PID_2055_ULS_MUTE_START_BIT (6)
 #define AW_PID_2055_ULS_MUTE_BITS_LEN (1)
-#define AW_PID_2055_ULS_MUTE_MASK                                              \
-	(~(((1 << AW_PID_2055_ULS_MUTE_BITS_LEN) - 1)                          \
+#define AW_PID_2055_ULS_MUTE_MASK                     \
+	(~(((1 << AW_PID_2055_ULS_MUTE_BITS_LEN) - 1) \
 	   << AW_PID_2055_ULS_MUTE_START_BIT))
 
 #define AW_PID_2055_ULS_MUTE_DISABLE (0)
-#define AW_PID_2055_ULS_MUTE_DISABLE_VALUE                                     \
+#define AW_PID_2055_ULS_MUTE_DISABLE_VALUE \
 	(AW_PID_2055_ULS_MUTE_DISABLE << AW_PID_2055_ULS_MUTE_START_BIT)
 
 #define AW_PID_2055_ULS_MUTE_ENABLE (1)
-#define AW_PID_2055_ULS_MUTE_ENABLE_VALUE                                      \
+#define AW_PID_2055_ULS_MUTE_ENABLE_VALUE \
 	(AW_PID_2055_ULS_MUTE_ENABLE << AW_PID_2055_ULS_MUTE_START_BIT)
 
 #define AW_PID_2055_ULS_MUTE_DEFAULT_VALUE (1)
-#define AW_PID_2055_ULS_MUTE_DEFAULT                                           \
+#define AW_PID_2055_ULS_MUTE_DEFAULT \
 	(AW_PID_2055_ULS_MUTE_DEFAULT_VALUE << AW_PID_2055_ULS_MUTE_START_BIT)
 
 /* IPLL bit 3 (SYSCTRL 0x04) */
 #define AW_PID_2055_IPLL_START_BIT (3)
 #define AW_PID_2055_IPLL_BITS_LEN (1)
-#define AW_PID_2055_IPLL_MASK                                                  \
-	(~(((1 << AW_PID_2055_IPLL_BITS_LEN) - 1)                              \
+#define AW_PID_2055_IPLL_MASK                     \
+	(~(((1 << AW_PID_2055_IPLL_BITS_LEN) - 1) \
 	   << AW_PID_2055_IPLL_START_BIT))
 
 #define AW_PID_2055_IPLL_BCK (0)
-#define AW_PID_2055_IPLL_BCK_VALUE                                             \
+#define AW_PID_2055_IPLL_BCK_VALUE \
 	(AW_PID_2055_IPLL_BCK << AW_PID_2055_IPLL_START_BIT)
 
 #define AW_PID_2055_IPLL_WCK (1)
-#define AW_PID_2055_IPLL_WCK_VALUE                                             \
+#define AW_PID_2055_IPLL_WCK_VALUE \
 	(AW_PID_2055_IPLL_WCK << AW_PID_2055_IPLL_START_BIT)
 
 #define AW_PID_2055_IPLL_DEFAULT_VALUE (0)
-#define AW_PID_2055_IPLL_DEFAULT                                               \
+#define AW_PID_2055_IPLL_DEFAULT \
 	(AW_PID_2055_IPLL_DEFAULT_VALUE << AW_PID_2055_IPLL_START_BIT)
 
 /* AMPPD bit 1 (SYSCTRL 0x04) */
 #define AW_PID_2055_AMPPD_START_BIT (1)
 #define AW_PID_2055_AMPPD_BITS_LEN (1)
-#define AW_PID_2055_AMPPD_MASK                                                 \
-	(~(((1 << AW_PID_2055_AMPPD_BITS_LEN) - 1)                             \
+#define AW_PID_2055_AMPPD_MASK                     \
+	(~(((1 << AW_PID_2055_AMPPD_BITS_LEN) - 1) \
 	   << AW_PID_2055_AMPPD_START_BIT))
 
 #define AW_PID_2055_AMPPD_WORKING (0)
-#define AW_PID_2055_AMPPD_WORKING_VALUE                                        \
+#define AW_PID_2055_AMPPD_WORKING_VALUE \
 	(AW_PID_2055_AMPPD_WORKING << AW_PID_2055_AMPPD_START_BIT)
 
 #define AW_PID_2055_AMPPD_POWER_DOWN (1)
-#define AW_PID_2055_AMPPD_POWER_DOWN_VALUE                                     \
+#define AW_PID_2055_AMPPD_POWER_DOWN_VALUE \
 	(AW_PID_2055_AMPPD_POWER_DOWN << AW_PID_2055_AMPPD_START_BIT)
 
 #define AW_PID_2055_AMPPD_DEFAULT_VALUE (1)
-#define AW_PID_2055_AMPPD_DEFAULT                                              \
+#define AW_PID_2055_AMPPD_DEFAULT \
 	(AW_PID_2055_AMPPD_DEFAULT_VALUE << AW_PID_2055_AMPPD_START_BIT)
 
 /* PWDN bit 0 (SYSCTRL 0x04) */
 #define AW_PID_2055_PWDN_START_BIT (0)
 #define AW_PID_2055_PWDN_BITS_LEN (1)
-#define AW_PID_2055_PWDN_MASK                                                  \
-	(~(((1 << AW_PID_2055_PWDN_BITS_LEN) - 1)                              \
+#define AW_PID_2055_PWDN_MASK                     \
+	(~(((1 << AW_PID_2055_PWDN_BITS_LEN) - 1) \
 	   << AW_PID_2055_PWDN_START_BIT))
 
 #define AW_PID_2055_PWDN_WORKING (0)
-#define AW_PID_2055_PWDN_WORKING_VALUE                                         \
+#define AW_PID_2055_PWDN_WORKING_VALUE \
 	(AW_PID_2055_PWDN_WORKING << AW_PID_2055_PWDN_START_BIT)
 
 #define AW_PID_2055_PWDN_POWER_DOWN (1)
-#define AW_PID_2055_PWDN_POWER_DOWN_VALUE                                      \
+#define AW_PID_2055_PWDN_POWER_DOWN_VALUE \
 	(AW_PID_2055_PWDN_POWER_DOWN << AW_PID_2055_PWDN_START_BIT)
 
 #define AW_PID_2055_PWDN_DEFAULT_VALUE (1)
-#define AW_PID_2055_PWDN_DEFAULT                                               \
+#define AW_PID_2055_PWDN_DEFAULT \
 	(AW_PID_2055_PWDN_DEFAULT_VALUE << AW_PID_2055_PWDN_START_BIT)
 
 /* default value of SYSCTRL (0x04) */
@@ -1040,49 +1053,49 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* INTMODE bit 13 (SYSCTRL2 0x05) */
 #define AW_PID_2055_INTMODE_START_BIT (13)
 #define AW_PID_2055_INTMODE_BITS_LEN (1)
-#define AW_PID_2055_INTMODE_MASK                                               \
-	(~(((1 << AW_PID_2055_INTMODE_BITS_LEN) - 1)                           \
+#define AW_PID_2055_INTMODE_MASK                     \
+	(~(((1 << AW_PID_2055_INTMODE_BITS_LEN) - 1) \
 	   << AW_PID_2055_INTMODE_START_BIT))
 
 #define AW_PID_2055_INTMODE_OPENMINUSDRAIN (0)
-#define AW_PID_2055_INTMODE_OPENMINUSDRAIN_VALUE                               \
+#define AW_PID_2055_INTMODE_OPENMINUSDRAIN_VALUE \
 	(AW_PID_2055_INTMODE_OPENMINUSDRAIN << AW_PID_2055_INTMODE_START_BIT)
 
 #define AW_PID_2055_INTMODE_PUSHPULL (1)
-#define AW_PID_2055_INTMODE_PUSHPULL_VALUE                                     \
+#define AW_PID_2055_INTMODE_PUSHPULL_VALUE \
 	(AW_PID_2055_INTMODE_PUSHPULL << AW_PID_2055_INTMODE_START_BIT)
 
 #define AW_PID_2055_INTMODE_DEFAULT_VALUE (0)
-#define AW_PID_2055_INTMODE_DEFAULT                                            \
+#define AW_PID_2055_INTMODE_DEFAULT \
 	(AW_PID_2055_INTMODE_DEFAULT_VALUE << AW_PID_2055_INTMODE_START_BIT)
 
 /* INTN bit 12 (SYSCTRL2 0x05) */
 #define AW_PID_2055_INTN_START_BIT (12)
 #define AW_PID_2055_INTN_BITS_LEN (1)
-#define AW_PID_2055_INTN_MASK                                                  \
-	(~(((1 << AW_PID_2055_INTN_BITS_LEN) - 1)                              \
+#define AW_PID_2055_INTN_MASK                     \
+	(~(((1 << AW_PID_2055_INTN_BITS_LEN) - 1) \
 	   << AW_PID_2055_INTN_START_BIT))
 
 #define AW_PID_2055_INTN_SYSINT (0)
-#define AW_PID_2055_INTN_SYSINT_VALUE                                          \
+#define AW_PID_2055_INTN_SYSINT_VALUE \
 	(AW_PID_2055_INTN_SYSINT << AW_PID_2055_INTN_START_BIT)
 
 #define AW_PID_2055_INTN_SYSST (1)
-#define AW_PID_2055_INTN_SYSST_VALUE                                           \
+#define AW_PID_2055_INTN_SYSST_VALUE \
 	(AW_PID_2055_INTN_SYSST << AW_PID_2055_INTN_START_BIT)
 
 #define AW_PID_2055_INTN_DEFAULT_VALUE (0)
-#define AW_PID_2055_INTN_DEFAULT                                               \
+#define AW_PID_2055_INTN_DEFAULT \
 	(AW_PID_2055_INTN_DEFAULT_VALUE << AW_PID_2055_INTN_START_BIT)
 
 /* VOL bit 9:0 (SYSCTRL2 0x05) */
 #define AW_PID_2055_VOL_START_BIT (0)
 #define AW_PID_2055_VOL_BITS_LEN (10)
-#define AW_PID_2055_VOL_MASK                                                   \
+#define AW_PID_2055_VOL_MASK \
 	(~(((1 << AW_PID_2055_VOL_BITS_LEN) - 1) << AW_PID_2055_VOL_START_BIT))
 
 #define AW_PID_2055_VOL_DEFAULT_VALUE (0)
-#define AW_PID_2055_VOL_DEFAULT                                                \
+#define AW_PID_2055_VOL_DEFAULT \
 	(AW_PID_2055_VOL_DEFAULT_VALUE << AW_PID_2055_VOL_START_BIT)
 
 /* default value of SYSCTRL2 (0x05) */
@@ -1095,240 +1108,240 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* I2SRXEN bit 15 (I2SCTRL1 0x06) */
 #define AW_PID_2055_I2SRXEN_START_BIT (15)
 #define AW_PID_2055_I2SRXEN_BITS_LEN (1)
-#define AW_PID_2055_I2SRXEN_MASK                                               \
-	(~(((1 << AW_PID_2055_I2SRXEN_BITS_LEN) - 1)                           \
+#define AW_PID_2055_I2SRXEN_MASK                     \
+	(~(((1 << AW_PID_2055_I2SRXEN_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2SRXEN_START_BIT))
 
 #define AW_PID_2055_I2SRXEN_DISABLE (0)
-#define AW_PID_2055_I2SRXEN_DISABLE_VALUE                                      \
+#define AW_PID_2055_I2SRXEN_DISABLE_VALUE \
 	(AW_PID_2055_I2SRXEN_DISABLE << AW_PID_2055_I2SRXEN_START_BIT)
 
 #define AW_PID_2055_I2SRXEN_ENABLE (1)
-#define AW_PID_2055_I2SRXEN_ENABLE_VALUE                                       \
+#define AW_PID_2055_I2SRXEN_ENABLE_VALUE \
 	(AW_PID_2055_I2SRXEN_ENABLE << AW_PID_2055_I2SRXEN_START_BIT)
 
 #define AW_PID_2055_I2SRXEN_DEFAULT_VALUE (1)
-#define AW_PID_2055_I2SRXEN_DEFAULT                                            \
+#define AW_PID_2055_I2SRXEN_DEFAULT \
 	(AW_PID_2055_I2SRXEN_DEFAULT_VALUE << AW_PID_2055_I2SRXEN_START_BIT)
 
 /* I2STXEN bit 14 (I2SCTRL1 0x06) */
 #define AW_PID_2055_I2STXEN_START_BIT (14)
 #define AW_PID_2055_I2STXEN_BITS_LEN (1)
-#define AW_PID_2055_I2STXEN_MASK                                               \
-	(~(((1 << AW_PID_2055_I2STXEN_BITS_LEN) - 1)                           \
+#define AW_PID_2055_I2STXEN_MASK                     \
+	(~(((1 << AW_PID_2055_I2STXEN_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2STXEN_START_BIT))
 
 #define AW_PID_2055_I2STXEN_DISABLE (0)
-#define AW_PID_2055_I2STXEN_DISABLE_VALUE                                      \
+#define AW_PID_2055_I2STXEN_DISABLE_VALUE \
 	(AW_PID_2055_I2STXEN_DISABLE << AW_PID_2055_I2STXEN_START_BIT)
 
 #define AW_PID_2055_I2STXEN_ENABLE (1)
-#define AW_PID_2055_I2STXEN_ENABLE_VALUE                                       \
+#define AW_PID_2055_I2STXEN_ENABLE_VALUE \
 	(AW_PID_2055_I2STXEN_ENABLE << AW_PID_2055_I2STXEN_START_BIT)
 
 #define AW_PID_2055_I2STXEN_DEFAULT_VALUE (0)
-#define AW_PID_2055_I2STXEN_DEFAULT                                            \
+#define AW_PID_2055_I2STXEN_DEFAULT \
 	(AW_PID_2055_I2STXEN_DEFAULT_VALUE << AW_PID_2055_I2STXEN_START_BIT)
 
 /* I2SEN bit 13 (I2SCTRL1 0x06) */
 #define AW_PID_2055_I2SEN_START_BIT (13)
 #define AW_PID_2055_I2SEN_BITS_LEN (1)
-#define AW_PID_2055_I2SEN_MASK                                                 \
-	(~(((1 << AW_PID_2055_I2SEN_BITS_LEN) - 1)                             \
+#define AW_PID_2055_I2SEN_MASK                     \
+	(~(((1 << AW_PID_2055_I2SEN_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2SEN_START_BIT))
 
 #define AW_PID_2055_I2SEN_DISABLE (0)
-#define AW_PID_2055_I2SEN_DISABLE_VALUE                                        \
+#define AW_PID_2055_I2SEN_DISABLE_VALUE \
 	(AW_PID_2055_I2SEN_DISABLE << AW_PID_2055_I2SEN_START_BIT)
 
 #define AW_PID_2055_I2SEN_ENABLE (1)
-#define AW_PID_2055_I2SEN_ENABLE_VALUE                                         \
+#define AW_PID_2055_I2SEN_ENABLE_VALUE \
 	(AW_PID_2055_I2SEN_ENABLE << AW_PID_2055_I2SEN_START_BIT)
 
 #define AW_PID_2055_I2SEN_DEFAULT_VALUE (0)
-#define AW_PID_2055_I2SEN_DEFAULT                                              \
+#define AW_PID_2055_I2SEN_DEFAULT \
 	(AW_PID_2055_I2SEN_DEFAULT_VALUE << AW_PID_2055_I2SEN_START_BIT)
 
 /* DRVSTREN bit 12 (I2SCTRL1 0x06) */
 #define AW_PID_2055_DRVSTREN_START_BIT (12)
 #define AW_PID_2055_DRVSTREN_BITS_LEN (1)
-#define AW_PID_2055_DRVSTREN_MASK                                              \
-	(~(((1 << AW_PID_2055_DRVSTREN_BITS_LEN) - 1)                          \
+#define AW_PID_2055_DRVSTREN_MASK                     \
+	(~(((1 << AW_PID_2055_DRVSTREN_BITS_LEN) - 1) \
 	   << AW_PID_2055_DRVSTREN_START_BIT))
 
 #define AW_PID_2055_DRVSTREN_4MA (0)
-#define AW_PID_2055_DRVSTREN_4MA_VALUE                                         \
+#define AW_PID_2055_DRVSTREN_4MA_VALUE \
 	(AW_PID_2055_DRVSTREN_4MA << AW_PID_2055_DRVSTREN_START_BIT)
 
 #define AW_PID_2055_DRVSTREN_12MA (1)
-#define AW_PID_2055_DRVSTREN_12MA_VALUE                                        \
+#define AW_PID_2055_DRVSTREN_12MA_VALUE \
 	(AW_PID_2055_DRVSTREN_12MA << AW_PID_2055_DRVSTREN_START_BIT)
 
 #define AW_PID_2055_DRVSTREN_DEFAULT_VALUE (1)
-#define AW_PID_2055_DRVSTREN_DEFAULT                                           \
+#define AW_PID_2055_DRVSTREN_DEFAULT \
 	(AW_PID_2055_DRVSTREN_DEFAULT_VALUE << AW_PID_2055_DRVSTREN_START_BIT)
 
 /* CHSEL bit 11:10 (I2SCTRL1 0x06) */
 #define AW_PID_2055_CHSEL_START_BIT (10)
 #define AW_PID_2055_CHSEL_BITS_LEN (2)
-#define AW_PID_2055_CHSEL_MASK                                                 \
-	(~(((1 << AW_PID_2055_CHSEL_BITS_LEN) - 1)                             \
+#define AW_PID_2055_CHSEL_MASK                     \
+	(~(((1 << AW_PID_2055_CHSEL_BITS_LEN) - 1) \
 	   << AW_PID_2055_CHSEL_START_BIT))
 
 #define AW_PID_2055_CHSEL_RESERVED (0)
-#define AW_PID_2055_CHSEL_RESERVED_VALUE                                       \
+#define AW_PID_2055_CHSEL_RESERVED_VALUE \
 	(AW_PID_2055_CHSEL_RESERVED << AW_PID_2055_CHSEL_START_BIT)
 
 #define AW_PID_2055_CHSEL_LEFT (1)
-#define AW_PID_2055_CHSEL_LEFT_VALUE                                           \
+#define AW_PID_2055_CHSEL_LEFT_VALUE \
 	(AW_PID_2055_CHSEL_LEFT << AW_PID_2055_CHSEL_START_BIT)
 
 #define AW_PID_2055_CHSEL_RIGHT (2)
-#define AW_PID_2055_CHSEL_RIGHT_VALUE                                          \
+#define AW_PID_2055_CHSEL_RIGHT_VALUE \
 	(AW_PID_2055_CHSEL_RIGHT << AW_PID_2055_CHSEL_START_BIT)
 
 #define AW_PID_2055_CHSEL_MONO (3)
-#define AW_PID_2055_CHSEL_MONO_VALUE                                           \
+#define AW_PID_2055_CHSEL_MONO_VALUE \
 	(AW_PID_2055_CHSEL_MONO << AW_PID_2055_CHSEL_START_BIT)
 
 #define AW_PID_2055_CHSEL_DEFAULT_VALUE (1)
-#define AW_PID_2055_CHSEL_DEFAULT                                              \
+#define AW_PID_2055_CHSEL_DEFAULT \
 	(AW_PID_2055_CHSEL_DEFAULT_VALUE << AW_PID_2055_CHSEL_START_BIT)
 
 /* I2SMD bit 9:8 (I2SCTRL1 0x06) */
 #define AW_PID_2055_I2SMD_START_BIT (8)
 #define AW_PID_2055_I2SMD_BITS_LEN (2)
-#define AW_PID_2055_I2SMD_MASK                                                 \
-	(~(((1 << AW_PID_2055_I2SMD_BITS_LEN) - 1)                             \
+#define AW_PID_2055_I2SMD_MASK                     \
+	(~(((1 << AW_PID_2055_I2SMD_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2SMD_START_BIT))
 
 #define AW_PID_2055_I2SMD_PHILIP_STANDARD (0)
-#define AW_PID_2055_I2SMD_PHILIP_STANDARD_VALUE                                \
+#define AW_PID_2055_I2SMD_PHILIP_STANDARD_VALUE \
 	(AW_PID_2055_I2SMD_PHILIP_STANDARD << AW_PID_2055_I2SMD_START_BIT)
 
 #define AW_PID_2055_I2SMD_MSB_JUSTIFIED (1)
-#define AW_PID_2055_I2SMD_MSB_JUSTIFIED_VALUE                                  \
+#define AW_PID_2055_I2SMD_MSB_JUSTIFIED_VALUE \
 	(AW_PID_2055_I2SMD_MSB_JUSTIFIED << AW_PID_2055_I2SMD_START_BIT)
 
 #define AW_PID_2055_I2SMD_LSB_JUSTIFIED (2)
-#define AW_PID_2055_I2SMD_LSB_JUSTIFIED_VALUE                                  \
+#define AW_PID_2055_I2SMD_LSB_JUSTIFIED_VALUE \
 	(AW_PID_2055_I2SMD_LSB_JUSTIFIED << AW_PID_2055_I2SMD_START_BIT)
 
 #define AW_PID_2055_I2SMD_RESERVED (3)
-#define AW_PID_2055_I2SMD_RESERVED_VALUE                                       \
+#define AW_PID_2055_I2SMD_RESERVED_VALUE \
 	(AW_PID_2055_I2SMD_RESERVED << AW_PID_2055_I2SMD_START_BIT)
 
 #define AW_PID_2055_I2SMD_DEFAULT_VALUE (0)
-#define AW_PID_2055_I2SMD_DEFAULT                                              \
+#define AW_PID_2055_I2SMD_DEFAULT \
 	(AW_PID_2055_I2SMD_DEFAULT_VALUE << AW_PID_2055_I2SMD_START_BIT)
 
 /* I2SFS bit 7:6 (I2SCTRL1 0x06) */
 #define AW_PID_2055_I2SFS_START_BIT (6)
 #define AW_PID_2055_I2SFS_BITS_LEN (2)
-#define AW_PID_2055_I2SFS_MASK                                                 \
-	(~(((1 << AW_PID_2055_I2SFS_BITS_LEN) - 1)                             \
+#define AW_PID_2055_I2SFS_MASK                     \
+	(~(((1 << AW_PID_2055_I2SFS_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2SFS_START_BIT))
 
 #define AW_PID_2055_I2SFS_16_BITS (0)
-#define AW_PID_2055_I2SFS_16_BITS_VALUE                                        \
+#define AW_PID_2055_I2SFS_16_BITS_VALUE \
 	(AW_PID_2055_I2SFS_16_BITS << AW_PID_2055_I2SFS_START_BIT)
 
 #define AW_PID_2055_I2SFS_20_BITS (1)
-#define AW_PID_2055_I2SFS_20_BITS_VALUE                                        \
+#define AW_PID_2055_I2SFS_20_BITS_VALUE \
 	(AW_PID_2055_I2SFS_20_BITS << AW_PID_2055_I2SFS_START_BIT)
 
 #define AW_PID_2055_I2SFS_24_BITS (2)
-#define AW_PID_2055_I2SFS_24_BITS_VALUE                                        \
+#define AW_PID_2055_I2SFS_24_BITS_VALUE \
 	(AW_PID_2055_I2SFS_24_BITS << AW_PID_2055_I2SFS_START_BIT)
 
 #define AW_PID_2055_I2SFS_32_BITS (3)
-#define AW_PID_2055_I2SFS_32_BITS_VALUE                                        \
+#define AW_PID_2055_I2SFS_32_BITS_VALUE \
 	(AW_PID_2055_I2SFS_32_BITS << AW_PID_2055_I2SFS_START_BIT)
 
 #define AW_PID_2055_I2SFS_DEFAULT_VALUE (3)
-#define AW_PID_2055_I2SFS_DEFAULT                                              \
+#define AW_PID_2055_I2SFS_DEFAULT \
 	(AW_PID_2055_I2SFS_DEFAULT_VALUE << AW_PID_2055_I2SFS_START_BIT)
 
 /* I2SBCK bit 5:4 (I2SCTRL1 0x06) */
 #define AW_PID_2055_I2SBCK_START_BIT (4)
 #define AW_PID_2055_I2SBCK_BITS_LEN (2)
-#define AW_PID_2055_I2SBCK_MASK                                                \
-	(~(((1 << AW_PID_2055_I2SBCK_BITS_LEN) - 1)                            \
+#define AW_PID_2055_I2SBCK_MASK                     \
+	(~(((1 << AW_PID_2055_I2SBCK_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2SBCK_START_BIT))
 
 #define AW_PID_2055_I2SBCK_32FS (0)
-#define AW_PID_2055_I2SBCK_32FS_VALUE                                          \
+#define AW_PID_2055_I2SBCK_32FS_VALUE \
 	(AW_PID_2055_I2SBCK_32FS << AW_PID_2055_I2SBCK_START_BIT)
 
 #define AW_PID_2055_I2SBCK_48FS (1)
-#define AW_PID_2055_I2SBCK_48FS_VALUE                                          \
+#define AW_PID_2055_I2SBCK_48FS_VALUE \
 	(AW_PID_2055_I2SBCK_48FS << AW_PID_2055_I2SBCK_START_BIT)
 
 #define AW_PID_2055_I2SBCK_64FS (2)
-#define AW_PID_2055_I2SBCK_64FS_VALUE                                          \
+#define AW_PID_2055_I2SBCK_64FS_VALUE \
 	(AW_PID_2055_I2SBCK_64FS << AW_PID_2055_I2SBCK_START_BIT)
 
 #define AW_PID_2055_I2SBCK_RESERVED (3)
-#define AW_PID_2055_I2SBCK_RESERVED_VALUE                                      \
+#define AW_PID_2055_I2SBCK_RESERVED_VALUE \
 	(AW_PID_2055_I2SBCK_RESERVED << AW_PID_2055_I2SBCK_START_BIT)
 
 #define AW_PID_2055_I2SBCK_DEFAULT_VALUE (2)
-#define AW_PID_2055_I2SBCK_DEFAULT                                             \
+#define AW_PID_2055_I2SBCK_DEFAULT \
 	(AW_PID_2055_I2SBCK_DEFAULT_VALUE << AW_PID_2055_I2SBCK_START_BIT)
 
 /* I2SSR bit 3:0 (I2SCTRL1 0x06) */
 #define AW_PID_2055_I2SSR_START_BIT (0)
 #define AW_PID_2055_I2SSR_BITS_LEN (4)
-#define AW_PID_2055_I2SSR_MASK                                                 \
-	(~(((1 << AW_PID_2055_I2SSR_BITS_LEN) - 1)                             \
+#define AW_PID_2055_I2SSR_MASK                     \
+	(~(((1 << AW_PID_2055_I2SSR_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2SSR_START_BIT))
 
 #define AW_PID_2055_I2SSR_8_KHZ (0)
-#define AW_PID_2055_I2SSR_8_KHZ_VALUE                                          \
+#define AW_PID_2055_I2SSR_8_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_8_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_11_KHZ (1)
-#define AW_PID_2055_I2SSR_11_KHZ_VALUE                                         \
+#define AW_PID_2055_I2SSR_11_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_11_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_12_KHZ (2)
-#define AW_PID_2055_I2SSR_12_KHZ_VALUE                                         \
+#define AW_PID_2055_I2SSR_12_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_12_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_16_KHZ (3)
-#define AW_PID_2055_I2SSR_16_KHZ_VALUE                                         \
+#define AW_PID_2055_I2SSR_16_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_16_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_22_KHZ (4)
-#define AW_PID_2055_I2SSR_22_KHZ_VALUE                                         \
+#define AW_PID_2055_I2SSR_22_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_22_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_24_KHZ (5)
-#define AW_PID_2055_I2SSR_24_KHZ_VALUE                                         \
+#define AW_PID_2055_I2SSR_24_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_24_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_32_KHZ (6)
-#define AW_PID_2055_I2SSR_32_KHZ_VALUE                                         \
+#define AW_PID_2055_I2SSR_32_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_32_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_44_KHZ (7)
-#define AW_PID_2055_I2SSR_44_KHZ_VALUE                                         \
+#define AW_PID_2055_I2SSR_44_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_44_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_48_KHZ (8)
-#define AW_PID_2055_I2SSR_48_KHZ_VALUE                                         \
+#define AW_PID_2055_I2SSR_48_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_48_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_96_KHZ (9)
-#define AW_PID_2055_I2SSR_96_KHZ_VALUE                                         \
+#define AW_PID_2055_I2SSR_96_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_96_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_192_KHZ (10)
-#define AW_PID_2055_I2SSR_192_KHZ_VALUE                                        \
+#define AW_PID_2055_I2SSR_192_KHZ_VALUE \
 	(AW_PID_2055_I2SSR_192_KHZ << AW_PID_2055_I2SSR_START_BIT)
 
 #define AW_PID_2055_I2SSR_DEFAULT_VALUE (8)
-#define AW_PID_2055_I2SSR_DEFAULT                                              \
+#define AW_PID_2055_I2SSR_DEFAULT \
 	(AW_PID_2055_I2SSR_DEFAULT_VALUE << AW_PID_2055_I2SSR_START_BIT)
 
 /* default value of I2SCTRL1 (0x06) */
@@ -1338,223 +1351,223 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* FSYNC_TYPE bit 15 (I2SCTRL2 0x07) */
 #define AW_PID_2055_FSYNC_TYPE_START_BIT (15)
 #define AW_PID_2055_FSYNC_TYPE_BITS_LEN (1)
-#define AW_PID_2055_FSYNC_TYPE_MASK                                            \
-	(~(((1 << AW_PID_2055_FSYNC_TYPE_BITS_LEN) - 1)                        \
+#define AW_PID_2055_FSYNC_TYPE_MASK                     \
+	(~(((1 << AW_PID_2055_FSYNC_TYPE_BITS_LEN) - 1) \
 	   << AW_PID_2055_FSYNC_TYPE_START_BIT))
 
 #define AW_PID_2055_FSYNC_TYPE_ONEMINUSSLOT (0)
-#define AW_PID_2055_FSYNC_TYPE_ONEMINUSSLOT_VALUE                              \
-	(AW_PID_2055_FSYNC_TYPE_ONEMINUSSLOT                                   \
+#define AW_PID_2055_FSYNC_TYPE_ONEMINUSSLOT_VALUE \
+	(AW_PID_2055_FSYNC_TYPE_ONEMINUSSLOT      \
 	 << AW_PID_2055_FSYNC_TYPE_START_BIT)
 
 #define AW_PID_2055_FSYNC_TYPE_ONEMINUSBCK (1)
-#define AW_PID_2055_FSYNC_TYPE_ONEMINUSBCK_VALUE                               \
+#define AW_PID_2055_FSYNC_TYPE_ONEMINUSBCK_VALUE \
 	(AW_PID_2055_FSYNC_TYPE_ONEMINUSBCK << AW_PID_2055_FSYNC_TYPE_START_BIT)
 
 #define AW_PID_2055_FSYNC_TYPE_DEFAULT_VALUE (0)
-#define AW_PID_2055_FSYNC_TYPE_DEFAULT                                         \
-	(AW_PID_2055_FSYNC_TYPE_DEFAULT_VALUE                                  \
+#define AW_PID_2055_FSYNC_TYPE_DEFAULT        \
+	(AW_PID_2055_FSYNC_TYPE_DEFAULT_VALUE \
 	 << AW_PID_2055_FSYNC_TYPE_START_BIT)
 
 /* SLOT_NUM bit 14:12 (I2SCTRL2 0x07) */
 #define AW_PID_2055_SLOT_NUM_START_BIT (12)
 #define AW_PID_2055_SLOT_NUM_BITS_LEN (3)
-#define AW_PID_2055_SLOT_NUM_MASK                                              \
-	(~(((1 << AW_PID_2055_SLOT_NUM_BITS_LEN) - 1)                          \
+#define AW_PID_2055_SLOT_NUM_MASK                     \
+	(~(((1 << AW_PID_2055_SLOT_NUM_BITS_LEN) - 1) \
 	   << AW_PID_2055_SLOT_NUM_START_BIT))
 
 #define AW_PID_2055_SLOT_NUM_I2S_MODE (0)
-#define AW_PID_2055_SLOT_NUM_I2S_MODE_VALUE                                    \
+#define AW_PID_2055_SLOT_NUM_I2S_MODE_VALUE \
 	(AW_PID_2055_SLOT_NUM_I2S_MODE << AW_PID_2055_SLOT_NUM_START_BIT)
 
 #define AW_PID_2055_SLOT_NUM_TDM1S (1)
-#define AW_PID_2055_SLOT_NUM_TDM1S_VALUE                                       \
+#define AW_PID_2055_SLOT_NUM_TDM1S_VALUE \
 	(AW_PID_2055_SLOT_NUM_TDM1S << AW_PID_2055_SLOT_NUM_START_BIT)
 
 #define AW_PID_2055_SLOT_NUM_TDM2S (2)
-#define AW_PID_2055_SLOT_NUM_TDM2S_VALUE                                       \
+#define AW_PID_2055_SLOT_NUM_TDM2S_VALUE \
 	(AW_PID_2055_SLOT_NUM_TDM2S << AW_PID_2055_SLOT_NUM_START_BIT)
 
 #define AW_PID_2055_SLOT_NUM_TDM4S (3)
-#define AW_PID_2055_SLOT_NUM_TDM4S_VALUE                                       \
+#define AW_PID_2055_SLOT_NUM_TDM4S_VALUE \
 	(AW_PID_2055_SLOT_NUM_TDM4S << AW_PID_2055_SLOT_NUM_START_BIT)
 
 #define AW_PID_2055_SLOT_NUM_TDM6S (4)
-#define AW_PID_2055_SLOT_NUM_TDM6S_VALUE                                       \
+#define AW_PID_2055_SLOT_NUM_TDM6S_VALUE \
 	(AW_PID_2055_SLOT_NUM_TDM6S << AW_PID_2055_SLOT_NUM_START_BIT)
 
 #define AW_PID_2055_SLOT_NUM_TDM8S (5)
-#define AW_PID_2055_SLOT_NUM_TDM8S_VALUE                                       \
+#define AW_PID_2055_SLOT_NUM_TDM8S_VALUE \
 	(AW_PID_2055_SLOT_NUM_TDM8S << AW_PID_2055_SLOT_NUM_START_BIT)
 
 #define AW_PID_2055_SLOT_NUM_TDM16S (6)
-#define AW_PID_2055_SLOT_NUM_TDM16S_VALUE                                      \
+#define AW_PID_2055_SLOT_NUM_TDM16S_VALUE \
 	(AW_PID_2055_SLOT_NUM_TDM16S << AW_PID_2055_SLOT_NUM_START_BIT)
 
 /*
-#define AW_PID_2055_SLOT_NUM_TDM16S		(7)
-#define AW_PID_2055_SLOT_NUM_TDM16S_VALUE	\
-	(AW_PID_2055_SLOT_NUM_TDM16S << AW_PID_2055_SLOT_NUM_START_BIT)
-*/
+ *#define AW_PID_2055_SLOT_NUM_TDM16S		(7)
+ *#define AW_PID_2055_SLOT_NUM_TDM16S_VALUE	\
+ *	(AW_PID_2055_SLOT_NUM_TDM16S << AW_PID_2055_SLOT_NUM_START_BIT)
+ */
 
 #define AW_PID_2055_SLOT_NUM_DEFAULT_VALUE (0)
-#define AW_PID_2055_SLOT_NUM_DEFAULT                                           \
+#define AW_PID_2055_SLOT_NUM_DEFAULT \
 	(AW_PID_2055_SLOT_NUM_DEFAULT_VALUE << AW_PID_2055_SLOT_NUM_START_BIT)
 
 /* I2S_TX_SLOTVLD bit 11:8 (I2SCTRL2 0x07) */
 #define AW_PID_2055_I2S_TX_SLOTVLD_START_BIT (8)
 #define AW_PID_2055_I2S_TX_SLOTVLD_BITS_LEN (4)
-#define AW_PID_2055_I2S_TX_SLOTVLD_MASK                                        \
-	(~(((1 << AW_PID_2055_I2S_TX_SLOTVLD_BITS_LEN) - 1)                    \
+#define AW_PID_2055_I2S_TX_SLOTVLD_MASK                     \
+	(~(((1 << AW_PID_2055_I2S_TX_SLOTVLD_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT))
 
 #define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_0 (0)
-#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_0_VALUE                                \
-	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_0                                     \
+#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_0_VALUE \
+	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_0      \
 	 << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_1 (1)
-#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_1_VALUE                                \
-	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_1                                     \
+#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_1_VALUE \
+	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_1      \
 	 << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_2 (2)
-#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_2_VALUE                                \
-	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_2                                     \
+#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_2_VALUE \
+	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_2      \
 	 << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_3 (3)
-#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_3_VALUE                                \
-	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_3                                     \
+#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_3_VALUE \
+	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_3      \
 	 << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_4 (4)
-#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_4_VALUE                                \
-	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_4                                     \
+#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_4_VALUE \
+	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_4      \
 	 << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_5 (5)
-#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_5_VALUE                                \
-	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_5                                     \
+#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_5_VALUE \
+	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_5      \
 	 << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_6 (6)
-#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_6_VALUE                                \
-	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_6                                     \
+#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_6_VALUE \
+	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_6      \
 	 << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_15 (15)
-#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_15_VALUE                               \
-	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_15                                    \
+#define AW_PID_2055_I2S_TX_SLOTVLD_SLOT_15_VALUE \
+	(AW_PID_2055_I2S_TX_SLOTVLD_SLOT_15      \
 	 << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_TX_SLOTVLD_DEFAULT_VALUE (0)
-#define AW_PID_2055_I2S_TX_SLOTVLD_DEFAULT                                     \
-	(AW_PID_2055_I2S_TX_SLOTVLD_DEFAULT_VALUE                              \
+#define AW_PID_2055_I2S_TX_SLOTVLD_DEFAULT        \
+	(AW_PID_2055_I2S_TX_SLOTVLD_DEFAULT_VALUE \
 	 << AW_PID_2055_I2S_TX_SLOTVLD_START_BIT)
 
 /* I2S_RXR_SLOTVLD bit 7:4 (I2SCTRL2 0x07) */
 #define AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT (4)
 #define AW_PID_2055_I2S_RXR_SLOTVLD_BITS_LEN (4)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_MASK                                       \
-	(~(((1 << AW_PID_2055_I2S_RXR_SLOTVLD_BITS_LEN) - 1)                   \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_MASK                     \
+	(~(((1 << AW_PID_2055_I2S_RXR_SLOTVLD_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT))
 
 #define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_0 (0)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_0_VALUE                               \
-	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_0                                    \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_0_VALUE \
+	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_0      \
 	 << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_1 (1)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_1_VALUE                               \
-	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_1                                    \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_1_VALUE \
+	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_1      \
 	 << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_2 (2)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_2_VALUE                               \
-	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_2                                    \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_2_VALUE \
+	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_2      \
 	 << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_3 (3)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_3_VALUE                               \
-	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_3                                    \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_3_VALUE \
+	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_3      \
 	 << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_4 (4)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_4_VALUE                               \
-	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_4                                    \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_4_VALUE \
+	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_4      \
 	 << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_5 (5)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_5_VALUE                               \
-	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_5                                    \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_5_VALUE \
+	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_5      \
 	 << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_6 (6)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_6_VALUE                               \
-	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_6                                    \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_6_VALUE \
+	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_6      \
 	 << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_15 (15)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_15_VALUE                              \
-	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_15                                   \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_15_VALUE \
+	(AW_PID_2055_I2S_RXR_SLOTVLD_SLOT_15      \
 	 << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXR_SLOTVLD_DEFAULT_VALUE (1)
-#define AW_PID_2055_I2S_RXR_SLOTVLD_DEFAULT                                    \
-	(AW_PID_2055_I2S_RXR_SLOTVLD_DEFAULT_VALUE                             \
+#define AW_PID_2055_I2S_RXR_SLOTVLD_DEFAULT        \
+	(AW_PID_2055_I2S_RXR_SLOTVLD_DEFAULT_VALUE \
 	 << AW_PID_2055_I2S_RXR_SLOTVLD_START_BIT)
 
 /* I2S_RXL_SLOTVLD bit 3:0 (I2SCTRL2 0x07) */
 #define AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT (0)
 #define AW_PID_2055_I2S_RXL_SLOTVLD_BITS_LEN (4)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_MASK                                       \
-	(~(((1 << AW_PID_2055_I2S_RXL_SLOTVLD_BITS_LEN) - 1)                   \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_MASK                     \
+	(~(((1 << AW_PID_2055_I2S_RXL_SLOTVLD_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT))
 
 #define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_0 (0)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_0_VALUE                               \
-	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_0                                    \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_0_VALUE \
+	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_0      \
 	 << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_1 (1)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_1_VALUE                               \
-	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_1                                    \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_1_VALUE \
+	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_1      \
 	 << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_2 (2)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_2_VALUE                               \
-	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_2                                    \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_2_VALUE \
+	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_2      \
 	 << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_3 (3)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_3_VALUE                               \
-	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_3                                    \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_3_VALUE \
+	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_3      \
 	 << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_4 (4)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_4_VALUE                               \
-	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_4                                    \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_4_VALUE \
+	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_4      \
 	 << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_5 (5)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_5_VALUE                               \
-	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_5                                    \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_5_VALUE \
+	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_5      \
 	 << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_6 (6)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_6_VALUE                               \
-	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_6                                    \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_6_VALUE \
+	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_6      \
 	 << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_15 (15)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_15_VALUE                              \
-	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_15                                   \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_15_VALUE \
+	(AW_PID_2055_I2S_RXL_SLOTVLD_SLOT_15      \
 	 << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT)
 
 #define AW_PID_2055_I2S_RXL_SLOTVLD_DEFAULT_VALUE (0)
-#define AW_PID_2055_I2S_RXL_SLOTVLD_DEFAULT                                    \
-	(AW_PID_2055_I2S_RXL_SLOTVLD_DEFAULT_VALUE                             \
+#define AW_PID_2055_I2S_RXL_SLOTVLD_DEFAULT        \
+	(AW_PID_2055_I2S_RXL_SLOTVLD_DEFAULT_VALUE \
 	 << AW_PID_2055_I2S_RXL_SLOTVLD_START_BIT)
 
 /* default value of I2SCTRL2 (0x07) */
@@ -1564,150 +1577,150 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* IV2CH bit 9 (I2SCTRL3 0x08) */
 #define AW_PID_2055_IV2CH_START_BIT (9)
 #define AW_PID_2055_IV2CH_BITS_LEN (1)
-#define AW_PID_2055_IV2CH_MASK                                                 \
-	(~(((1 << AW_PID_2055_IV2CH_BITS_LEN) - 1)                             \
+#define AW_PID_2055_IV2CH_MASK                     \
+	(~(((1 << AW_PID_2055_IV2CH_BITS_LEN) - 1) \
 	   << AW_PID_2055_IV2CH_START_BIT))
 
 #define AW_PID_2055_IV2CH_LEGACY (0)
-#define AW_PID_2055_IV2CH_LEGACY_VALUE                                         \
+#define AW_PID_2055_IV2CH_LEGACY_VALUE \
 	(AW_PID_2055_IV2CH_LEGACY << AW_PID_2055_IV2CH_START_BIT)
 
 #define AW_PID_2055_IV2CH_SPECIAL (1)
-#define AW_PID_2055_IV2CH_SPECIAL_VALUE                                        \
+#define AW_PID_2055_IV2CH_SPECIAL_VALUE \
 	(AW_PID_2055_IV2CH_SPECIAL << AW_PID_2055_IV2CH_START_BIT)
 
 #define AW_PID_2055_IV2CH_DEFAULT_VALUE (0)
-#define AW_PID_2055_IV2CH_DEFAULT                                              \
+#define AW_PID_2055_IV2CH_DEFAULT \
 	(AW_PID_2055_IV2CH_DEFAULT_VALUE << AW_PID_2055_IV2CH_START_BIT)
 
 /* WSINV bit 8 (I2SCTRL3 0x08) */
 #define AW_PID_2055_WSINV_START_BIT (8)
 #define AW_PID_2055_WSINV_BITS_LEN (1)
-#define AW_PID_2055_WSINV_MASK                                                 \
-	(~(((1 << AW_PID_2055_WSINV_BITS_LEN) - 1)                             \
+#define AW_PID_2055_WSINV_MASK                     \
+	(~(((1 << AW_PID_2055_WSINV_BITS_LEN) - 1) \
 	   << AW_PID_2055_WSINV_START_BIT))
 
 #define AW_PID_2055_WSINV_NOT_SWITCH (0)
-#define AW_PID_2055_WSINV_NOT_SWITCH_VALUE                                     \
+#define AW_PID_2055_WSINV_NOT_SWITCH_VALUE \
 	(AW_PID_2055_WSINV_NOT_SWITCH << AW_PID_2055_WSINV_START_BIT)
 
 #define AW_PID_2055_WSINV_SWITCH (1)
-#define AW_PID_2055_WSINV_SWITCH_VALUE                                         \
+#define AW_PID_2055_WSINV_SWITCH_VALUE \
 	(AW_PID_2055_WSINV_SWITCH << AW_PID_2055_WSINV_START_BIT)
 
 #define AW_PID_2055_WSINV_DEFAULT_VALUE (0)
-#define AW_PID_2055_WSINV_DEFAULT                                              \
+#define AW_PID_2055_WSINV_DEFAULT \
 	(AW_PID_2055_WSINV_DEFAULT_VALUE << AW_PID_2055_WSINV_START_BIT)
 
 /* BCKINV bit 7 (I2SCTRL3 0x08) */
 #define AW_PID_2055_BCKINV_START_BIT (7)
 #define AW_PID_2055_BCKINV_BITS_LEN (1)
-#define AW_PID_2055_BCKINV_MASK                                                \
-	(~(((1 << AW_PID_2055_BCKINV_BITS_LEN) - 1)                            \
+#define AW_PID_2055_BCKINV_MASK                     \
+	(~(((1 << AW_PID_2055_BCKINV_BITS_LEN) - 1) \
 	   << AW_PID_2055_BCKINV_START_BIT))
 
 #define AW_PID_2055_BCKINV_NOT_INVERT (0)
-#define AW_PID_2055_BCKINV_NOT_INVERT_VALUE                                    \
+#define AW_PID_2055_BCKINV_NOT_INVERT_VALUE \
 	(AW_PID_2055_BCKINV_NOT_INVERT << AW_PID_2055_BCKINV_START_BIT)
 
 #define AW_PID_2055_BCKINV_INVERTED (1)
-#define AW_PID_2055_BCKINV_INVERTED_VALUE                                      \
+#define AW_PID_2055_BCKINV_INVERTED_VALUE \
 	(AW_PID_2055_BCKINV_INVERTED << AW_PID_2055_BCKINV_START_BIT)
 
 #define AW_PID_2055_BCKINV_DEFAULT_VALUE (0)
-#define AW_PID_2055_BCKINV_DEFAULT                                             \
+#define AW_PID_2055_BCKINV_DEFAULT \
 	(AW_PID_2055_BCKINV_DEFAULT_VALUE << AW_PID_2055_BCKINV_START_BIT)
 
 /* I2SDOSEL bit 6 (I2SCTRL3 0x08) */
 #define AW_PID_2055_I2SDOSEL_START_BIT (6)
 #define AW_PID_2055_I2SDOSEL_BITS_LEN (1)
-#define AW_PID_2055_I2SDOSEL_MASK                                              \
-	(~(((1 << AW_PID_2055_I2SDOSEL_BITS_LEN) - 1)                          \
+#define AW_PID_2055_I2SDOSEL_MASK                     \
+	(~(((1 << AW_PID_2055_I2SDOSEL_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2SDOSEL_START_BIT))
 
 #define AW_PID_2055_I2SDOSEL_ZEROS (0)
-#define AW_PID_2055_I2SDOSEL_ZEROS_VALUE                                       \
+#define AW_PID_2055_I2SDOSEL_ZEROS_VALUE \
 	(AW_PID_2055_I2SDOSEL_ZEROS << AW_PID_2055_I2SDOSEL_START_BIT)
 
 #define AW_PID_2055_I2SDOSEL_TXDATA (1)
-#define AW_PID_2055_I2SDOSEL_TXDATA_VALUE                                      \
+#define AW_PID_2055_I2SDOSEL_TXDATA_VALUE \
 	(AW_PID_2055_I2SDOSEL_TXDATA << AW_PID_2055_I2SDOSEL_START_BIT)
 
 #define AW_PID_2055_I2SDOSEL_DEFAULT_VALUE (1)
-#define AW_PID_2055_I2SDOSEL_DEFAULT                                           \
+#define AW_PID_2055_I2SDOSEL_DEFAULT \
 	(AW_PID_2055_I2SDOSEL_DEFAULT_VALUE << AW_PID_2055_I2SDOSEL_START_BIT)
 
 /* DOHZ bit 5 (I2SCTRL3 0x08) */
 #define AW_PID_2055_DOHZ_START_BIT (5)
 #define AW_PID_2055_DOHZ_BITS_LEN (1)
-#define AW_PID_2055_DOHZ_MASK                                                  \
-	(~(((1 << AW_PID_2055_DOHZ_BITS_LEN) - 1)                              \
+#define AW_PID_2055_DOHZ_MASK                     \
+	(~(((1 << AW_PID_2055_DOHZ_BITS_LEN) - 1) \
 	   << AW_PID_2055_DOHZ_START_BIT))
 
 #define AW_PID_2055_DOHZ_ALL (0)
-#define AW_PID_2055_DOHZ_ALL_VALUE                                             \
+#define AW_PID_2055_DOHZ_ALL_VALUE \
 	(AW_PID_2055_DOHZ_ALL << AW_PID_2055_DOHZ_START_BIT)
 
 #define AW_PID_2055_DOHZ_HIZ (1)
-#define AW_PID_2055_DOHZ_HIZ_VALUE                                             \
+#define AW_PID_2055_DOHZ_HIZ_VALUE \
 	(AW_PID_2055_DOHZ_HIZ << AW_PID_2055_DOHZ_START_BIT)
 
 #define AW_PID_2055_DOHZ_DEFAULT_VALUE (1)
-#define AW_PID_2055_DOHZ_DEFAULT                                               \
+#define AW_PID_2055_DOHZ_DEFAULT \
 	(AW_PID_2055_DOHZ_DEFAULT_VALUE << AW_PID_2055_DOHZ_START_BIT)
 
 /* I2SCHS bit 4 (I2SCTRL3 0x08) */
 #define AW_PID_2055_I2SCHS_START_BIT (4)
 #define AW_PID_2055_I2SCHS_BITS_LEN (1)
-#define AW_PID_2055_I2SCHS_MASK                                                \
-	(~(((1 << AW_PID_2055_I2SCHS_BITS_LEN) - 1)                            \
+#define AW_PID_2055_I2SCHS_MASK                     \
+	(~(((1 << AW_PID_2055_I2SCHS_BITS_LEN) - 1) \
 	   << AW_PID_2055_I2SCHS_START_BIT))
 
 #define AW_PID_2055_I2SCHS_LEFT (0)
-#define AW_PID_2055_I2SCHS_LEFT_VALUE                                          \
+#define AW_PID_2055_I2SCHS_LEFT_VALUE \
 	(AW_PID_2055_I2SCHS_LEFT << AW_PID_2055_I2SCHS_START_BIT)
 
 #define AW_PID_2055_I2SCHS_RIGHT (1)
-#define AW_PID_2055_I2SCHS_RIGHT_VALUE                                         \
+#define AW_PID_2055_I2SCHS_RIGHT_VALUE \
 	(AW_PID_2055_I2SCHS_RIGHT << AW_PID_2055_I2SCHS_START_BIT)
 
 #define AW_PID_2055_I2SCHS_DEFAULT_VALUE (0)
-#define AW_PID_2055_I2SCHS_DEFAULT                                             \
+#define AW_PID_2055_I2SCHS_DEFAULT \
 	(AW_PID_2055_I2SCHS_DEFAULT_VALUE << AW_PID_2055_I2SCHS_START_BIT)
 
 /* CFSEL bit 2:0 (I2SCTRL3 0x08) */
 #define AW_PID_2055_CFSEL_START_BIT (0)
 #define AW_PID_2055_CFSEL_BITS_LEN (3)
-#define AW_PID_2055_CFSEL_MASK                                                 \
-	(~(((1 << AW_PID_2055_CFSEL_BITS_LEN) - 1)                             \
+#define AW_PID_2055_CFSEL_MASK                     \
+	(~(((1 << AW_PID_2055_CFSEL_BITS_LEN) - 1) \
 	   << AW_PID_2055_CFSEL_START_BIT))
 
 #define AW_PID_2055_CFSEL_HAGC (0)
-#define AW_PID_2055_CFSEL_HAGC_VALUE                                           \
+#define AW_PID_2055_CFSEL_HAGC_VALUE \
 	(AW_PID_2055_CFSEL_HAGC << AW_PID_2055_CFSEL_START_BIT)
 
 #define AW_PID_2055_CFSEL_ULSLP (1)
-#define AW_PID_2055_CFSEL_ULSLP_VALUE                                          \
+#define AW_PID_2055_CFSEL_ULSLP_VALUE \
 	(AW_PID_2055_CFSEL_ULSLP << AW_PID_2055_CFSEL_START_BIT)
 
 #define AW_PID_2055_CFSEL_INTP_DOUT (2)
-#define AW_PID_2055_CFSEL_INTP_DOUT_VALUE                                      \
+#define AW_PID_2055_CFSEL_INTP_DOUT_VALUE \
 	(AW_PID_2055_CFSEL_INTP_DOUT << AW_PID_2055_CFSEL_START_BIT)
 
 #define AW_PID_2055_CFSEL_ORTESTDET (3)
-#define AW_PID_2055_CFSEL_ORTESTDET_VALUE                                      \
+#define AW_PID_2055_CFSEL_ORTESTDET_VALUE \
 	(AW_PID_2055_CFSEL_ORTESTDET << AW_PID_2055_CFSEL_START_BIT)
 
 #define AW_PID_2055_CFSEL_IVBTTXDOUT (4)
-#define AW_PID_2055_CFSEL_IVBTTXDOUT_VALUE                                     \
+#define AW_PID_2055_CFSEL_IVBTTXDOUT_VALUE \
 	(AW_PID_2055_CFSEL_IVBTTXDOUT << AW_PID_2055_CFSEL_START_BIT)
 
 #define AW_PID_2055_CFSEL_VBTTXDOUT (5)
-#define AW_PID_2055_CFSEL_VBTTXDOUT_VALUE                                      \
+#define AW_PID_2055_CFSEL_VBTTXDOUT_VALUE \
 	(AW_PID_2055_CFSEL_VBTTXDOUT << AW_PID_2055_CFSEL_START_BIT)
 
 #define AW_PID_2055_CFSEL_DEFAULT_VALUE (0)
-#define AW_PID_2055_CFSEL_DEFAULT                                              \
+#define AW_PID_2055_CFSEL_DEFAULT \
 	(AW_PID_2055_CFSEL_DEFAULT_VALUE << AW_PID_2055_CFSEL_START_BIT)
 
 /* default value of I2SCTRL3 (0x08) */
@@ -1717,23 +1730,23 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* RVTH bit 15:8 (DACCFG1 0x09) */
 #define AW_PID_2055_RVTH_START_BIT (8)
 #define AW_PID_2055_RVTH_BITS_LEN (8)
-#define AW_PID_2055_RVTH_MASK                                                  \
-	(~(((1 << AW_PID_2055_RVTH_BITS_LEN) - 1)                              \
+#define AW_PID_2055_RVTH_MASK                     \
+	(~(((1 << AW_PID_2055_RVTH_BITS_LEN) - 1) \
 	   << AW_PID_2055_RVTH_START_BIT))
 
 #define AW_PID_2055_RVTH_DEFAULT_VALUE (0x39)
-#define AW_PID_2055_RVTH_DEFAULT                                               \
+#define AW_PID_2055_RVTH_DEFAULT \
 	(AW_PID_2055_RVTH_DEFAULT_VALUE << AW_PID_2055_RVTH_START_BIT)
 
 /* AVTH bit 7:0 (DACCFG1 0x09) */
 #define AW_PID_2055_AVTH_START_BIT (0)
 #define AW_PID_2055_AVTH_BITS_LEN (8)
-#define AW_PID_2055_AVTH_MASK                                                  \
-	(~(((1 << AW_PID_2055_AVTH_BITS_LEN) - 1)                              \
+#define AW_PID_2055_AVTH_MASK                     \
+	(~(((1 << AW_PID_2055_AVTH_BITS_LEN) - 1) \
 	   << AW_PID_2055_AVTH_START_BIT))
 
 #define AW_PID_2055_AVTH_DEFAULT_VALUE (0x40)
-#define AW_PID_2055_AVTH_DEFAULT                                               \
+#define AW_PID_2055_AVTH_DEFAULT \
 	(AW_PID_2055_AVTH_DEFAULT_VALUE << AW_PID_2055_AVTH_START_BIT)
 
 /* default value of DACCFG1 (0x09) */
@@ -1743,16 +1756,16 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* ATTH bit 15:0 (DACCFG2 0x0A) */
 #define AW_PID_2055_ATTH_START_BIT (0)
 #define AW_PID_2055_ATTH_BITS_LEN (16)
-#define AW_PID_2055_ATTH_MASK                                                  \
-	(~(((1 << AW_PID_2055_ATTH_BITS_LEN) - 1)                              \
+#define AW_PID_2055_ATTH_MASK                     \
+	(~(((1 << AW_PID_2055_ATTH_BITS_LEN) - 1) \
 	   << AW_PID_2055_ATTH_START_BIT))
 
 #define AW_PID_2055_ATTH_RESERVED (0)
-#define AW_PID_2055_ATTH_RESERVED_VALUE                                        \
+#define AW_PID_2055_ATTH_RESERVED_VALUE \
 	(AW_PID_2055_ATTH_RESERVED << AW_PID_2055_ATTH_START_BIT)
 
 #define AW_PID_2055_ATTH_DEFAULT_VALUE (0x0030)
-#define AW_PID_2055_ATTH_DEFAULT                                               \
+#define AW_PID_2055_ATTH_DEFAULT \
 	(AW_PID_2055_ATTH_DEFAULT_VALUE << AW_PID_2055_ATTH_START_BIT)
 
 /* default value of DACCFG2 (0x0A) */
@@ -1762,16 +1775,16 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* RTTH bit 15:0 (DACCFG3 0x0B) */
 #define AW_PID_2055_RTTH_START_BIT (0)
 #define AW_PID_2055_RTTH_BITS_LEN (16)
-#define AW_PID_2055_RTTH_MASK                                                  \
-	(~(((1 << AW_PID_2055_RTTH_BITS_LEN) - 1)                              \
+#define AW_PID_2055_RTTH_MASK                     \
+	(~(((1 << AW_PID_2055_RTTH_BITS_LEN) - 1) \
 	   << AW_PID_2055_RTTH_START_BIT))
 
 #define AW_PID_2055_RTTH_RESERVED (0)
-#define AW_PID_2055_RTTH_RESERVED_VALUE                                        \
+#define AW_PID_2055_RTTH_RESERVED_VALUE \
 	(AW_PID_2055_RTTH_RESERVED << AW_PID_2055_RTTH_START_BIT)
 
 #define AW_PID_2055_RTTH_DEFAULT_VALUE (0x01E0)
-#define AW_PID_2055_RTTH_DEFAULT                                               \
+#define AW_PID_2055_RTTH_DEFAULT \
 	(AW_PID_2055_RTTH_DEFAULT_VALUE << AW_PID_2055_RTTH_START_BIT)
 
 /* default value of DACCFG3 (0x0B) */
@@ -1781,48 +1794,48 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* IIC_GEN_ADDR bit 15:9 (DACCFG4 0x0C) */
 #define AW_PID_2055_IIC_GEN_ADDR_START_BIT (9)
 #define AW_PID_2055_IIC_GEN_ADDR_BITS_LEN (7)
-#define AW_PID_2055_IIC_GEN_ADDR_MASK                                          \
-	(~(((1 << AW_PID_2055_IIC_GEN_ADDR_BITS_LEN) - 1)                      \
+#define AW_PID_2055_IIC_GEN_ADDR_MASK                     \
+	(~(((1 << AW_PID_2055_IIC_GEN_ADDR_BITS_LEN) - 1) \
 	   << AW_PID_2055_IIC_GEN_ADDR_START_BIT))
 
 #define AW_PID_2055_IIC_GEN_ADDR_DEFAULT_VALUE (0x0E)
-#define AW_PID_2055_IIC_GEN_ADDR_DEFAULT                                       \
-	(AW_PID_2055_IIC_GEN_ADDR_DEFAULT_VALUE                                \
+#define AW_PID_2055_IIC_GEN_ADDR_DEFAULT        \
+	(AW_PID_2055_IIC_GEN_ADDR_DEFAULT_VALUE \
 	 << AW_PID_2055_IIC_GEN_ADDR_START_BIT)
 
 /* IIC_GEN_EN bit 8 (DACCFG4 0x0C) */
 #define AW_PID_2055_IIC_GEN_EN_START_BIT (8)
 #define AW_PID_2055_IIC_GEN_EN_BITS_LEN (1)
-#define AW_PID_2055_IIC_GEN_EN_MASK                                            \
-	(~(((1 << AW_PID_2055_IIC_GEN_EN_BITS_LEN) - 1)                        \
+#define AW_PID_2055_IIC_GEN_EN_MASK                     \
+	(~(((1 << AW_PID_2055_IIC_GEN_EN_BITS_LEN) - 1) \
 	   << AW_PID_2055_IIC_GEN_EN_START_BIT))
 
 #define AW_PID_2055_IIC_GEN_EN_DISABLE (0)
-#define AW_PID_2055_IIC_GEN_EN_DISABLE_VALUE                                   \
+#define AW_PID_2055_IIC_GEN_EN_DISABLE_VALUE \
 	(AW_PID_2055_IIC_GEN_EN_DISABLE << AW_PID_2055_IIC_GEN_EN_START_BIT)
 
 #define AW_PID_2055_IIC_GEN_EN_ENABLE (1)
-#define AW_PID_2055_IIC_GEN_EN_ENABLE_VALUE                                    \
+#define AW_PID_2055_IIC_GEN_EN_ENABLE_VALUE \
 	(AW_PID_2055_IIC_GEN_EN_ENABLE << AW_PID_2055_IIC_GEN_EN_START_BIT)
 
 #define AW_PID_2055_IIC_GEN_EN_DEFAULT_VALUE (0)
-#define AW_PID_2055_IIC_GEN_EN_DEFAULT                                         \
-	(AW_PID_2055_IIC_GEN_EN_DEFAULT_VALUE                                  \
+#define AW_PID_2055_IIC_GEN_EN_DEFAULT        \
+	(AW_PID_2055_IIC_GEN_EN_DEFAULT_VALUE \
 	 << AW_PID_2055_IIC_GEN_EN_START_BIT)
 
 /* HOLDTH bit 7:0 (DACCFG4 0x0C) */
 #define AW_PID_2055_HOLDTH_START_BIT (0)
 #define AW_PID_2055_HOLDTH_BITS_LEN (8)
-#define AW_PID_2055_HOLDTH_MASK                                                \
-	(~(((1 << AW_PID_2055_HOLDTH_BITS_LEN) - 1)                            \
+#define AW_PID_2055_HOLDTH_MASK                     \
+	(~(((1 << AW_PID_2055_HOLDTH_BITS_LEN) - 1) \
 	   << AW_PID_2055_HOLDTH_START_BIT))
 
 #define AW_PID_2055_HOLDTH_RESERVED (0)
-#define AW_PID_2055_HOLDTH_RESERVED_VALUE                                      \
+#define AW_PID_2055_HOLDTH_RESERVED_VALUE \
 	(AW_PID_2055_HOLDTH_RESERVED << AW_PID_2055_HOLDTH_START_BIT)
 
 #define AW_PID_2055_HOLDTH_DEFAULT_VALUE (0x64)
-#define AW_PID_2055_HOLDTH_DEFAULT                                             \
+#define AW_PID_2055_HOLDTH_DEFAULT \
 	(AW_PID_2055_HOLDTH_DEFAULT_VALUE << AW_PID_2055_HOLDTH_START_BIT)
 
 /* default value of DACCFG4 (0x0C) */
@@ -1832,12 +1845,12 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* VBAT_DET bit 9:0 (VBAT 0x21) */
 #define AW_PID_2055_VBAT_DET_START_BIT (0)
 #define AW_PID_2055_VBAT_DET_BITS_LEN (10)
-#define AW_PID_2055_VBAT_DET_MASK                                              \
-	(~(((1 << AW_PID_2055_VBAT_DET_BITS_LEN) - 1)                          \
+#define AW_PID_2055_VBAT_DET_MASK                     \
+	(~(((1 << AW_PID_2055_VBAT_DET_BITS_LEN) - 1) \
 	   << AW_PID_2055_VBAT_DET_START_BIT))
 
 #define AW_PID_2055_VBAT_DET_DEFAULT_VALUE (0x2a0)
-#define AW_PID_2055_VBAT_DET_DEFAULT                                           \
+#define AW_PID_2055_VBAT_DET_DEFAULT \
 	(AW_PID_2055_VBAT_DET_DEFAULT_VALUE << AW_PID_2055_VBAT_DET_START_BIT)
 
 /* default value of VBAT (0x21) */
@@ -1847,32 +1860,32 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* TEMP_DET bit 9:0 (TEMP 0x22) */
 #define AW_PID_2055_TEMP_DET_START_BIT (0)
 #define AW_PID_2055_TEMP_DET_BITS_LEN (10)
-#define AW_PID_2055_TEMP_DET_MASK                                              \
-	(~(((1 << AW_PID_2055_TEMP_DET_BITS_LEN) - 1)                          \
+#define AW_PID_2055_TEMP_DET_MASK                     \
+	(~(((1 << AW_PID_2055_TEMP_DET_BITS_LEN) - 1) \
 	   << AW_PID_2055_TEMP_DET_START_BIT))
 
 #define AW_PID_2055_TEMP_DET_MINUS40 (0x3D8)
-#define AW_PID_2055_TEMP_DET_MINUS40_VALUE                                     \
+#define AW_PID_2055_TEMP_DET_MINUS40_VALUE \
 	(AW_PID_2055_TEMP_DET_MINUS40 << AW_PID_2055_TEMP_DET_START_BIT)
 
 #define AW_PID_2055_TEMP_DET_0 (0x00)
-#define AW_PID_2055_TEMP_DET_0_VALUE                                           \
+#define AW_PID_2055_TEMP_DET_0_VALUE \
 	(AW_PID_2055_TEMP_DET_0 << AW_PID_2055_TEMP_DET_START_BIT)
 
 #define AW_PID_2055_TEMP_DET_1 (0x01)
-#define AW_PID_2055_TEMP_DET_1_VALUE                                           \
+#define AW_PID_2055_TEMP_DET_1_VALUE \
 	(AW_PID_2055_TEMP_DET_1 << AW_PID_2055_TEMP_DET_START_BIT)
 
 #define AW_PID_2055_TEMP_DET_25 (0x19)
-#define AW_PID_2055_TEMP_DET_25_VALUE                                          \
+#define AW_PID_2055_TEMP_DET_25_VALUE \
 	(AW_PID_2055_TEMP_DET_25 << AW_PID_2055_TEMP_DET_START_BIT)
 
 #define AW_PID_2055_TEMP_DET_55 (0x37)
-#define AW_PID_2055_TEMP_DET_55_VALUE                                          \
+#define AW_PID_2055_TEMP_DET_55_VALUE \
 	(AW_PID_2055_TEMP_DET_55 << AW_PID_2055_TEMP_DET_START_BIT)
 
 #define AW_PID_2055_TEMP_DET_DEFAULT_VALUE (0x019)
-#define AW_PID_2055_TEMP_DET_DEFAULT                                           \
+#define AW_PID_2055_TEMP_DET_DEFAULT \
 	(AW_PID_2055_TEMP_DET_DEFAULT_VALUE << AW_PID_2055_TEMP_DET_START_BIT)
 
 /* default value of TEMP (0x22) */
@@ -1882,12 +1895,12 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* PVDD_DET bit 9:0 (PVDD 0x23) */
 #define AW_PID_2055_PVDD_DET_START_BIT (0)
 #define AW_PID_2055_PVDD_DET_BITS_LEN (10)
-#define AW_PID_2055_PVDD_DET_MASK                                              \
-	(~(((1 << AW_PID_2055_PVDD_DET_BITS_LEN) - 1)                          \
+#define AW_PID_2055_PVDD_DET_MASK                     \
+	(~(((1 << AW_PID_2055_PVDD_DET_BITS_LEN) - 1) \
 	   << AW_PID_2055_PVDD_DET_START_BIT))
 
 #define AW_PID_2055_PVDD_DET_DEFAULT_VALUE (0x2a0)
-#define AW_PID_2055_PVDD_DET_DEFAULT                                           \
+#define AW_PID_2055_PVDD_DET_DEFAULT \
 	(AW_PID_2055_PVDD_DET_DEFAULT_VALUE << AW_PID_2055_PVDD_DET_START_BIT)
 
 /* default value of PVDD (0x23) */
@@ -1896,85 +1909,85 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* CCO_MUX bit 2 (PLLCTRL3 0x52) */
 #define AW_PID_2055_CCO_MUX_START_BIT (2)
 #define AW_PID_2055_CCO_MUX_BITS_LEN (1)
-#define AW_PID_2055_CCO_MUX_MASK                                               \
-	(~(((1 << AW_PID_2055_CCO_MUX_BITS_LEN) - 1)                           \
+#define AW_PID_2055_CCO_MUX_MASK                     \
+	(~(((1 << AW_PID_2055_CCO_MUX_BITS_LEN) - 1) \
 	   << AW_PID_2055_CCO_MUX_START_BIT))
 
 #define AW_PID_2055_CCO_MUX_DIVIDED (0)
-#define AW_PID_2055_CCO_MUX_DIVIDED_VALUE                                      \
+#define AW_PID_2055_CCO_MUX_DIVIDED_VALUE \
 	(AW_PID_2055_CCO_MUX_DIVIDED << AW_PID_2055_CCO_MUX_START_BIT)
 
 #define AW_PID_2055_CCO_MUX_BYPASS (1)
-#define AW_PID_2055_CCO_MUX_BYPASS_VALUE                                       \
+#define AW_PID_2055_CCO_MUX_BYPASS_VALUE \
 	(AW_PID_2055_CCO_MUX_BYPASS << AW_PID_2055_CCO_MUX_START_BIT)
 
 /* BOP_EN bit 4 (SADCCTRL3 0x3C) */
 #define AW_PID_2055_BOP_EN_START_BIT (4)
 #define AW_PID_2055_BOP_EN_BITS_LEN (1)
-#define AW_PID_2055_BOP_EN_MASK                                                \
-	(~(((1 << AW_PID_2055_BOP_EN_BITS_LEN) - 1)                            \
+#define AW_PID_2055_BOP_EN_MASK                     \
+	(~(((1 << AW_PID_2055_BOP_EN_BITS_LEN) - 1) \
 	   << AW_PID_2055_BOP_EN_START_BIT))
 
 #define AW_PID_2055_BOP_EN_DISABLE (0)
-#define AW_PID_2055_BOP_EN_DISABLE_VALUE                                       \
+#define AW_PID_2055_BOP_EN_DISABLE_VALUE \
 	(AW_PID_2055_BOP_EN_DISABLE << AW_PID_2055_BOP_EN_START_BIT)
 
 #define AW_PID_2055_BOP_EN_ENABLE (1)
-#define AW_PID_2055_BOP_EN_ENABLE_VALUE                                        \
+#define AW_PID_2055_BOP_EN_ENABLE_VALUE \
 	(AW_PID_2055_BOP_EN_ENABLE << AW_PID_2055_BOP_EN_START_BIT)
 
 #define AW_PID_2055_BOP_EN_DEFAULT_VALUE (0)
-#define AW_PID_2055_BOP_EN_DEFAULT                                             \
+#define AW_PID_2055_BOP_EN_DEFAULT \
 	(AW_PID_2055_BOP_EN_DEFAULT_VALUE << AW_PID_2055_BOP_EN_START_BIT)
 
 /* BSTCTRL1 (0x60) detail */
 /* BST_RTH bit 13:8 (BSTCTRL1 0x60) */
 #define AW_PID_2055_BST_RTH_START_BIT (8)
 #define AW_PID_2055_BST_RTH_BITS_LEN (6)
-#define AW_PID_2055_BST_RTH_MASK                                               \
-	(~(((1 << AW_PID_2055_BST_RTH_BITS_LEN) - 1)                           \
+#define AW_PID_2055_BST_RTH_MASK                     \
+	(~(((1 << AW_PID_2055_BST_RTH_BITS_LEN) - 1) \
 	   << AW_PID_2055_BST_RTH_START_BIT))
 
 #define AW_PID_2055_BST_RTH_DEFAULT_VALUE (4)
-#define AW_PID_2055_BST_RTH_DEFAULT                                            \
+#define AW_PID_2055_BST_RTH_DEFAULT \
 	(AW_PID_2055_BST_RTH_DEFAULT_VALUE << AW_PID_2055_BST_RTH_START_BIT)
 
 /* BST_MODE bit 7:6 (BSTCTRL1 0x60) */
 #define AW_PID_2055_BST_MODE_START_BIT (6)
 #define AW_PID_2055_BST_MODE_BITS_LEN (2)
-#define AW_PID_2055_BST_MODE_MASK                                              \
-	(~(((1 << AW_PID_2055_BST_MODE_BITS_LEN) - 1)                          \
+#define AW_PID_2055_BST_MODE_MASK                     \
+	(~(((1 << AW_PID_2055_BST_MODE_BITS_LEN) - 1) \
 	   << AW_PID_2055_BST_MODE_START_BIT))
 
 #define AW_PID_2055_BST_MODE_TRANSPARENT (0)
-#define AW_PID_2055_BST_MODE_TRANSPARENT_VALUE                                 \
+#define AW_PID_2055_BST_MODE_TRANSPARENT_VALUE \
 	(AW_PID_2055_BST_MODE_TRANSPARENT << AW_PID_2055_BST_MODE_START_BIT)
 
 #define AW_PID_2055_BST_MODE_FORCE_BOOST (1)
-#define AW_PID_2055_BST_MODE_FORCE_BOOST_VALUE                                 \
+#define AW_PID_2055_BST_MODE_FORCE_BOOST_VALUE \
 	(AW_PID_2055_BST_MODE_FORCE_BOOST << AW_PID_2055_BST_MODE_START_BIT)
 
 #define AW_PID_2055_BST_MODE_CLASS_G (2)
-#define AW_PID_2055_BST_MODE_CLASS_G_VALUE                                     \
+#define AW_PID_2055_BST_MODE_CLASS_G_VALUE \
 	(AW_PID_2055_BST_MODE_CLASS_G << AW_PID_2055_BST_MODE_START_BIT)
 
 #define AW_PID_2055_BST_MODE_CLASS_H (3)
-#define AW_PID_2055_BST_MODE_CLASS_H_VALUE                                     \
+#define AW_PID_2055_BST_MODE_CLASS_H_VALUE \
 	(AW_PID_2055_BST_MODE_CLASS_H << AW_PID_2055_BST_MODE_START_BIT)
 
 #define AW_PID_2055_BST_MODE_DEFAULT_VALUE (0x3)
-#define AW_PID_2055_BST_MODE_DEFAULT                                           \
+#define AW_PID_2055_BST_MODE_DEFAULT \
 	(AW_PID_2055_BST_MODE_DEFAULT_VALUE << AW_PID_2055_BST_MODE_START_BIT)
 
 /* BST_ATH bit 5:0 (BSTCTRL1 0x60) */
 #define AW_PID_2055_BST_ATH_START_BIT (0)
 #define AW_PID_2055_BST_ATH_BITS_LEN (6)
-#define AW_PID_2055_BST_ATH_MASK                                               \
-	(~(((1 << AW_PID_2055_BST_ATH_BITS_LEN) - 1)                           \
+#define AW_PID_2055_BST_ATH_MASK                     \
+	(~(((1 << AW_PID_2055_BST_ATH_BITS_LEN) - 1) \
 	   << AW_PID_2055_BST_ATH_START_BIT))
 
 #define AW_PID_2055_BST_ATH_DEFAULT_VALUE (2)
-#define AW_PID_2055_BST_ATH_DEFAULT                                            \
+#define AW_PID_2055_BST_ATH_DEFAULT \
 	(AW_PID_2055_BST_ATH_DEFAULT_VALUE << AW_PID_2055_BST_ATH_START_BIT)
 
 /* default value of BSTCTRL1 (0x60) */
@@ -1984,180 +1997,180 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
 /* BST_IPEAK bit 15:12 (BSTCTRL2 0x61) */
 #define AW_PID_2055_BST_IPEAK_START_BIT (12)
 #define AW_PID_2055_BST_IPEAK_BITS_LEN (4)
-#define AW_PID_2055_BST_IPEAK_MASK                                             \
-	(~(((1 << AW_PID_2055_BST_IPEAK_BITS_LEN) - 1)                         \
+#define AW_PID_2055_BST_IPEAK_MASK                     \
+	(~(((1 << AW_PID_2055_BST_IPEAK_BITS_LEN) - 1) \
 	   << AW_PID_2055_BST_IPEAK_START_BIT))
 
 #define AW_PID_2055_BST_IPEAK_1P5A (0)
-#define AW_PID_2055_BST_IPEAK_1P5A_VALUE                                       \
+#define AW_PID_2055_BST_IPEAK_1P5A_VALUE \
 	(AW_PID_2055_BST_IPEAK_1P5A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_1P75A (1)
-#define AW_PID_2055_BST_IPEAK_1P75A_VALUE                                      \
+#define AW_PID_2055_BST_IPEAK_1P75A_VALUE \
 	(AW_PID_2055_BST_IPEAK_1P75A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_2P0A (2)
-#define AW_PID_2055_BST_IPEAK_2P0A_VALUE                                       \
+#define AW_PID_2055_BST_IPEAK_2P0A_VALUE \
 	(AW_PID_2055_BST_IPEAK_2P0A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_2P25A (3)
-#define AW_PID_2055_BST_IPEAK_2P25A_VALUE                                      \
+#define AW_PID_2055_BST_IPEAK_2P25A_VALUE \
 	(AW_PID_2055_BST_IPEAK_2P25A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_2P5A (4)
-#define AW_PID_2055_BST_IPEAK_2P5A_VALUE                                       \
+#define AW_PID_2055_BST_IPEAK_2P5A_VALUE \
 	(AW_PID_2055_BST_IPEAK_2P5A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_2P75A (5)
-#define AW_PID_2055_BST_IPEAK_2P75A_VALUE                                      \
+#define AW_PID_2055_BST_IPEAK_2P75A_VALUE \
 	(AW_PID_2055_BST_IPEAK_2P75A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_3P0A (6)
-#define AW_PID_2055_BST_IPEAK_3P0A_VALUE                                       \
+#define AW_PID_2055_BST_IPEAK_3P0A_VALUE \
 	(AW_PID_2055_BST_IPEAK_3P0A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_3P25A (7)
-#define AW_PID_2055_BST_IPEAK_3P25A_VALUE                                      \
+#define AW_PID_2055_BST_IPEAK_3P25A_VALUE \
 	(AW_PID_2055_BST_IPEAK_3P25A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_3P5A (8)
-#define AW_PID_2055_BST_IPEAK_3P5A_VALUE                                       \
+#define AW_PID_2055_BST_IPEAK_3P5A_VALUE \
 	(AW_PID_2055_BST_IPEAK_3P5A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_3P75A (9)
-#define AW_PID_2055_BST_IPEAK_3P75A_VALUE                                      \
+#define AW_PID_2055_BST_IPEAK_3P75A_VALUE \
 	(AW_PID_2055_BST_IPEAK_3P75A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_4A (10)
-#define AW_PID_2055_BST_IPEAK_4A_VALUE                                         \
+#define AW_PID_2055_BST_IPEAK_4A_VALUE \
 	(AW_PID_2055_BST_IPEAK_4A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_4P25A (11)
-#define AW_PID_2055_BST_IPEAK_4P25A_VALUE                                      \
+#define AW_PID_2055_BST_IPEAK_4P25A_VALUE \
 	(AW_PID_2055_BST_IPEAK_4P25A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_4P50A (12)
-#define AW_PID_2055_BST_IPEAK_4P50A_VALUE                                      \
+#define AW_PID_2055_BST_IPEAK_4P50A_VALUE \
 	(AW_PID_2055_BST_IPEAK_4P50A << AW_PID_2055_BST_IPEAK_START_BIT)
 
 #define AW_PID_2055_BST_IPEAK_DEFAULT_VALUE (9)
-#define AW_PID_2055_BST_IPEAK_DEFAULT                                          \
+#define AW_PID_2055_BST_IPEAK_DEFAULT \
 	(AW_PID_2055_BST_IPEAK_DEFAULT_VALUE << AW_PID_2055_BST_IPEAK_START_BIT)
 
 /* BST_TDEG bit 11:8 (BSTCTRL2 0x61) */
 #define AW_PID_2055_BST_TDEG_START_BIT (8)
 #define AW_PID_2055_BST_TDEG_BITS_LEN (4)
-#define AW_PID_2055_BST_TDEG_MASK                                              \
-	(~(((1 << AW_PID_2055_BST_TDEG_BITS_LEN) - 1)                          \
+#define AW_PID_2055_BST_TDEG_MASK                     \
+	(~(((1 << AW_PID_2055_BST_TDEG_BITS_LEN) - 1) \
 	   << AW_PID_2055_BST_TDEG_START_BIT))
 
 #define AW_PID_2055_BST_TDEG_0P50_MS (0)
-#define AW_PID_2055_BST_TDEG_0P50_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_0P50_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_0P50_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_1P00_MS (1)
-#define AW_PID_2055_BST_TDEG_1P00_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_1P00_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_1P00_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_2P00_MS (2)
-#define AW_PID_2055_BST_TDEG_2P00_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_2P00_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_2P00_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_4P00_MS (3)
-#define AW_PID_2055_BST_TDEG_4P00_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_4P00_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_4P00_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_8P00_MS (4)
-#define AW_PID_2055_BST_TDEG_8P00_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_8P00_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_8P00_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_10P7_MS (5)
-#define AW_PID_2055_BST_TDEG_10P7_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_10P7_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_10P7_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_13P3_MS (6)
-#define AW_PID_2055_BST_TDEG_13P3_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_13P3_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_13P3_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_16P0_MS (7)
-#define AW_PID_2055_BST_TDEG_16P0_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_16P0_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_16P0_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_18P6_MS (8)
-#define AW_PID_2055_BST_TDEG_18P6_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_18P6_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_18P6_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_21P3_MS (9)
-#define AW_PID_2055_BST_TDEG_21P3_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_21P3_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_21P3_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_24P0_MS (10)
-#define AW_PID_2055_BST_TDEG_24P0_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_24P0_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_24P0_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_32P0_MS (11)
-#define AW_PID_2055_BST_TDEG_32P0_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_32P0_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_32P0_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_64P0_MS (12)
-#define AW_PID_2055_BST_TDEG_64P0_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_64P0_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_64P0_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_128_MS (13)
-#define AW_PID_2055_BST_TDEG_128_MS_VALUE                                      \
+#define AW_PID_2055_BST_TDEG_128_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_128_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_256_MS (14)
-#define AW_PID_2055_BST_TDEG_256_MS_VALUE                                      \
+#define AW_PID_2055_BST_TDEG_256_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_256_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_1200_MS (15)
-#define AW_PID_2055_BST_TDEG_1200_MS_VALUE                                     \
+#define AW_PID_2055_BST_TDEG_1200_MS_VALUE \
 	(AW_PID_2055_BST_TDEG_1200_MS << AW_PID_2055_BST_TDEG_START_BIT)
 
 #define AW_PID_2055_BST_TDEG_DEFAULT_VALUE (11)
-#define AW_PID_2055_BST_TDEG_DEFAULT                                           \
+#define AW_PID_2055_BST_TDEG_DEFAULT \
 	(AW_PID_2055_BST_TDEG_DEFAULT_VALUE << AW_PID_2055_BST_TDEG_START_BIT)
 
 /* BST_VOUT_SET bit 6:0 (BSTCTRL2 0x61) */
 #define AW_PID_2055_BST_VOUT_SET_START_BIT (0)
 #define AW_PID_2055_BST_VOUT_SET_BITS_LEN (7)
-#define AW_PID_2055_BST_VOUT_SET_MASK                                          \
-	(~(((1 << AW_PID_2055_BST_VOUT_SET_BITS_LEN) - 1)                      \
+#define AW_PID_2055_BST_VOUT_SET_MASK                     \
+	(~(((1 << AW_PID_2055_BST_VOUT_SET_BITS_LEN) - 1) \
 	   << AW_PID_2055_BST_VOUT_SET_START_BIT))
 
 #define AW_PID_2055_BST_VOUT_SET_3P5V (0)
-#define AW_PID_2055_BST_VOUT_SET_3P5V_VALUE                                    \
+#define AW_PID_2055_BST_VOUT_SET_3P5V_VALUE \
 	(AW_PID_2055_BST_VOUT_SET_3P5V << AW_PID_2055_BST_VOUT_SET_START_BIT)
 
 #define AW_PID_2055_BST_VOUT_SET_3P5625V (1)
-#define AW_PID_2055_BST_VOUT_SET_3P5625V_VALUE                                 \
+#define AW_PID_2055_BST_VOUT_SET_3P5625V_VALUE \
 	(AW_PID_2055_BST_VOUT_SET_3P5625V << AW_PID_2055_BST_VOUT_SET_START_BIT)
 
 #define AW_PID_2055_BST_VOUT_SET_3P625V (2)
-#define AW_PID_2055_BST_VOUT_SET_3P625V_VALUE                                  \
+#define AW_PID_2055_BST_VOUT_SET_3P625V_VALUE \
 	(AW_PID_2055_BST_VOUT_SET_3P625V << AW_PID_2055_BST_VOUT_SET_START_BIT)
 
 #define AW_PID_2055_BST_VOUT_SET_3P6875V (3)
-#define AW_PID_2055_BST_VOUT_SET_3P6875V_VALUE                                 \
+#define AW_PID_2055_BST_VOUT_SET_3P6875V_VALUE \
 	(AW_PID_2055_BST_VOUT_SET_3P6875V << AW_PID_2055_BST_VOUT_SET_START_BIT)
 
 #define AW_PID_2055_BST_VOUT_SET_3P75V (4)
-#define AW_PID_2055_BST_VOUT_SET_3P75V_VALUE                                   \
+#define AW_PID_2055_BST_VOUT_SET_3P75V_VALUE \
 	(AW_PID_2055_BST_VOUT_SET_3P75V << AW_PID_2055_BST_VOUT_SET_START_BIT)
 
 #define AW_PID_2055_BST_VOUT_SET_3P8125V (5)
-#define AW_PID_2055_BST_VOUT_SET_3P8125V_VALUE                                 \
+#define AW_PID_2055_BST_VOUT_SET_3P8125V_VALUE \
 	(AW_PID_2055_BST_VOUT_SET_3P8125V << AW_PID_2055_BST_VOUT_SET_START_BIT)
 
 #define AW_PID_2055_BST_VOUT_SET_11P4375V (127)
-#define AW_PID_2055_BST_VOUT_SET_11P4375V_VALUE                                \
-	(AW_PID_2055_BST_VOUT_SET_11P4375V                                     \
+#define AW_PID_2055_BST_VOUT_SET_11P4375V_VALUE \
+	(AW_PID_2055_BST_VOUT_SET_11P4375V      \
 	 << AW_PID_2055_BST_VOUT_SET_START_BIT)
 
 #define AW_PID_2055_BST_VOUT_SET_DEFAULT_VALUE (0x58)
-#define AW_PID_2055_BST_VOUT_SET_DEFAULT                                       \
-	(AW_PID_2055_BST_VOUT_SET_DEFAULT_VALUE                                \
+#define AW_PID_2055_BST_VOUT_SET_DEFAULT        \
+	(AW_PID_2055_BST_VOUT_SET_DEFAULT_VALUE \
 	 << AW_PID_2055_BST_VOUT_SET_START_BIT)
 
 /* default value of BSTCTRL2 (0x61) */
@@ -2180,5 +2193,21 @@ const unsigned char aw_pid_2055_reg_access[AW_PID_2055_REG_MAX] = {
  *******************************************/
 #define AW_PID_2055_INIT_CHECK_REG (0x73)
 #define AW_PID_2055_INIT_CHECK_VALUE (0x1D40)
+/********************************************
+ * Dither
+ *******************************************/
+#define AW_PID_2055_DITHER_START_BIT (14)
+#define AW_PID_2055_DITHER_BITS_LEN (1)
+#define AW_PID_2055_DITHER_MASK                     \
+	(~(((1 << AW_PID_2055_DITHER_BITS_LEN) - 1) \
+	   << AW_PID_2055_DITHER_START_BIT))
+
+#define AW_PID_2055_DITHER_DISABLE (0)
+#define AW_PID_2055_DITHER_DISABLE_VALUE \
+	(AW_PID_2055_DITHER_DISABLE << AW_PID_2055_DITHER_START_BIT)
+
+#define AW_PID_2055_DITHER_ENABLE (1)
+#define AW_PID_2055_DITHER_ENABLE_VALUE \
+	(AW_PID_2055_DITHER_ENABLE << AW_PID_2055_DITHER_START_BIT)
 
 #endif /* #ifndef  __AW_PID_2055_REG_H__ */

@@ -1,3 +1,16 @@
+/* SPDX-License-Identifier: GPL-2.0
+ * aw882xx_calib.h
+ *
+ * Copyright (c) 2020 AWINIC Technology CO., LTD
+ *
+ * Author: Nick Li <liweilei@awinic.com.cn>
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ */
+
 #ifndef __AW882XX_CALIBRATION_H__
 #define __AW882XX_CALIBRATION_H__
 
@@ -104,7 +117,7 @@ typedef struct {
 #define AW_IOCTL_GET_VMAX _IOWR(AW_IOCTL_MAGIC, 9, int32_t)
 #define AW_IOCTL_SET_PARAM _IOWR(AW_IOCTL_MAGIC, 10, struct params_data)
 #define AW_IOCTL_ENABLE_CALI _IOWR(AW_IOCTL_MAGIC, 11, int8_t)
-#define AW_IOCTL_SET_PTR_PARAM_NUM                                             \
+#define AW_IOCTL_SET_PTR_PARAM_NUM \
 	_IOWR(AW_IOCTL_MAGIC, 12, struct ptr_params_data)
 #define AW_IOCTL_GET_F0_Q _IOWR(AW_IOCTL_MAGIC, 13, struct f0_q_data)
 #define AW_IOCTL_SET_DSP_HMUTE _IOWR(AW_IOCTL_MAGIC, 14, int32_t)

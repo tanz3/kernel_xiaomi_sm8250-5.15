@@ -1,3 +1,16 @@
+/* SPDX-License-Identifier: GPL-2.0
+ * aw882xx_device.h
+ *
+ * Copyright (c) 2020 AWINIC Technology CO., LTD
+ *
+ * Author: Nick Li <liweilei@awinic.com.cn>
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ */
+
 #ifndef __AW882XX_DEVICE_FILE_H__
 #define __AW882XX_DEVICE_FILE_H__
 #include "aw882xx_data_type.h"
@@ -10,10 +23,10 @@
 #define AW_NAME_MAX (50)
 #define ALGO_VERSION_MAX (80)
 
-#define AW_GET_MIN_VALUE(value1, value2)                                       \
+#define AW_GET_MIN_VALUE(value1, value2) \
 	((value1) > (value2) ? (value2) : (value1))
 
-#define AW_GET_MAX_VALUE(value1, value2)                                       \
+#define AW_GET_MAX_VALUE(value1, value2) \
 	((value1) > (value2) ? (value1) : (value2))
 
 enum {
@@ -269,6 +282,13 @@ struct aw_efcheck_desc {
 	unsigned int or_val;
 };
 
+struct aw_dither_desc {
+	unsigned int reg;
+	unsigned int mask;
+	unsigned int enable;
+	unsigned int disable;
+};
+
 struct aw_device {
 	int status;
 	unsigned int chip_id;
@@ -277,8 +297,11 @@ struct aw_device {
 	int frcset_en;
 	int bop_en;
 	int efuse_check;
+	int fade_en;
 	unsigned int mute_st;
 	unsigned int amppd_st;
+	unsigned int dither_st;
+	unsigned int txen_st;
 
 	unsigned char cur_prof; /*current profile index*/
 	unsigned char set_prof; /*set profile index*/
@@ -315,6 +338,7 @@ struct aw_device {
 	struct aw_spin_desc spin_desc;
 	struct aw_bop_desc bop_desc;
 	struct aw_efcheck_desc efcheck_desc;
+	struct aw_dither_desc dither_desc;
 	struct aw_device_ops ops;
 	struct list_head list_node;
 };
@@ -358,5 +382,8 @@ int aw882xx_dev_get_list_head(struct list_head **head);
 int aw882xx_dev_set_volume(struct aw_device *aw_dev, unsigned int set_vol);
 int aw882xx_dev_get_volume(struct aw_device *aw_dev, unsigned int *get_vol);
 void aw882xx_dev_mute(struct aw_device *aw_dev, bool mute);
+
+void aw882xx_dev_monitor_hal_get_time(struct aw_device *aw_dev, uint32_t *time);
+void aw882xx_dev_monitor_hal_work(struct aw_device *aw_dev, uint32_t *vmax);
 
 #endif

@@ -1,11 +1,24 @@
+/* SPDX-License-Identifier: GPL-2.0
+ * aw882xx_bin_parse.h
+ *
+ * Copyright (c) 2020 AWINIC Technology CO., LTD
+ *
+ * Author: Nick Li <liweilei@awinic.com.cn>
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ */
+
 #ifndef __AW882XX_BIN_PARSE_H__
 #define __AW882XX_BIN_PARSE_H__
 
 #include "aw882xx_device.h"
 
 #define NULL ((void *)0)
-#define GET_32_DATA(w, x, y, z)                                                \
-	((unsigned int)((((uint32_t)w) << 24) | (((uint32_t)x) << 16) |        \
+#define GET_32_DATA(w, x, y, z)                                         \
+	((unsigned int)((((uint32_t)w) << 24) | (((uint32_t)x) << 16) | \
 			(((uint32_t)y) << 8) | ((uint32_t)z)))
 #define BIN_NUM_MAX 100
 #define HEADER_LEN 60
@@ -60,10 +73,10 @@ struct bin_header_info {
 };
 
 /************************************************************
-*
-* function define
-*
-************************************************************/
+ *
+ * function define
+ *
+ ************************************************************/
 struct bin_container {
 	unsigned int
 		len; /* The size of the bin file obtained from the firmware */

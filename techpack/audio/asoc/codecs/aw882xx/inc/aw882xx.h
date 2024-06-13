@@ -1,3 +1,16 @@
+/* SPDX-License-Identifier: GPL-2.0
+ * aw882xx.h
+ *
+ * Copyright (c) 2020 AWINIC Technology CO., LTD
+ *
+ * Author: Nick Li <liweilei@awinic.com.cn>
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ */
+
 #ifndef _AW882XX_H_
 #define _AW882XX_H_
 #include <linux/version.h>
@@ -7,7 +20,7 @@
 /*
  * i2c transaction on Linux limited to 64k
  * (See Linux kernel documentation: Documentation/i2c/writing-clients)
-*/
+ */
 #define AW882XX_CHIP_ID_REG (0x00)
 #define MAX_I2C_BUFFER_SIZE 65536
 #define AW882XX_I2C_READ_MSG_NUM 2
@@ -23,10 +36,10 @@
 #define ACF_BIN_NAME "aw882xx_acf.bin"
 
 #define AW882XX_RATES SNDRV_PCM_RATE_8000_48000
-#define AW882XX_FORMATS                                                        \
-	(SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S24_LE |                   \
+#define AW882XX_FORMATS                                      \
+	(SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S24_LE | \
 	 SNDRV_PCM_FMTBIT_S32_LE)
-
+/*#define AW882XX_IRQ_START_FLAG*/
 enum {
 	AW882XX_STREAM_CLOSE = 0,
 	AW882XX_STREAM_OPEN,
@@ -53,21 +66,28 @@ enum aw882xx_int_type {
 	INT_TYPE_OTHI = 0x8,
 };
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 1)
+#if KERNEL_VERSION(4, 19, 1) <= LINUX_VERSION_CODE
 #define AW_KERNEL_VER_OVER_4_19_1
 #endif
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
+#if KERNEL_VERSION(5, 4, 0) <= LINUX_VERSION_CODE
 #define AW_KERNEL_VER_OVER_5_4_0
 MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
 #endif
 
+#if KERNEL_VERSION(5, 10, 0) <= LINUX_VERSION_CODE
+#define AW_KERNEL_VER_OVER_5_10_0
+#endif
+#if KERNEL_VERSION(6, 1, 0) <= LINUX_VERSION_CODE
+#define AW_KERNEL_VER_OVER_6_1_0
+#endif
+
 #ifdef AW_KERNEL_VER_OVER_4_19_1
 typedef struct snd_soc_component aw_snd_soc_codec_t;
-typedef struct snd_soc_component_driver aw_snd_soc_codec_driver_t;
+typedef const struct snd_soc_component_driver aw_snd_soc_codec_driver_t;
 #else
 typedef struct snd_soc_codec aw_snd_soc_codec_t;
-typedef struct snd_soc_codec_driver aw_snd_soc_codec_driver_t;
+typedef const struct snd_soc_codec_driver aw_snd_soc_codec_driver_t;
 #endif
 
 struct aw_componet_codec_ops {
@@ -97,6 +117,7 @@ enum {
 	KCTL_TYPE_SWITCH,
 	KCTL_TYPE_MONITOR,
 	KCTL_TYPE_VOLUME,
+	KCTL_TYPE_MON_HAL,
 	AW_KCTL_NUM,
 
 };
@@ -156,9 +177,12 @@ struct aw882xx {
 	unsigned char dbg_en_prof; /* debug enable/disable profile function */
 	unsigned char allow_pw; /* allow power */
 	uint32_t rename_flag;
+	unsigned char sync_load; /* sync load fw */
 
 	int reset_gpio;
 	int irq_gpio;
+	int spksw_gpio;
+	int spksw_level;
 	unsigned char fw_status;
 	unsigned char fw_retry_cnt;
 	unsigned char rw_reg_addr; /* rw attr node store read addr */
@@ -191,5 +215,6 @@ int aw882xx_i2c_write_bits(struct aw882xx *aw882xx, unsigned char reg_addr,
 			   unsigned int mask, unsigned int reg_data);
 int aw882xx_init(struct aw882xx *aw882xx);
 int aw882xx_hw_reset(struct aw882xx *aw882xx);
+int mievent_report(unsigned int eventid, const char *value, struct device *dev);
 
 #endif
