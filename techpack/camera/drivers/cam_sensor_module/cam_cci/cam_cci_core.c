@@ -8,6 +8,10 @@
 #include "cam_cci_dev.h"
 #include "cam_req_mgr_workq.h"
 
+
+static int disable_optmz;
+module_param(disable_optmz, int, 0644);
+
 static int32_t cam_cci_convert_type_to_num_bytes(
 	enum camera_sensor_i2c_type type)
 {
@@ -43,6 +47,9 @@ static void cam_cci_flush_queue(struct cci_device *cci_dev,
 	void __iomem *base = soc_info->reg_map[0].mem_base;
 
 	cam_io_w_mb(1 << master, base + CCI_HALT_REQ_ADDR);
+	if (!cci_dev->cci_master_info[master].status)
+		reinit_completion(&cci_dev->cci_master_info[master]
+			.reset_complete);
 	rc = wait_for_completion_timeout(
 		&cci_dev->cci_master_info[master].reset_complete, CCI_TIMEOUT);
 	if (rc < 0) {
@@ -52,6 +59,7 @@ static void cam_cci_flush_queue(struct cci_device *cci_dev,
 
 		/* Set reset pending flag to true */
 		cci_dev->cci_master_info[master].reset_pending = true;
+		cci_dev->cci_master_info[master].status = 0;
 
 		/* Set proper mask to RESET CMD address based on MASTER */
 		if (master == MASTER_0)
@@ -67,6 +75,7 @@ static void cam_cci_flush_queue(struct cci_device *cci_dev,
 			CCI_TIMEOUT);
 		if (rc <= 0)
 			CAM_ERR(CAM_CCI, "wait failed %d", rc);
+		cci_dev->cci_master_info[master].status = 0;
 	}
 }
 
@@ -128,8 +137,10 @@ static int32_t cam_cci_validate_queue(struct cci_device *cci_dev,
 			return rc;
 		}
 		rc = cci_dev->cci_master_info[master].status;
-		if (rc < 0)
+		if (rc < 0) {
 			CAM_ERR(CAM_CCI, "Failed rc %d", rc);
+			cci_dev->cci_master_info[master].status = 0;
+		}
 	}
 
 	return rc;
@@ -268,14 +279,16 @@ static uint32_t cam_cci_wait(struct cci_device *cci_dev,
 		cam_cci_dump_registers(cci_dev, master, queue);
 
 		CAM_ERR(CAM_CCI, "wait for queue: %d", queue);
-		if (rc == 0)
+		if (rc == 0) {
 			rc = -ETIMEDOUT;
-		cam_cci_flush_queue(cci_dev, master);
-		return rc;
+			cam_cci_flush_queue(cci_dev, master);
+			return rc;
+		}
 	}
 	rc = cci_dev->cci_master_info[master].status;
 	if (rc < 0) {
 		CAM_ERR(CAM_CCI, "failed rc %d", rc);
+		cci_dev->cci_master_info[master].status = 0;
 		return rc;
 	}
 
@@ -457,11 +470,11 @@ static int32_t cam_cci_calc_cmd_len(struct cci_device *cci_dev,
 	 struct cam_sensor_i2c_reg_array *i2c_cmd, uint32_t *pack)
 {
 	uint8_t i;
+	struct cam_sensor_i2c_reg_array *cmd = i2c_cmd;
 	uint32_t len = 0;
 	uint8_t data_len = 0, addr_len = 0;
 	uint8_t pack_max_len;
 	struct cam_sensor_i2c_reg_setting *msg;
-	struct cam_sensor_i2c_reg_array *cmd = i2c_cmd;
 	uint32_t size = cmd_size;
 
 	if (!cci_dev || !c_ctrl) {
@@ -483,22 +496,27 @@ static int32_t cam_cci_calc_cmd_len(struct cci_device *cci_dev,
 		len = data_len + addr_len;
 		pack_max_len = size < (cci_dev->payload_size-len) ?
 			size : (cci_dev->payload_size-len);
-		for (i = 0; i < pack_max_len;) {
-			if (cmd->delay || ((cmd - i2c_cmd) >= (cmd_size - 1)))
-				break;
-			if (cmd->reg_addr + 1 ==
-				(cmd+1)->reg_addr) {
-				len += data_len;
-				if (len > cci_dev->payload_size) {
-					len = len - data_len;
+		/* xiaomi add a flag to disable this optimization*/
+		if ((!c_ctrl->cci_info->disable_optmz) && (!disable_optmz))
+		{
+			CAM_DBG(CAM_CCI, "enable writing optimization for 0x%02X", c_ctrl->cci_info->sid<<1);
+			for (i = 0; i < pack_max_len;) {
+				if (cmd->delay || ((cmd - i2c_cmd) >= (cmd_size - 1)))
+					break;
+				if (cmd->reg_addr + 1 ==
+					(cmd+1)->reg_addr) {
+					len += data_len;
+					if (len > cci_dev->payload_size) {
+						len = len - data_len;
+						break;
+					}
+					(*pack)++;
+				} else {
 					break;
 				}
-				(*pack)++;
-			} else {
-				break;
+				i += data_len;
+				cmd++;
 			}
-			i += data_len;
-			cmd++;
 		}
 	}
 
@@ -873,7 +891,8 @@ static int32_t cam_cci_data_queue(struct cci_device *cci_dev,
 
 	rc = cam_cci_transfer_end(cci_dev, master, queue);
 	if (rc < 0) {
-		CAM_ERR(CAM_CCI, "failed rc %d", rc);
+		CAM_ERR(CAM_CCI, "Slave: 0x%x failed rc %d",
+			(c_ctrl->cci_info->sid << 1), rc);
 		return rc;
 	}
 
@@ -940,6 +959,7 @@ static int32_t cam_cci_burst_read(struct v4l2_subdev *sd,
 	mutex_unlock(&cci_dev->cci_master_info[master].mutex);
 
 	mutex_lock(&cci_dev->cci_master_info[master].mutex_q[queue]);
+	reinit_completion(&cci_dev->cci_master_info[master].report_q[queue]);
 	/*
 	 * Call validate queue to make sure queue is empty before starting.
 	 * If this call fails, don't proceed with i2c_read call. This is to
@@ -1045,6 +1065,14 @@ static int32_t cam_cci_burst_read(struct v4l2_subdev *sd,
 			goto rel_mutex_q;
 		}
 
+		if (cci_dev->cci_master_info[master].status) {
+			CAM_ERR(CAM_CCI, "Error with Salve: 0x%x",
+				(c_ctrl->cci_info->sid << 1));
+			rc = -EINVAL;
+			cci_dev->cci_master_info[master].status = 0;
+			goto rel_mutex_q;
+		}
+
 		read_words = cam_io_r_mb(base +
 			CCI_I2C_M0_READ_BUF_LEVEL_ADDR + master * 0x100);
 		if (read_words <= 0) {
@@ -1122,6 +1150,14 @@ static int32_t cam_cci_burst_read(struct v4l2_subdev *sd,
 					master, queue);
 
 				cam_cci_flush_queue(cci_dev, master);
+				goto rel_mutex_q;
+			}
+
+			if (cci_dev->cci_master_info[master].status) {
+				CAM_ERR(CAM_CCI, "Error with Slave 0x%x",
+					(c_ctrl->cci_info->sid << 1));
+				rc = -EINVAL;
+				cci_dev->cci_master_info[master].status = 0;
 				goto rel_mutex_q;
 			}
 			break;
@@ -1203,6 +1239,7 @@ static int32_t cam_cci_read(struct v4l2_subdev *sd,
 	mutex_unlock(&cci_dev->cci_master_info[master].mutex);
 
 	mutex_lock(&cci_dev->cci_master_info[master].mutex_q[queue]);
+	reinit_completion(&cci_dev->cci_master_info[master].report_q[queue]);
 	/*
 	 * Call validate queue to make sure queue is empty before starting.
 	 * If this call fails, don't proceed with i2c_read call. This is to
@@ -1309,6 +1346,14 @@ static int32_t cam_cci_read(struct v4l2_subdev *sd,
 		rc = 0;
 	}
 
+	if (cci_dev->cci_master_info[master].status) {
+		CAM_ERR(CAM_CCI, "ERROR with Slave 0x%x:",
+			(c_ctrl->cci_info->sid << 1));
+		rc = -EINVAL;
+		cci_dev->cci_master_info[master].status = 0;
+		goto rel_mutex_q;
+	}
+
 	read_words = cam_io_r_mb(base +
 		CCI_I2C_M0_READ_BUF_LEVEL_ADDR + master * 0x100);
 	exp_words = ((read_cfg->num_byte / 4) + 1);
@@ -1403,6 +1448,8 @@ static int32_t cam_cci_i2c_write(struct v4l2_subdev *sd,
 		goto ERROR;
 	}
 	mutex_unlock(&cci_dev->cci_master_info[master].mutex);
+
+	reinit_completion(&cci_dev->cci_master_info[master].report_q[queue]);
 	/*
 	 * Call validate queue to make sure queue is empty before starting.
 	 * If this call fails, don't proceed with i2c_write call. This is to
@@ -1638,6 +1685,7 @@ static int32_t cam_cci_read_bytes(struct v4l2_subdev *sd,
 	 * THRESHOLD irq's, we reinit the threshold wait before
 	 * we load the burst read cmd.
 	 */
+	reinit_completion(&cci_dev->cci_master_info[master].rd_done);
 	reinit_completion(&cci_dev->cci_master_info[master].th_complete);
 
 	CAM_DBG(CAM_CCI, "Bytes to read %u", read_bytes);
@@ -1779,7 +1827,29 @@ int32_t cam_cci_core_cfg(struct v4l2_subdev *sd,
 {
 	int32_t rc = 0;
 	struct cci_device *cci_dev = v4l2_get_subdevdata(sd);
-	CAM_DBG(CAM_CCI, "cmd %d", cci_ctrl->cmd);
+	enum cci_i2c_master_t master = MASTER_MAX;
+
+	if (!cci_dev) {
+		CAM_ERR(CAM_CCI, "CCI_DEV IS NULL");
+		return -EINVAL;
+	}
+
+	if (!cci_ctrl) {
+		CAM_ERR(CAM_CCI, "CCI_CTRL IS NULL");
+		return -EINVAL;
+	}
+
+	master = cci_ctrl->cci_info->cci_i2c_master;
+	if (master >= MASTER_MAX) {
+		CAM_ERR(CAM_CCI, "INVALID MASTER: %d", master);
+		return -EINVAL;
+	}
+
+	if (cci_dev->cci_master_info[master].status < 0) {
+		CAM_WARN(CAM_CCI, "CCI hardware is resetting");
+		return -EAGAIN;
+	}
+	CAM_DBG(CAM_CCI, "master = %d, cmd = %d", master, cci_ctrl->cmd);
 
 	switch (cci_ctrl->cmd) {
 	case MSM_CCI_INIT:
@@ -1793,6 +1863,7 @@ int32_t cam_cci_core_cfg(struct v4l2_subdev *sd,
 		mutex_unlock(&cci_dev->init_mutex);
 		break;
 	case MSM_CCI_I2C_READ:
+		mutex_lock(&cci_dev->init_mutex);
 		/*
 		 * CCI version 1.2 does not support burst read
 		 * due to the absence of the read threshold register
@@ -1803,6 +1874,15 @@ int32_t cam_cci_core_cfg(struct v4l2_subdev *sd,
 		} else {
 			rc = cam_cci_read_bytes(sd, cci_ctrl);
 		}
+		/* Added by qudao1@xiaomi.com */
+		if (rc < 0) {
+			CAM_ERR(CAM_CCI, "cam cci err %d , read, slav 0x%x on dev/master %d/%d",
+				rc, cci_ctrl->cci_info->sid << 1,
+				cci_ctrl->cci_info->cci_device,
+				cci_ctrl->cci_info->cci_i2c_master);
+		}
+		mutex_unlock(&cci_dev->init_mutex);
+		/* End of Added by qudao1@xiaomi.com */
 		break;
 	case MSM_CCI_I2C_WRITE:
 	case MSM_CCI_I2C_WRITE_SEQ:
@@ -1810,7 +1890,18 @@ int32_t cam_cci_core_cfg(struct v4l2_subdev *sd,
 	case MSM_CCI_I2C_WRITE_SYNC:
 	case MSM_CCI_I2C_WRITE_ASYNC:
 	case MSM_CCI_I2C_WRITE_SYNC_BLOCK:
+		mutex_lock(&cci_dev->init_mutex);
 		rc = cam_cci_write(sd, cci_ctrl);
+		/* Added by qudao1@xiaomi.com */
+		if (rc < 0) {
+			CAM_ERR(CAM_CCI, "cam cci err %d , write type %d , slav 0x%x on dev/master %d/%d",
+				rc, cci_ctrl->cmd,
+				cci_ctrl->cci_info->sid << 1,
+				cci_ctrl->cci_info->cci_device,
+				cci_ctrl->cci_info->cci_i2c_master);
+		}
+		mutex_unlock(&cci_dev->init_mutex);
+		/* End of Added by qudao1@xiaomi.com */
 		break;
 	case MSM_CCI_GPIO_WRITE:
 		break;

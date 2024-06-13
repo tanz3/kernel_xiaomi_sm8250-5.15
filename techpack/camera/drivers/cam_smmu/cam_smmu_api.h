@@ -416,5 +416,4 @@ void cam_smmu_exit_module(void);
  */
 int cam_smmu_need_force_alloc_cached(bool *force_alloc_cached);
 
-
 #endif /* _CAM_SMMU_API_H_ */
