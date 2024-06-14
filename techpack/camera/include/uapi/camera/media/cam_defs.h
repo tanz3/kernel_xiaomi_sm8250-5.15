@@ -2,7 +2,6 @@
 /*
  * Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
  * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
- * Copyright (C) 2021 XiaoMi, Inc.
  */
 
 #ifndef __UAPI_CAM_DEFS_H__
@@ -32,8 +31,6 @@
 
 #define CAM_EXT_OPCODE_BASE                     0x200
 #define CAM_CONFIG_DEV_EXTERNAL                 (CAM_EXT_OPCODE_BASE + 0x1)
-#define CAM_UPDATE_REG                          (CAM_EXT_OPCODE_BASE + 0x2)
-#define CAM_READ_REG                            (CAM_EXT_OPCODE_BASE + 0x3)
 
 /* camera handle type */
 #define CAM_HANDLE_USER_POINTER                 1

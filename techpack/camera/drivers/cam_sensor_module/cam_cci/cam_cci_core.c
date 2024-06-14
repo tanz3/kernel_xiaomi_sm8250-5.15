@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
  * Copyright (c) 2017-2020, The Linux Foundation. All rights reserved.
- * Copyright (C) 2021 XiaoMi, Inc.
  */
 
 #include <linux/module.h>
@@ -457,14 +456,12 @@ static int32_t cam_cci_calc_cmd_len(struct cci_device *cci_dev,
 	struct cam_cci_ctrl *c_ctrl, uint32_t cmd_size,
 	 struct cam_sensor_i2c_reg_array *i2c_cmd, uint32_t *pack)
 {
-#if 0 //disable I2C writing optimization due to OIS
 	uint8_t i;
-	struct cam_sensor_i2c_reg_array *cmd = i2c_cmd;
-#endif
 	uint32_t len = 0;
 	uint8_t data_len = 0, addr_len = 0;
 	uint8_t pack_max_len;
 	struct cam_sensor_i2c_reg_setting *msg;
+	struct cam_sensor_i2c_reg_array *cmd = i2c_cmd;
 	uint32_t size = cmd_size;
 
 	if (!cci_dev || !c_ctrl) {
@@ -486,7 +483,6 @@ static int32_t cam_cci_calc_cmd_len(struct cci_device *cci_dev,
 		len = data_len + addr_len;
 		pack_max_len = size < (cci_dev->payload_size-len) ?
 			size : (cci_dev->payload_size-len);
-#if 0 //disable I2C writing optimization due to OIS
 		for (i = 0; i < pack_max_len;) {
 			if (cmd->delay || ((cmd - i2c_cmd) >= (cmd_size - 1)))
 				break;
@@ -504,7 +500,6 @@ static int32_t cam_cci_calc_cmd_len(struct cci_device *cci_dev,
 			i += data_len;
 			cmd++;
 		}
-#endif
 	}
 
 	if (len > cci_dev->payload_size) {
@@ -1798,7 +1793,6 @@ int32_t cam_cci_core_cfg(struct v4l2_subdev *sd,
 		mutex_unlock(&cci_dev->init_mutex);
 		break;
 	case MSM_CCI_I2C_READ:
-		mutex_lock(&cci_dev->init_mutex);
 		/*
 		 * CCI version 1.2 does not support burst read
 		 * due to the absence of the read threshold register
@@ -1809,15 +1803,6 @@ int32_t cam_cci_core_cfg(struct v4l2_subdev *sd,
 		} else {
 			rc = cam_cci_read_bytes(sd, cci_ctrl);
 		}
-		/* Added by qudao1@xiaomi.com */
-		if (rc < 0) {
-			CAM_ERR(CAM_CCI, "cam cci err %d , read, slav 0x%x on dev/master %d/%d",
-				rc, cci_ctrl->cci_info->sid << 1,
-				cci_ctrl->cci_info->cci_device,
-				cci_ctrl->cci_info->cci_i2c_master);
-		}
-		mutex_unlock(&cci_dev->init_mutex);
-		/* End of Added by qudao1@xiaomi.com */
 		break;
 	case MSM_CCI_I2C_WRITE:
 	case MSM_CCI_I2C_WRITE_SEQ:
@@ -1825,18 +1810,7 @@ int32_t cam_cci_core_cfg(struct v4l2_subdev *sd,
 	case MSM_CCI_I2C_WRITE_SYNC:
 	case MSM_CCI_I2C_WRITE_ASYNC:
 	case MSM_CCI_I2C_WRITE_SYNC_BLOCK:
-		mutex_lock(&cci_dev->init_mutex);
 		rc = cam_cci_write(sd, cci_ctrl);
-		/* Added by qudao1@xiaomi.com */
-		if (rc < 0) {
-			CAM_ERR(CAM_CCI, "cam cci err %d , write type %d , slav 0x%x on dev/master %d/%d",
-				rc, cci_ctrl->cmd,
-				cci_ctrl->cci_info->sid << 1,
-				cci_ctrl->cci_info->cci_device,
-				cci_ctrl->cci_info->cci_i2c_master);
-		}
-		mutex_unlock(&cci_dev->init_mutex);
-		/* End of Added by qudao1@xiaomi.com */
 		break;
 	case MSM_CCI_GPIO_WRITE:
 		break;
