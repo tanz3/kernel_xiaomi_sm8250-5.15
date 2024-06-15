@@ -248,6 +248,30 @@ config ARCH_SDM670
 	  SDM670 chipset. If you do not wish to build a kernel that
 	  runs on this chipset or if you are unsure, say 'N' here.
 
+config ARCH_SDM845
+	bool "Enable Support for Qualcomm Technologies, Inc. SDM845"
+	depends on ARCH_QCOM
+	help
+	  This enables support for the Qualcomm Technologies, Inc.'s
+	  SDM845 chipset. If you do not wish to build a kernel that
+	  runs on this chipset or if you are unsure, say 'N' here.
+
+config ARCH_MSM8998
+	bool "Enable Support for Qualcomm Technologies, Inc. MSM8998"
+	depends on ARCH_QCOM
+	help
+	  This enables support for the Qualcomm Technologies, Inc.'s
+	  MSM8998 chipset. If you do not wish to build a kernel that
+	  runs on this chipset or if you are unsure, say 'N' here.
+
+config ARCH_LAHAINA
+	bool "Enable Support for Qualcomm Technologies, Inc. LAHAINA"
+	depends on ARCH_QCOM
+	help
+	  This enables support for the Qualcomm Technologies, Inc.'s
+	  LAHAINA chipset. If you do not wish to build a kernel that
+	  runs on this chipset or if you are unsure, say 'N' here.
+
 config ARCH_CROW
 	bool "Enable Support for Qualcomm Technologies, Inc. CROW"
 	depends on ARCH_QCOM
