@@ -3,6 +3,8 @@
 header-y += audio_compressed_formats.h
 header-y += audio_effects.h
 header-y += audio_slimslave.h
+header-y += compress_offload.h
+header-y += compress_params.h
 header-y += devdep_params.h
 header-y += lsm_params.h
 header-y += msmcal-hwdep.h

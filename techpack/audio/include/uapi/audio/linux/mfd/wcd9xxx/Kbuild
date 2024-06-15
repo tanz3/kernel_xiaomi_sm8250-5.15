@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+
+header-y += wcd9320_registers.h
+header-y += wcd9xxx_registers.h

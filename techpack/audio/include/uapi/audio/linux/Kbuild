@@ -19,3 +19,4 @@ header-y += msm_audio_voicememo.h
 header-y += msm_audio_wma.h
 header-y += msm_audio_wmapro.h
 header-y += wcd-spi-ac-params.h
+header-y += mfd/
