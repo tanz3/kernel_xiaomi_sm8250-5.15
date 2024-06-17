@@ -72,7 +72,7 @@
 #else
 #define CNSS_MHI_TIMEOUT_DEFAULT	0
 #define CNSS_MHI_M2_TIMEOUT_DEFAULT	25
-#define CNSS_QMI_TIMEOUT_DEFAULT	10000
+#define CNSS_QMI_TIMEOUT_DEFAULT	20000
 #endif
 #define CNSS_BDF_TYPE_DEFAULT		CNSS_BDF_ELF
 #define CNSS_TIME_SYNC_PERIOD_DEFAULT	900000
@@ -129,6 +129,9 @@ bool cnss_check_driver_loading_allowed(void)
 {
 	return cnss_allow_driver_loading;
 }
+
+static bool disable_nv_mac;
+module_param(disable_nv_mac, bool, 0444);
 
 #ifdef CONFIG_CNSS_SUPPORT_DUAL_DEV
 static void cnss_set_plat_priv(struct platform_device *plat_dev,
@@ -4968,6 +4971,10 @@ static void cnss_init_control_params(struct cnss_plat_data *plat_priv)
 		of_property_read_bool(plat_priv->plat_dev->dev.of_node,
 				      "qcom,wlan-cbc-enabled");
 
+	if (of_property_read_bool(plat_priv->plat_dev->dev.of_node,
+				  "cnss-enable-self-recovery"))
+		plat_priv->ctrl_params.quirks |= BIT(LINK_DOWN_SELF_RECOVERY);
+
 	plat_priv->ctrl_params.mhi_timeout = CNSS_MHI_TIMEOUT_DEFAULT;
 	plat_priv->ctrl_params.mhi_m2_timeout = CNSS_MHI_M2_TIMEOUT_DEFAULT;
 	plat_priv->ctrl_params.qmi_timeout = CNSS_QMI_TIMEOUT_DEFAULT;
@@ -5482,7 +5489,11 @@ static int cnss_probe(struct platform_device *plat_dev)
 	cnss_pr_dbg("rc_num=%d\n", plat_priv->rc_num);
 
 	plat_priv->bus_type = cnss_get_bus_type(plat_priv);
-	plat_priv->use_nv_mac = cnss_use_nv_mac(plat_priv);
+	if (disable_nv_mac) {
+		plat_priv->use_nv_mac = false;
+	} else {
+		plat_priv->use_nv_mac = cnss_use_nv_mac(plat_priv);
+	}
 	cnss_set_plat_priv(plat_dev, plat_priv);
 	cnss_set_device_name(plat_priv);
 	platform_set_drvdata(plat_dev, plat_priv);
