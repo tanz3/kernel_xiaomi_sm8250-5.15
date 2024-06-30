@@ -357,4 +357,22 @@ ifeq ($(CONFIG_TOUCHSCREEN_ST_FTS_V521_SPI), y)
 	obj-$(CONFIG_MSM_TOUCH) += fts_spi.o
 endif
 
+ifeq ($(CONFIG_TOUCHSCREEN_GOODIX_BRL_9916), y)
+	LINUX_INC += -include $(TOUCH_ROOT)/goodix_9916/goodix_ts_core.h
+
+	goodix_ts-y := \
+		 ./goodix_9916/goodix_ts_core.o \
+		 ./goodix_9916/goodix_brl_hw.o \
+		 ./goodix_9916/goodix_cfg_bin.o \
+		 ./goodix_9916/goodix_ts_utils.o \
+		 ./goodix_9916/goodix_brl_fwupdate.o \
+		 ./goodix_9916/goodix_ts_tools.o \
+		 ./goodix_9916/goodix_ts_gesture.o \
+		 ./goodix_9916/goodix_ts_inspect.o \
+		 ./goodix_9916/goodix_brl_spi.o \
+		 ./goodix_9916/goodix_brl_i2c.o
+
+	obj-$(CONFIG_MSM_TOUCH) += goodix_ts.o
+endif
+
 CDEFINES += -DBUILD_TIMESTAMP=\"$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')\"
