@@ -245,4 +245,24 @@ ifneq ($(CONFIG_ARCH_PINEAPPLE), y)
 	endif
 endif # pineapple
 
+ifeq ($(CONFIG_TOUCHSCREEN_FOCALTECH_3658U), y)
+	LINUX_INC += -include $(TOUCH_ROOT)/focaltech_3658u
+
+	focaltech_fts_mi-y := \
+		 ./focaltech_3658u/focaltech_core.o \
+		 ./focaltech_3658u/focaltech_ex_fun.o \
+		 ./focaltech_3658u/focaltech_ex_mode.o \
+		 ./focaltech_3658u/focaltech_gesture.o \
+		 ./focaltech_3658u/focaltech_esdcheck.o \
+		 ./focaltech_3658u/focaltech_point_report_check.o \
+		 ./focaltech_3658u/focaltech_spi.o \
+		 ./focaltech_3658u/focaltech_flash.o \
+		 ./focaltech_3658u/focaltech_flash/focaltech_upgrade_ft3658u.o \
+		 ./focaltech_3658u/focaltech_test/focaltech_test.o \
+		 ./focaltech_3658u/focaltech_test/focaltech_test_ini.o \
+		 ./focaltech_3658u/focaltech_test/supported_ic/focaltech_test_ft3658u.o
+
+	obj-$(CONFIG_MSM_TOUCH) += focaltech_fts_mi.o
+endif
+
 CDEFINES += -DBUILD_TIMESTAMP=\"$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')\"
