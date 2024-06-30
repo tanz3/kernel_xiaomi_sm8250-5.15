@@ -265,4 +265,28 @@ ifeq ($(CONFIG_TOUCHSCREEN_FOCALTECH_3658U), y)
 	obj-$(CONFIG_MSM_TOUCH) += focaltech_fts_mi.o
 endif
 
+ifeq ($(CONFIG_TOUCH_FOCALTECH_MI), y)
+	LINUX_INC += -include $(TOUCH_ROOT)/focaltech_touch_mi
+
+	focaltech_touch_mi-y := \
+		 ./focaltech_touch_mi/focaltech_core.o \
+		 ./focaltech_touch_mi/focaltech_ex_fun.o \
+		 ./focaltech_touch_mi/focaltech_ex_mode.o \
+		 ./focaltech_touch_mi/focaltech_gesture.o \
+		 ./focaltech_touch_mi/focaltech_esdcheck.o \
+		 ./focaltech_touch_mi/focaltech_point_report_check.o \
+		 ./focaltech_touch_mi/focaltech_i2c.o \
+		 ./focaltech_touch_mi/focaltech_flash.o \
+		 ./focaltech_touch_mi/focaltech_flash/focaltech_upgrade_ft3518.o \
+		 ./focaltech_touch_mi/focaltech_flash/focaltech_upgrade_ft5452.o \
+		 ./focaltech_touch_mi/focaltech_flash/focaltech_upgrade_ft8719.o \
+		 ./focaltech_touch_mi/focaltech_test/focaltech_test.o \
+		 ./focaltech_touch_mi/focaltech_test/focaltech_test_detail_threshold.o \
+		 ./focaltech_touch_mi/focaltech_test/focaltech_test_ini.o \
+		 ./focaltech_touch_mi/focaltech_test/supported_ic/focaltech_test_ft5452.o \
+		 ./focaltech_touch_mi/focaltech_test/supported_ic/focaltech_test_ft8719.o
+
+	obj-$(CONFIG_MSM_TOUCH) += focaltech_touch_mi.o
+endif
+
 CDEFINES += -DBUILD_TIMESTAMP=\"$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')\"
