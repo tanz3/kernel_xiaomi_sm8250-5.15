@@ -289,4 +289,38 @@ ifeq ($(CONFIG_TOUCH_FOCALTECH_MI), y)
 	obj-$(CONFIG_MSM_TOUCH) += focaltech_touch_mi.o
 endif
 
+ifeq ($(CONFIG_TOUCHSCREEN_ST_FTS_V521), y)
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_fw.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_limits.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsCompensation.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsCore.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsError.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsFlash.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsFrame.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsGesture.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsHardware.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsIO.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsSoftware.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsTest.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsTime.h
+	LINUX_INC += -include $(TOUCH_ROOT)/fts_521/fts_lib/ftsTool.h
+
+	fts_521-y := \
+		 ./fts_521/fts.o \
+		 ./fts_521/fts_proc.o \
+		 ./fts_521/fts_lib/ftsCompensation.o \
+		 ./fts_521/fts_lib/ftsCore.o \
+		 ./fts_521/fts_lib/ftsError.o \
+		 ./fts_521/fts_lib/ftsFlash.o \
+		 ./fts_521/fts_lib/ftsFrame.o \
+		 ./fts_521/fts_lib/ftsGesture.o \
+		 ./fts_521/fts_lib/ftsIO.o \
+		 ./fts_521/fts_lib/ftsTest.o \
+		 ./fts_521/fts_lib/ftsTime.o \
+		 ./fts_521/fts_lib/ftsTool.o
+
+	obj-$(CONFIG_MSM_TOUCH) += fts_521.o
+endif
+
 CDEFINES += -DBUILD_TIMESTAMP=\"$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')\"
