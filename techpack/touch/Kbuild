@@ -375,4 +375,21 @@ ifeq ($(CONFIG_TOUCHSCREEN_GOODIX_BRL_9916), y)
 	obj-$(CONFIG_MSM_TOUCH) += goodix_ts.o
 endif
 
+ifeq ($(CONFIG_TOUCHSCREEN_GOODIX_GTX8), y)
+	LINUX_INC += -include $(TOUCH_ROOT)/goodix_driver_gt9886/goodix_cfg_bin.h
+	LINUX_INC += -include $(TOUCH_ROOT)/goodix_driver_gt9886/goodix_ts_core.h
+	LINUX_INC += -include $(TOUCH_ROOT)/goodix_driver_gt9886/goodix_default_fw.h
+
+	gtx8-y := \
+		 ./goodix_driver_gt9886/goodix_ts_core.o \
+		 ./goodix_driver_gt9886/goodix_cfg_bin.o \
+		 ./goodix_driver_gt9886/goodix_gtx8_update.o \
+		 ./goodix_driver_gt9886/goodix_ts_gesture.o \
+		 ./goodix_driver_gt9886/goodix_ts_i2c.o \
+		 ./goodix_driver_gt9886/goodix_ts_test.o \
+		 ./goodix_driver_gt9886/goodix_ts_tools.o
+
+	obj-$(CONFIG_MSM_TOUCH) += gtx8.o
+endif
+
 CDEFINES += -DBUILD_TIMESTAMP=\"$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')\"
