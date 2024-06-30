@@ -431,4 +431,18 @@ ifeq ($(CONFIG_TOUCHSCREEN_NT36532_HOSTDL_SPI), y)
 	obj-$(CONFIG_MSM_TOUCH) += nt63532.o
 endif
 
+ifeq ($(CONFIG_TOUCHSCREEN_NT36xxx_HOSTDL_SPI), y)
+	LINUX_INC += -include $(TOUCH_ROOT)/nt36672c/nt36xxx.h
+	LINUX_INC += -include $(TOUCH_ROOT)/nt36672c/nt36xxx_mem_map.h
+	LINUX_INC += -include $(TOUCH_ROOT)/nt36672c/nt36xxx_mp_ctrlram.h
+
+	nt36672c-y := \
+		 ./nt36672c/nt36xxx.o \
+		 ./nt36672c/nt36xxx_fw_update.o \
+		 ./nt36672c/nt36xxx_ext_proc.o \
+		 ./nt36672c/nt36xxx_mp_ctrlram.o
+
+	obj-$(CONFIG_MSM_TOUCH) += nt36672c.o
+endif
+
 CDEFINES += -DBUILD_TIMESTAMP=\"$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')\"
