@@ -38,7 +38,7 @@
 #include <linux/initrd.h>
 #include <linux/init.h>
 #include <linux/string.h>
-#include <asm/uaccess.h>
+#include <linux/uaccess.h>
 #include <linux/poll.h>
 #include <linux/wait.h>
 #include <linux/hrtimer.h>
@@ -375,10 +375,10 @@ static long akm09970_ioctl(struct file *filp, unsigned int cmd,
 	}
 
 	if (_IOC_DIR(cmd) & _IOC_READ)
-		rc = !access_ok(VERIFY_WRITE, (void __user *)arg,
+		rc = !access_ok((void __user *)arg,
 				_IOC_SIZE(cmd));
 	else if (_IOC_DIR(cmd) & _IOC_WRITE)
-		rc = !access_ok(VERIFY_READ, (void __user *)arg,
+		rc = !access_ok((void __user *)arg,
 				_IOC_SIZE(cmd));
 	if (rc) {
 		pr_err("CMD access failed\n");
