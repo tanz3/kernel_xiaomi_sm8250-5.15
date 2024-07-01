@@ -1356,9 +1356,8 @@ static int pl_fv_vote_callback(struct votable *votable, void *data,
 				&pval);
 				if (pval.intval) {
 					pr_err("wireless re-triggering charging\n");
-					rc = power_supply_set_property(chip->batt_psy,
-						POWER_SUPPLY_PROP_FORCE_RECHARGE,
-						&pval);
+					rc = chip->chg_param->iio_write(chip->dev,
+						PSY_IIO_FORCE_RECHARGE, val);
 					if (rc < 0)
 						pr_err("Couldn't set force recharge rc=%d\n",
 								rc);
