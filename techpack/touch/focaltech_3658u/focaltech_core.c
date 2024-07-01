@@ -38,7 +38,7 @@
 #include <linux/of_gpio.h>
 #include <linux/of_irq.h>
 #if defined(CONFIG_DRM)
-#include <drm/drm_notifier_mi.h>
+#include <linux/soc/qcom/panel_event_notifier.h>
 #elif defined(CONFIG_HAS_EARLYSUSPEND)
 #include <linux/earlysuspend.h>
 #define FTS_SUSPEND_LEVEL 1     /* Early-suspend level */
@@ -74,11 +74,50 @@
 *****************************************************************************/
 struct fts_ts_data *fts_data;
 
+#if defined(CONFIG_DRM)
+static struct drm_panel *active_panel;
+static void fts_ts_panel_notifier_callback(enum panel_event_notifier_tag tag,
+		 struct panel_event_notification *event, void *client_data);
+#endif
+
 /*****************************************************************************
 * Static function prototypes
 *****************************************************************************/
 static int fts_ts_suspend(struct device *dev);
 static int fts_ts_resume(struct device *dev);
+
+static void fts_ts_register_for_panel_events(struct device_node *dp,
+					struct fts_ts_data *ts_data)
+{
+	const char *touch_type;
+	int rc = 0;
+	void *cookie = NULL;
+
+	rc = of_property_read_string(dp, "focaltech,touch-type",
+						&touch_type);
+	if (rc) {
+		dev_warn(&fts_data->client->dev,
+			"%s: No touch type\n", __func__);
+		return;
+	}
+	if (strcmp(touch_type, "primary")) {
+		pr_err("Invalid touch type\n");
+		return;
+	}
+
+	cookie = panel_event_notifier_register(PANEL_EVENT_NOTIFICATION_PRIMARY,
+			PANEL_EVENT_NOTIFIER_CLIENT_PRIMARY_TOUCH, active_panel,
+			&fts_ts_panel_notifier_callback, ts_data);
+	if (!cookie) {
+		pr_err("Failed to register for panel events\n");
+		return;
+	}
+
+	FTS_DEBUG("registered for panel notifications panel: 0x%x\n",
+			active_panel);
+
+	ts_data->notifier_cookie = cookie;
+}
 
 #ifdef CONFIG_TOUCHSCREEN_XIAOMI_TOUCHFEATURE
 static void fts_read_palm_data(u8 reg_value);
@@ -1358,38 +1397,47 @@ static void fts_resume_work(struct work_struct *work)
 }
 
 #if defined(CONFIG_DRM)
-static int drm_notifier_callback(struct notifier_block *self,
-		unsigned long event, void *data)
+static void fts_ts_panel_notifier_callback(enum panel_event_notifier_tag tag,
+		 struct panel_event_notification *notification, void *client_data)
 {
-	struct fts_ts_data *ts_data = container_of(self, struct fts_ts_data,
-					fb_notif);
-	struct mi_drm_notifier *evdata = data;
-	int blank;
+	struct fts_ts_data *ts_data = client_data;
 
-	if (!ts_data || !evdata || !evdata->data || evdata->id != 0) {
-		FTS_ERROR("evdata is null");
-		goto exit;
+	if (!notification) {
+		pr_err("Invalid notification\n");
+		return;
 	}
 
-	if (event != MI_DRM_EVENT_BLANK) {
-		goto exit;
+	FTS_DEBUG("Notification type:%d, early_trigger:%d",
+			notification->notif_type,
+			notification->notif_data.early_trigger);
+	switch (notification->notif_type) {
+	case DRM_PANEL_EVENT_UNBLANK:
+		if (notification->notif_data.early_trigger)
+			FTS_DEBUG("resume notification pre commit\n");
+		else
+			queue_work(fts_data->ts_workqueue, &fts_data->resume_work);
+		break;
+	case DRM_PANEL_EVENT_BLANK:
+		if (notification->notif_data.early_trigger) {
+			cancel_work_sync(&fts_data->resume_work);
+			fts_ts_suspend(ts_data->dev);
+		} else {
+			FTS_DEBUG("suspend notification post commit\n");
+		}
+		break;
+	case DRM_PANEL_EVENT_BLANK_LP:
+		FTS_DEBUG("received lp event\n");
+		break;
+	case DRM_PANEL_EVENT_FPS_CHANGE:
+		FTS_DEBUG("shashank:Received fps change old fps:%d new fps:%d\n",
+				notification->notif_data.old_fps,
+				notification->notif_data.new_fps);
+		break;
+	default:
+		FTS_DEBUG("notification serviced :%d\n",
+				notification->notif_type);
+		break;
 	}
-
-	blank = *(int *)(evdata->data);
-	FTS_INFO("DRM event:%lu, blank:%d", event, blank);
-
-	if (blank == MI_DRM_BLANK_UNBLANK) {
-		queue_work(fts_data->ts_workqueue, &fts_data->resume_work);
-
-	} else if (blank == MI_DRM_BLANK_POWERDOWN ||
-			blank == MI_DRM_BLANK_LP1 ||
-			blank == MI_DRM_BLANK_LP2) {
-		cancel_work_sync(&fts_data->resume_work);
-		fts_ts_suspend(ts_data->dev);
-	}
-
-exit:
-	return NOTIFY_OK;
 }
 
 #elif defined(CONFIG_HAS_EARLYSUSPEND)
@@ -1710,11 +1758,10 @@ static int fts_ts_probe_entry(struct fts_ts_data *ts_data)
 #endif
 
 #if defined(CONFIG_DRM)
-	ts_data->fb_notif.notifier_call = drm_notifier_callback;
-	ret = mi_drm_register_client(&ts_data->fb_notif);
-	if (ret) {
-		FTS_ERROR("[DRM]Unable to register fb_notifier: %d\n", ret);
-	}
+	if (ts_data->ts_workqueue)
+		INIT_WORK(&ts_data->resume_work, fts_resume_work);
+
+	fts_ts_register_for_panel_events(ts_data->dev->of_node, ts_data);
 #elif defined(CONFIG_HAS_EARLYSUSPEND)
 	ts_data->early_suspend.level = EARLY_SUSPEND_LEVEL_BLANK_SCREEN + FTS_SUSPEND_LEVEL;
 	ts_data->early_suspend.suspend = fts_ts_early_suspend;
@@ -1793,8 +1840,8 @@ static int fts_ts_remove_entry(struct fts_ts_data *ts_data)
 		destroy_workqueue(ts_data->ts_workqueue);
 
 #if defined(CONFIG_DRM)
-	if (mi_drm_unregister_client(&ts_data->fb_notif))
-		FTS_ERROR("[DRM]Error occurred while unregistering fb_notifier.\n");
+	if (active_panel && ts_data->notifier_cookie)
+		panel_event_notifier_unregister(ts_data->notifier_cookie);
 #elif defined(CONFIG_HAS_EARLYSUSPEND)
 	unregister_early_suspend(&ts_data->early_suspend);
 #endif
@@ -2221,7 +2268,7 @@ static void fts_update_touchmode_data(struct fts_ts_data *ts_data)
 	pm_relax(ts_data->dev);
 }
 
-static void fts_update_gesture_state(struct fts_ts_data *ts_data, int bit, bool enable)
+void fts_update_gesture_state(struct fts_ts_data *ts_data, int bit, bool enable)
 {
 	if (ts_data->suspended) {
 		FTS_ERROR("TP is suspended, do not update gesture state");
