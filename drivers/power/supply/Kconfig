@@ -870,6 +870,5 @@ config CHARGER_SURFACE
 	  Surface Book 3, and Surface Laptop Go.
 
 source "drivers/power/supply/qcom/Kconfig"
-source "drivers/power/supply/maxim/Kconfig"
 
 endif # POWER_SUPPLY
