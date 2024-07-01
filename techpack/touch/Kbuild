@@ -28,8 +28,53 @@ ifeq ($(CONFIG_ARCH_MONACO), y)
 endif
 
 ifeq ($(CONFIG_ARCH_KONA), y)
+ifeq ($(CONFIG_MACH_XIAOMI), y)
+        include $(TOUCH_ROOT)/config/xiaomi/common.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/commonconf.h
+ifeq ($(CONFIG_MACH_XIAOMI_ALIOTH), y)
+        include $(TOUCH_ROOT)/config/xiaomi/alioth.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/aliothconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_APOLLO), y)
+        include $(TOUCH_ROOT)/config/xiaomi/apollo.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/apolloconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_CAS), y)
+        include $(TOUCH_ROOT)/config/xiaomi/cas.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/casconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_CMI), y)
+        include $(TOUCH_ROOT)/config/xiaomi/cmi.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/cmiconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_DAGU), y)
+        include $(TOUCH_ROOT)/config/xiaomi/dagu.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/daguconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_ELISH), y)
+        include $(TOUCH_ROOT)/config/xiaomi/elish.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/elishconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_ENUMA), y)
+        include $(TOUCH_ROOT)/config/xiaomi/enuma.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/enumaconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_LMI), y)
+        include $(TOUCH_ROOT)/config/xiaomi/lmi.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/lmiconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_MUNCH), y)
+        include $(TOUCH_ROOT)/config/xiaomi/munch.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/munchconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_PIPA), y)
+        include $(TOUCH_ROOT)/config/xiaomi/pipa.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/pipaconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_PSYCHE), y)
+        include $(TOUCH_ROOT)/config/xiaomi/psyche.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/psycheconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_THYME), y)
+        include $(TOUCH_ROOT)/config/xiaomi/thyme.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/thymeconf.h
+else ifeq ($(CONFIG_MACH_XIAOMI_UMI), y)
+        include $(TOUCH_ROOT)/config/xiaomi/umi.conf
+        LINUX_INC += -include $(TOUCH_ROOT)/config/xiaomi/umiconf.h
+endif
+else
         include $(TOUCH_ROOT)/config/gki_konatouch.conf
         LINUX_INC += -include $(TOUCH_ROOT)/config/gki_konatouchconf.h
+endif
 endif
 
 ifeq ($(CONFIG_ARCH_BLAIR), y)
