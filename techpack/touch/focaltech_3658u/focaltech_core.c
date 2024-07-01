@@ -59,7 +59,11 @@
 #define FTS_I2C_VTG_MAX_UV                  1800000
 #endif
 
+#ifdef CONFIG_MACH_XIAOMI_ALIOTH
+#define SUPER_RESOLUTION_FACOTR             8
+#else
 #define SUPER_RESOLUTION_FACOTR             10
+#endif
 
 /*****************************************************************************
 * Global variable or extern global variabls/functions
@@ -690,6 +694,14 @@ static int fts_read_parse_touchdata(struct fts_ts_data *data)
 		}
 
 		data->touch_point++;
+#ifdef CONFIG_MACH_XIAOMI_ALIOTH
+		events[i].x = ((buf[FTS_TOUCH_X_H_POS + base] & 0x0F) << 11) +
+					  ((buf[FTS_TOUCH_X_L_POS + base] & 0xFF) << 3) +
+					  ((buf[FTS_TOUCH_PRE_POS + base] & 0xE0) >> 5);
+		events[i].y = ((buf[FTS_TOUCH_Y_H_POS + base] & 0x0F) << 11) +
+					  ((buf[FTS_TOUCH_Y_L_POS + base] & 0xFF) << 3) +
+					  ((buf[FTS_TOUCH_PRE_POS + base] & 0x1C) >> 2);
+#else
 		events[i].x = ((buf[FTS_TOUCH_PRE_POS + base] & 0xF0) >> 4) +
 				(buf[FTS_TOUCH_X_L_POS + base] << 4) +
 				((buf[FTS_TOUCH_X_H_POS + base] & 0x0F) << 12);
@@ -699,10 +711,13 @@ static int fts_read_parse_touchdata(struct fts_ts_data *data)
 		/*fw report 16x, dts report 10x*/
 		events[i].x = events[i].x * 10 / 16;
 		events[i].y = events[i].y * 10 / 16;
+#endif
 		events[i].flag = buf[FTS_TOUCH_EVENT_POS + base] >> 6;
 		events[i].id = buf[FTS_TOUCH_ID_POS + base] >> 4;
 		events[i].area = buf[FTS_TOUCH_AREA_POS + base] >> 4;
-		// events[i].p =  buf[FTS_TOUCH_PRE_POS + base] & 0x03;
+#ifdef CONFIG_MACH_XIAOMI_ALIOTH
+		events[i].p =  buf[FTS_TOUCH_PRE_POS + base] & 0x03;
+#endif
 
 		if (EVENT_DOWN(events[i].flag) && (data->point_num == 0)) {
 			FTS_INFO("abnormal touch data from fw");
