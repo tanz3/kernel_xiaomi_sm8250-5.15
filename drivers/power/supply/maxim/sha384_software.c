@@ -63,13 +63,8 @@ int sha3_256_hmac(unsigned char *key, int key_len, unsigned char *message, int m
 	int i;
 	unsigned char thash[256];
 	unsigned char tmac[256];
-#ifdef CONFIG_MACH_XIAOMI_PIPA
-	unsigned char cat_input_thash[512];
-	unsigned char cat_input_final[512];
-#else
 	unsigned char cat_input_thash[1024];
 	unsigned char cat_input_final[1024];
-#endif
 
 	int blocksize = 136;
 	int hashsize = 32;
